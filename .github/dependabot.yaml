@@ -47,6 +47,8 @@ updates:
         versions: ["6.x"]
       - dependency-name: "symfony/http-kernel"
         versions: ["6.x"]
+      - dependency-name: "symfony/monolog-bridge"
+        versions: ["6.x"]
       - dependency-name: "symfony/routing"
         versions: ["6.x"]
       - dependency-name: "symfony/runtime"
