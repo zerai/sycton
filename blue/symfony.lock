@@ -1,6 +1,21 @@
 {
+    "brick/math": {
+        "version": "0.9.3"
+    },
     "doctrine/instantiator": {
         "version": "1.4.0"
+    },
+    "ecotone/ecotone": {
+        "version": "1.7.0"
+    },
+    "ecotone/symfony-bundle": {
+        "version": "1.7.0"
+    },
+    "laminas/laminas-code": {
+        "version": "4.5.1"
+    },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.4.1"
     },
     "monolog/monolog": {
         "version": "2.3.5"
@@ -10,6 +25,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "ocramius/proxy-manager": {
+        "version": "2.13.0"
     },
     "phar-io/manifest": {
         "version": "2.0.3"
@@ -69,6 +87,12 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "ramsey/collection": {
+        "version": "1.2.2"
+    },
+    "ramsey/uuid": {
+        "version": "4.2.3"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -293,6 +317,9 @@
     },
     "theseer/tokenizer": {
         "version": "1.2.1"
+    },
+    "webimpress/safe-writer": {
+        "version": "2.2.0"
     },
     "webmozart/assert": {
         "version": "1.10.0"
