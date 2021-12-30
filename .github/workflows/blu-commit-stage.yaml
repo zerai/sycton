@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - "blue/**"
+  pull_request:
+    paths:
+      - "blue/**"
 
 
 env:
