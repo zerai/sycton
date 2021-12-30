@@ -3,7 +3,7 @@ name: Blu - Commit stage
 on:
   push:
     paths:
-      - "blue"
+      - "blue/**"
 
 
 env:

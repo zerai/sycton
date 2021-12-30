@@ -3,7 +3,7 @@ name: Red - Commit stage
 on:
   push:
     paths:
-      - "red"
+      - "red/**"
 
 
 env:
