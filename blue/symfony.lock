@@ -2,6 +2,21 @@
     "brick/math": {
         "version": "0.9.3"
     },
+    "composer/package-versions-deprecated": {
+        "version": "1.11.99.4"
+    },
+    "doctrine/cache": {
+        "version": "2.1.1"
+    },
+    "doctrine/dbal": {
+        "version": "3.2.0"
+    },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
+    "doctrine/event-manager": {
+        "version": "1.1.1"
+    },
     "doctrine/instantiator": {
         "version": "1.4.0"
     },
