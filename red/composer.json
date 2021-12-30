@@ -1,5 +1,7 @@
 {
+    "name": "zerai/syctone-red",
     "type": "project",
+    "description": "funny stuff",
     "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
