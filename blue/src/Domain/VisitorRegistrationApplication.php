@@ -4,6 +4,7 @@ namespace App\Domain;
 
 use Ecotone\Modelling\Attribute\Aggregate;
 use Ecotone\Modelling\Attribute\AggregateIdentifier;
+use Ecotone\Modelling\Attribute\CommandHandler;
 use Ecotone\Modelling\WithAggregateEvents;
 
 #[Aggregate]
@@ -35,5 +36,10 @@ class VisitorRegistrationApplication
     public function id(): int
     {
         return $this->applicationId;
+    }
+
+    public function fullname(): string
+    {
+        return $this->applicantFullname;
     }
 }

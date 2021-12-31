@@ -31,4 +31,4 @@ services:
 
     Enqueue\Dbal\DbalConnectionFactory:
         factory: ['Ecotone\Dbal\DbalConnection', 'create']
-        arguments: ["@Doctrine\\DBAL\\Connection"]
+        arguments: ['@Doctrine\DBAL\Connection']
