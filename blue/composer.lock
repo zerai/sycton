@@ -68,16 +68,16 @@
         },
         {
             "name": "ecotone/ecotone",
-            "version": "1.7.0",
+            "version": "1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/ecotone.git",
-                "reference": "07be5238bd3e6dc4a6723a5b27dd968cd5fe68c9"
+                "reference": "cc88ce96316ca6d6286eff8aabd0be756a4a51e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/07be5238bd3e6dc4a6723a5b27dd968cd5fe68c9",
-                "reference": "07be5238bd3e6dc4a6723a5b27dd968cd5fe68c9",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/cc88ce96316ca6d6286eff8aabd0be756a4a51e6",
+                "reference": "cc88ce96316ca6d6286eff8aabd0be756a4a51e6",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.0-dev"
+                    "dev-master": "1.7.5-dev"
                 }
             },
             "autoload": {
@@ -125,7 +125,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ecotoneframework/ecotone/issues",
-                "source": "https://github.com/ecotoneframework/ecotone/tree/1.7.0"
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.7.5"
             },
             "funding": [
                 {
@@ -137,24 +137,24 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T11:07:12+00:00"
+            "time": "2021-12-30T13:44:14+00:00"
         },
         {
             "name": "ecotone/symfony-bundle",
-            "version": "1.7.0",
+            "version": "1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/symfony.git",
-                "reference": "577009de244ab2dba7abdee88105bd305aa040e8"
+                "reference": "579a33bd750d2a2135e543039ac083199e00b741"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/symfony/zipball/577009de244ab2dba7abdee88105bd305aa040e8",
-                "reference": "577009de244ab2dba7abdee88105bd305aa040e8",
+                "url": "https://api.github.com/repos/ecotoneframework/symfony/zipball/579a33bd750d2a2135e543039ac083199e00b741",
+                "reference": "579a33bd750d2a2135e543039ac083199e00b741",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.7.0",
+                "ecotone/ecotone": "~1.7.5",
                 "laminas/laminas-zendframework-bridge": "^1.0.0",
                 "php": ">=8.0",
                 "symfony/console": ">=4.0",
@@ -169,7 +169,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.0-dev"
+                    "dev-master": "1.7.5-dev"
                 }
             },
             "autoload": {
@@ -201,7 +201,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/symfony/tree/1.7.0"
+                "source": "https://github.com/ecotoneframework/symfony/tree/1.7.5"
             },
             "funding": [
                 {
@@ -213,7 +213,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T11:07:29+00:00"
+            "time": "2021-12-30T13:44:28+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -535,20 +535,20 @@
         },
         {
             "name": "psr/cache",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
@@ -568,7 +568,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -578,9 +578,9 @@
                 "psr-6"
             ],
             "support": {
-                "source": "https://github.com/php-fig/cache/tree/master"
+                "source": "https://github.com/php-fig/cache/tree/2.0.0"
             },
-            "time": "2016-08-06T20:24:11+00:00"
+            "time": "2021-02-03T23:23:37+00:00"
         },
         {
             "name": "psr/container",
