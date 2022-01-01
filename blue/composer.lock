@@ -68,16 +68,16 @@
         },
         {
             "name": "ecotone/ecotone",
-            "version": "1.7.5",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/ecotone.git",
-                "reference": "cc88ce96316ca6d6286eff8aabd0be756a4a51e6"
+                "reference": "5dfbe7539079f226e0ce1b7a153ac0893a632918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/cc88ce96316ca6d6286eff8aabd0be756a4a51e6",
-                "reference": "cc88ce96316ca6d6286eff8aabd0be756a4a51e6",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/5dfbe7539079f226e0ce1b7a153ac0893a632918",
+                "reference": "5dfbe7539079f226e0ce1b7a153ac0893a632918",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.2-dev"
                 }
             },
             "autoload": {
@@ -125,7 +125,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ecotoneframework/ecotone/issues",
-                "source": "https://github.com/ecotoneframework/ecotone/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.8.2"
             },
             "funding": [
                 {
@@ -137,24 +137,24 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:14+00:00"
+            "time": "2022-01-01T12:59:29+00:00"
         },
         {
             "name": "ecotone/symfony-bundle",
-            "version": "1.7.5",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/symfony.git",
-                "reference": "579a33bd750d2a2135e543039ac083199e00b741"
+                "reference": "945fb15497df361a193df769afa2af43d7bdce8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/symfony/zipball/579a33bd750d2a2135e543039ac083199e00b741",
-                "reference": "579a33bd750d2a2135e543039ac083199e00b741",
+                "url": "https://api.github.com/repos/ecotoneframework/symfony/zipball/945fb15497df361a193df769afa2af43d7bdce8f",
+                "reference": "945fb15497df361a193df769afa2af43d7bdce8f",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.7.5",
+                "ecotone/ecotone": "~1.8.2",
                 "laminas/laminas-zendframework-bridge": "^1.0.0",
                 "php": ">=8.0",
                 "symfony/console": ">=4.0",
@@ -169,7 +169,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7.5-dev"
+                    "dev-master": "1.8.2-dev"
                 }
             },
             "autoload": {
@@ -201,7 +201,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/symfony/tree/1.7.5"
+                "source": "https://github.com/ecotoneframework/symfony/tree/1.8.2"
             },
             "funding": [
                 {
@@ -213,7 +213,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-12-30T13:44:28+00:00"
+            "time": "2022-01-01T12:59:45+00:00"
         },
         {
             "name": "laminas/laminas-code",
