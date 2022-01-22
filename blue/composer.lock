@@ -1211,17 +1211,17 @@
             "time": "2022-01-01T12:59:41+00:00"
         },
         {
-            "name": "ecotone/pdo-event-sourcing",
+            "name": "ecotone/ecotone",
             "version": "1.8.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ecotoneframework/event-sourcing.git",
-                "reference": "32a2988e7faaaadfb48eef0cd8aae6cf581efab3"
+                "url": "https://github.com/ecotoneframework/ecotone.git",
+                "reference": "5dfbe7539079f226e0ce1b7a153ac0893a632918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/event-sourcing/zipball/32a2988e7faaaadfb48eef0cd8aae6cf581efab3",
-                "reference": "32a2988e7faaaadfb48eef0cd8aae6cf581efab3",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/5dfbe7539079f226e0ce1b7a153ac0893a632918",
+                "reference": "5dfbe7539079f226e0ce1b7a153ac0893a632918",
                 "shasum": ""
             },
             "require": {
@@ -1263,7 +1263,12 @@
                 "ecotone"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/ecotoneframework/event-sourcing/tree/1.8.2"
+=======
+                "issues": "https://github.com/ecotoneframework/ecotone/issues",
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.8.2"
+>>>>>>> c50e6593369e6ea41e15d994e27fa7a1c2e25417
             },
             "funding": [
                 {
@@ -1275,7 +1280,11 @@
                     "type": "patreon"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-01-01T12:59:38+00:00"
+=======
+            "time": "2022-01-01T12:59:29+00:00"
+>>>>>>> c50e6593369e6ea41e15d994e27fa7a1c2e25417
         },
         {
             "name": "ecotone/symfony-bundle",
@@ -1352,6 +1361,7 @@
                 }
             ],
             "time": "2022-01-01T12:59:45+00:00"
+<<<<<<< HEAD
         },
         {
             "name": "enqueue/dbal",
@@ -1625,6 +1635,8 @@
                 }
             ],
             "time": "2021-12-28T20:59:55+00:00"
+=======
+>>>>>>> c50e6593369e6ea41e15d994e27fa7a1c2e25417
         },
         {
             "name": "laminas/laminas-code",
@@ -2280,20 +2292,20 @@
         },
         {
             "name": "psr/cache",
-            "version": "1.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
+                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
@@ -2313,7 +2325,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -2323,9 +2335,9 @@
                 "psr-6"
             ],
             "support": {
-                "source": "https://github.com/php-fig/cache/tree/master"
+                "source": "https://github.com/php-fig/cache/tree/2.0.0"
             },
-            "time": "2016-08-06T20:24:11+00:00"
+            "time": "2021-02-03T23:23:37+00:00"
         },
         {
             "name": "psr/container",
@@ -3648,28 +3660,28 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.17.6",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc"
+                "reference": "82891fd872056499ce7a7c4aca7ffeb86a341878"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/7a79135e1dc66b30042b4d968ecba0908f9374bc",
-                "reference": "7a79135e1dc66b30042b4d968ecba0908f9374bc",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/82891fd872056499ce7a7c4aca7ffeb86a341878",
+                "reference": "82891fd872056499ce7a7c4aca7ffeb86a341878",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0|^2.0",
-                "php": ">=7.1"
+                "composer-plugin-api": "^2.1",
+                "php": ">=8.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0.2|^2.0",
-                "symfony/dotenv": "^4.4|^5.0|^6.0",
-                "symfony/filesystem": "^4.4|^5.0|^6.0",
-                "symfony/phpunit-bridge": "^4.4.12|^5.0|^6.0",
-                "symfony/process": "^4.4|^5.0|^6.0"
+                "composer/composer": "^2.1",
+                "symfony/dotenv": "^5.4|^6.0",
+                "symfony/filesystem": "^5.4|^6.0",
+                "symfony/phpunit-bridge": "^5.4|^6.0",
+                "symfony/process": "^5.4|^6.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -3693,7 +3705,7 @@
             "description": "Composer plugin for Symfony",
             "support": {
                 "issues": "https://github.com/symfony/flex/issues",
-                "source": "https://github.com/symfony/flex/tree/v1.17.6"
+                "source": "https://github.com/symfony/flex/tree/v2.1.2"
             },
             "funding": [
                 {
@@ -3709,7 +3721,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-29T15:39:37+00:00"
+            "time": "2022-01-19T17:52:43+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -5351,9 +5363,6 @@
             "require": {
                 "php": "^7.1 || ^8.0"
             },
-            "replace": {
-                "myclabs/deep-copy": "self.version"
-            },
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
@@ -5671,16 +5680,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae"
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/a12f7e301eb7258bb68acd89d4aefa05c2906cae",
-                "reference": "a12f7e301eb7258bb68acd89d4aefa05c2906cae",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/93ebd0014cab80c4ea9f5e297ea48672f1b87706",
+                "reference": "93ebd0014cab80c4ea9f5e297ea48672f1b87706",
                 "shasum": ""
             },
             "require": {
@@ -5715,9 +5724,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.5.1"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.0"
             },
-            "time": "2021-10-02T14:08:47+00:00"
+            "time": "2022-01-04T19:58:01+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -6106,16 +6115,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.11",
+            "version": "9.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2406855036db1102126125537adb1406f7242fdd"
+                "reference": "93d4bf4c37aec6384bb9e5d390d9049a463a7256"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2406855036db1102126125537adb1406f7242fdd",
-                "reference": "2406855036db1102126125537adb1406f7242fdd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/93d4bf4c37aec6384bb9e5d390d9049a463a7256",
+                "reference": "93d4bf4c37aec6384bb9e5d390d9049a463a7256",
                 "shasum": ""
             },
             "require": {
@@ -6193,7 +6202,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.11"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.12"
             },
             "funding": [
                 {
@@ -6205,7 +6214,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-25T07:07:57+00:00"
+            "time": "2022-01-21T05:54:47+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -7587,5 +7596,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
