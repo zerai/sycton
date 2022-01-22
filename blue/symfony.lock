@@ -59,9 +59,6 @@
     "ecotone/pdo-event-sourcing": {
         "version": "1.7.0"
     },
-    "ecotone/symfony-bundle": {
-        "version": "1.7.0"
-    },
     "enqueue/dbal": {
         "version": "0.10",
         "recipe": {
@@ -82,9 +79,6 @@
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.4.1"
     },
     "marc-mabe/php-enum": {
         "version": "v4.4.0"
