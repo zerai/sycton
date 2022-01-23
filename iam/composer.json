@@ -30,6 +30,7 @@
     },
     "config": {
         "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
             "symfony/runtime": true
