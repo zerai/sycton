@@ -1,4 +1,4 @@
-name: Blu - Commit stage
+name: Blue - Commit stage
 
 on:
   push:
