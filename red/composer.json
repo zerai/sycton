@@ -31,6 +31,7 @@
         "symfony/symfony": "*"
     },
     "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.4",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.4.*",
         "symfony/css-selector": "5.4.*",
@@ -38,6 +39,7 @@
     },
     "config": {
         "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
             "symfony/runtime": true
@@ -49,6 +51,9 @@
         "sort-packages": true
     },
     "extra": {
+        "bamarni-bin": {
+            "target-directory": "tools"
+        },
         "symfony": {
             "allow-contrib": false,
             "require": "5.4.*"
