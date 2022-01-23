@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: Sycton blue
+  version: '0.1.0'
+  contact:
+    name: Zerai Teclai
+    email: blue@example.com
+    url: 'https://blu-service.example.com'
+  license:
+    name: MIT
+    url: 'https://github.com/zerai/sycton/blob/main/LICENSE'
+  description: Blue Service
+servers:
+  - url: 'http://localhost:8021'
+    description: Local
+paths:
+  '/api/service':
+    get:
+      summary: Get Service name
+      responses:
+        '200':
+          description: Service Name
+          content:
+            application/json:
+        '404':
+          description: Not Found
+      operationId: get-service-name
+      description: Retrieve the service information.
+      tags:
+        - service
+tags:
+  - name: service
+    description: Operations over service
