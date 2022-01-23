@@ -199,7 +199,7 @@ jobs:
           extensions: ${{ env.PHP_EXTENSIONS }}
           ini-values: memory_limit=-1
           coverage: none
-          tools: composer, composer-normalize:2.16.0
+          tools: composer
 
       - name: Get Composer Cache Directory
         id: composer-cache
