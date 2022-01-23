@@ -17,6 +17,6 @@ class HomePlaceHolderController extends AbstractController
     #[Route("/", name: "home", methods: ["GET"])]
     public function register(Request $request): Response
     {
-        return new JsonResponse(["serviceName" => "red service"]);
+        return new JsonResponse(["serviceName" => "Red service"]);
     }
 }
