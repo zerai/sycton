@@ -44,6 +44,9 @@
     "doctrine/persistence": {
         "version": "2.2.3"
     },
+    "ecotone/amqp": {
+        "version": "1.8.4"
+    },
     "ecotone/dbal": {
         "version": "1.7.0"
     },
@@ -59,6 +62,18 @@
     "ecotone/pdo-event-sourcing": {
         "version": "1.7.0"
     },
+    "enqueue/amqp-ext": {
+        "version": "0.10",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.7",
+            "ref": "3c5175ca17ff2dc08715e460214e9ce77aa46580"
+        }
+    },
+    "enqueue/amqp-tools": {
+        "version": "0.10.9"
+    },
     "enqueue/dbal": {
         "version": "0.10",
         "recipe": {
@@ -70,6 +85,12 @@
     },
     "enqueue/dsn": {
         "version": "0.10.8"
+    },
+    "enqueue/enqueue": {
+        "version": "0.10.15"
+    },
+    "enqueue/null": {
+        "version": "0.10.15"
     },
     "jms/metadata": {
         "version": "2.6.1"
@@ -174,6 +195,9 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "queue-interop/amqp-interop": {
+        "version": "0.8.2"
     },
     "queue-interop/queue-interop": {
         "version": "0.8.1"

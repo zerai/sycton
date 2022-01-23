@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/dbal": "^3.2",
+        "ecotone/amqp": "^1.8",
         "ecotone/dbal": "^1.8",
         "ecotone/jms-converter": "^1.8",
         "ecotone/pdo-event-sourcing": "^1.8",
