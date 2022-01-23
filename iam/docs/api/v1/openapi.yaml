@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: Sycton iam
+  version: '0.1'
+  contact:
+    name: Zerai Teclai
+    email: iam@example.com
+    url: 'https://iam.example.com'
+  license:
+    name: MIT
+    url: 'https://github.com/zerai/sycton/blob/main/LICENSE'
+  description: A symfony boilerplate repository
+servers:
+  - url: 'http://localhost:8011'
+    description: Local
+paths:
+  '/api/users':
+    get:
+      summary: Get User List
+      responses:
+        '200':
+          description: Users Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Not Found
+      operationId: get-users-list
+      description: Retrieve the information of users.
+      tags:
+        - user
+
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: ''
+      x-examples:
+        Joe Doe:
+          id: 1
+          email: joe.doe@example.com
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+          minimum: 1
+          readOnly: true
+        email:
+          type: string
+          format: email
+      required:
+        - id
+        - email
+tags:
+  - name: user
+    description: Operations over users

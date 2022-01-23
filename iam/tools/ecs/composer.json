@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "symplify/easy-coding-standard": "^10.0"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    }
+}
