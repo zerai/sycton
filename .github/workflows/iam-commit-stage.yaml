@@ -1,4 +1,4 @@
-name: Blu - Commit stage
+name: Iam - Commit stage
 
 on:
   push:
