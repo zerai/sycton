@@ -145,3 +145,17 @@ jobs:
           cd red/
           ./vendor/bin/ecs
 
+
+  validate-openapi:
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Validate Red openApi documentation
+        uses: mbowman100/swagger-validator-action@master
+        with:
+          files: |
+            red/docs/api/v1/openapi.yaml
+
