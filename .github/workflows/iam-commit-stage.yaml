@@ -80,6 +80,8 @@ jobs:
           composer-normalize --dry-run --ansi
 
 
+
+
   symfony-test:
     runs-on: ubuntu-18.04
     services:
@@ -164,6 +166,7 @@ jobs:
           SYMFONY_DEPRECATIONS_HELPER: disabled
 #          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
 
+
   coding-standard:
     runs-on: ubuntu-18.04
     timeout-minutes: 5
@@ -228,3 +231,16 @@ jobs:
           cd iam/
           ./vendor/bin/ecs
 
+
+  validate-openapi:
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Validate Iam openApi documentation
+        uses: mbowman100/swagger-validator-action@master
+        with:
+          files: |
+            iam/docs/api/v1/openapi.yaml
