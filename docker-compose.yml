@@ -1,0 +1,156 @@
+version: '3.8'
+
+services:
+  ######################################################################################################################
+  #
+  #   iam services
+  #
+  ######################################################################################################################
+  php-iam:
+    image: webdevops/php-nginx-dev:8.0
+    ports:
+      - "8010:80"
+    depends_on:
+      - db-iam
+      - mbroker
+    working_dir: /app
+    user: application
+    volumes:
+      - "./iam:/app"
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_DSN: pgsql://ecotone:ecotone@db-iam:5432/ecotone
+      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:10000/%2f
+
+  db-iam:
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
+      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
+
+  openapi-iam:
+    image: redocly/openapi-cli
+    ports:
+      - "8011:80"
+    volumes:
+      - "./iam/docs/api/v1:/spec"
+    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
+
+  ######################################################################################################################
+  #
+  #   blu services
+  #
+  ######################################################################################################################
+
+  php-blue:
+    image: webdevops/php-nginx-dev:8.0
+    ports:
+      - "8020:80"
+    depends_on:
+      - db-blue
+    working_dir: /app
+    user: application
+    volumes:
+      - "./blue:/app"
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
+
+  projection-blue:
+    image: webdevops/php-nginx-dev:8.0
+    depends_on:
+      - db-blue
+    working_dir: /app
+    user: application
+    volumes:
+      - "./blue:/app"
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
+    command: "/app/bin/console ecotone:run asynchronous_projections -vvv"
+
+  db-blue:
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
+      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
+
+  openapi-blue:
+    image: redocly/openapi-cli
+    ports:
+      - "8021:80"
+    volumes:
+      - "./blue/docs/api/v1:/spec"
+    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
+
+  ########################################################################################################################
+  #
+  #   red services
+  #
+  ########################################################################################################################
+
+  php-red:
+    image: webdevops/php-nginx-dev:8.0
+    ports:
+      - "8030:80"
+    depends_on:
+      - db-red
+    working_dir: /app
+    user: application
+    volumes:
+      - "./red:/app"
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_DSN: pgsql://ecotone:ecotone@db-red:5432/ecotone
+
+  db-red:
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
+      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
+
+  openapi-red:
+    image: redocly/openapi-cli
+    ports:
+      - "8031:80"
+    volumes:
+      - "./red/docs/api/v1:/spec"
+    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
+
+########################################################################################################################
+#
+#   infra services
+#
+########################################################################################################################
+
+  mbroker:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-rabbit-user}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-rabbit-password}
+      RABBITMQ_DEFAULT_VHOST: "/"
