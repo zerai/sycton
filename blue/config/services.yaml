@@ -32,3 +32,8 @@ services:
     Enqueue\Dbal\DbalConnectionFactory:
         factory: ['Ecotone\Dbal\DbalConnection', 'create']
         arguments: ['@Doctrine\DBAL\Connection']
+
+    Enqueue\AmqpExt\AmqpConnectionFactory:
+        class: Enqueue\AmqpExt\AmqpConnectionFactory
+        arguments:
+            - '%env(resolve:ENQUEUE_DSN)%'
