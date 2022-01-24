@@ -35,4 +35,4 @@ services:
     Enqueue\AmqpExt\AmqpConnectionFactory:
         class: Enqueue\AmqpExt\AmqpConnectionFactory
         arguments:
-            - "amqp://guest:guest@localhost:5672//"
+            - '%env(resolve:ENQUEUE_DSN)%'
