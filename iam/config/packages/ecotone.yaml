@@ -1,4 +1,5 @@
 ecotone:
-  loadSrcNamespaces: true
+  loadSrcNamespaces: false
+  serviceName: 'iam'
   namespaces:
     - 'IdentityAccess'
