@@ -39,3 +39,8 @@ services:
     Enqueue\Dbal\DbalConnectionFactory:
         factory: [ 'Ecotone\Dbal\DbalConnection', 'createForManagerRegistry' ]
         arguments: [ "@doctrine","default" ]
+
+    Enqueue\AmqpExt\AmqpConnectionFactory:
+        class: Enqueue\AmqpExt\AmqpConnectionFactory
+        arguments:
+            - '%env(resolve:ENQUEUE_DSN)%'
