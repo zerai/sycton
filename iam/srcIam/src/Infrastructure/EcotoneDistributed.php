@@ -18,7 +18,7 @@ class EcotoneDistributed
     public function configure()
     {
         return [
-            AmqpDistributedBusConfiguration::createPublisher()
+            AmqpDistributedBusConfiguration::createPublisher(),
         ];
     }
 }
