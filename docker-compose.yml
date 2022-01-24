@@ -22,13 +22,13 @@ services:
       WEB_DOCUMENT_INDEX: index.php
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_DSN: pgsql://ecotone:ecotone@db-iam:5432/ecotone
+      DATABASE_URL: pgsql://ecotone:ecotone@db-iam:5432/ecotone
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
 
   db-iam:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
     ports:
-      - "5415:5432"
+      - "5432:5432"
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-ecotone}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
