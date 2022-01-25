@@ -49,6 +49,8 @@ updates:
         versions: ["6.x"]
       - dependency-name: "symfony/monolog-bridge"
         versions: ["6.x"]
+      - dependency-name: "symfony/proxy-manager-bridge"
+        versions: ["6.x"]
       - dependency-name: "symfony/routing"
         versions: ["6.x"]
       - dependency-name: "symfony/runtime"
@@ -61,7 +63,13 @@ updates:
         versions: ["6.x"]
       - dependency-name: "symfony/yaml"
         versions: ["6.x"]
-
+      ###
+      ### dev dependency
+      ###
+      - dependency-name: "symfony/css-selector"
+        versions: ["6.x"]
+      - dependency-name: "symfony/browser-kit"
+        versions: ["6.x"]
 
 
 ########################################################################################################################
@@ -121,6 +129,13 @@ updates:
       - dependency-name: "symfony/var-exporter"
         versions: ["6.x"]
       - dependency-name: "symfony/yaml"
+        versions: ["6.x"]
+      ###
+      ### dev dependency
+      ###
+      - dependency-name: "symfony/css-selector"
+        versions: ["6.x"]
+      - dependency-name: "symfony/browser-kit"
         versions: ["6.x"]
 
 
