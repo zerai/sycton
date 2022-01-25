@@ -66,10 +66,13 @@ updates:
       ###
       ### dev dependency
       ###
-      - dependency-name: "symfony/css-selector"
-        versions: ["6.x"]
       - dependency-name: "symfony/browser-kit"
         versions: ["6.x"]
+      - dependency-name: "symfony/css-selector"
+        versions: ["6.x"]
+      - dependency-name: "symfony/web-profiler-bundle"
+        versions: ["6.x"]
+
 
 
 ########################################################################################################################
