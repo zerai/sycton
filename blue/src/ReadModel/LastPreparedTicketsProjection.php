@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\ReadModel;
 
@@ -11,7 +11,6 @@ use Doctrine\DBAL\Exception\TableNotFoundException;
 use Ecotone\EventSourcing\Attribute\Projection;
 use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
-use Ecotone\EventSourcing\EventStore;
 use Ecotone\Messaging\Attribute\Asynchronous;
 use Ecotone\Messaging\Attribute\Parameter\Header;
 use Ecotone\Messaging\MessageHeaders;
@@ -22,9 +21,11 @@ use Ecotone\Modelling\Attribute\QueryHandler;
 #[Projection("last_prepared_tickets", Ticket::class)]
 class LastPreparedTicketsProjection
 {
-    const TABLE_NAME = "last_prepared_tickets";
-    const GET_PREPARED_TICKETS = "getPreparedTickets";
-    const GET_TICKET_DETAILS = "getTicketDetails";
+    public const TABLE_NAME = "last_prepared_tickets";
+
+    public const GET_PREPARED_TICKETS = "getPreparedTickets";
+
+    public const GET_TICKET_DETAILS = "getTicketDetails";
 
     private Connection $connection;
 
@@ -34,56 +35,80 @@ class LastPreparedTicketsProjection
     }
 
     #[QueryHandler(self::GET_TICKET_DETAILS)]
-    public function getTicket(string $ticketId) : array
+    public function getTicket(string $ticketId): array
     {
         return [
-            "ticket" => $this->connection->executeQuery(<<<SQL
+            "ticket" => $this->connection->executeQuery(
+                <<<SQL
     SELECT * FROM last_prepared_tickets WHERE ticket_id = :ticket_id
-SQL, ["ticket_id" => $ticketId])->fetchAllAssociative()[0]
-       ];
+SQL,
+                [
+                    "ticket_id" => $ticketId,
+                ]
+            )->fetchAllAssociative()[0],
+        ];
     }
 
     #[QueryHandler(self::GET_PREPARED_TICKETS)]
-    public function getPreparedTickets() : array
+    public function getPreparedTickets(): array
     {
         try {
-            return $this->connection->executeQuery(<<<SQL
+            return $this->connection->executeQuery(
+                <<<SQL
     SELECT * FROM last_prepared_tickets ORDER BY prepared_at DESC
 SQL
             )->fetchAllAssociative();
-        }catch (TableNotFoundException) {
+        } catch (TableNotFoundException) {
             return [];
         }
     }
 
     #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasPreperad")]
-    public function onTicketWasPrepared(TicketWasPrepared $event, #[Header(MessageHeaders::TIMESTAMP)] $occurredOn) : void
+    public function onTicketWasPrepared(TicketWasPrepared $event, #[Header(MessageHeaders::TIMESTAMP)] $occurredOn): void
     {
         $this->connection->insert(self::TABLE_NAME, [
             "ticket_id" => $event->getTicketId(),
             "ticket_type" => $event->getTicketType(),
             "description" => $event->getDescription(),
             "status" => "awaiting",
-            "prepared_at" => date('Y-m-d H:i:s', $occurredOn)
+            "prepared_at" => date('Y-m-d H:i:s', $occurredOn),
         ]);
     }
 
     #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasCancelled")]
-    public function onTicketWasCancelled(TicketWasCancelled $event) : void
+    public function onTicketWasCancelled(TicketWasCancelled $event): void
     {
-        $this->connection->update(self::TABLE_NAME, ["status" => "cancelled"], ["ticket_id" => $event->getTicketId()]);
+        $this->connection->update(
+            self::TABLE_NAME,
+            [
+                "status" => "cancelled",
+            ],
+            [
+                "ticket_id" => $event->getTicketId(),
+            ]
+        );
     }
 
     #[EventHandler(endpointId:"LastPreparedTicketsProjection::onTicketWasAssigned")]
-    public function onTicketWasAssigned(TicketWasAssigned $event) : void
+    public function onTicketWasAssigned(TicketWasAssigned $event): void
     {
-        $this->connection->update(self::TABLE_NAME, ["status" => "assigned", "assigned_to" => $event->getAssignedTo()], ["ticket_id" => $event->getTicketId()]);
+        $this->connection->update(
+            self::TABLE_NAME,
+            [
+                "status" => "assigned",
+                "assigned_to" => $event->getAssignedTo(),
+            ],
+            [
+                "ticket_id" => $event->getTicketId(),
+            ]
+        );
     }
 
     #[ProjectionInitialization]
-    public function initializeProjection() : void
+    public function initializeProjection(): void
     {
-            $this->connection->executeStatement(<<<SQL
+        $this->connection->executeStatement(
+            <<<SQL
         CREATE TABLE IF NOT EXISTS last_prepared_tickets (
             ticket_id UUID PRIMARY KEY,
             ticket_type VARCHAR(255),
@@ -92,14 +117,17 @@ SQL
             assigned_to VARCHAR(255),
             prepared_at TIMESTAMP
         )
-    SQL);
+    SQL
+        );
     }
 
     #[ProjectionReset]
-    public function resetProjection() : void
+    public function resetProjection(): void
     {
-        $this->connection->executeStatement(<<<SQL
+        $this->connection->executeStatement(
+            <<<SQL
     DELETE FROM last_prepared_tickets
-SQL);
+SQL
+        );
     }
 }

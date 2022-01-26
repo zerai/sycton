@@ -1,12 +1,11 @@
-<?php
-
+<?php declare(strict_types=1);
 
 namespace App\Domain\Ticket\Event;
-
 
 class TicketWasAssigned
 {
     private string $ticketId;
+
     private string $assignedTo;
 
     public function __construct(string $ticketId, string $assignedTo)

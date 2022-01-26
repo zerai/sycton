@@ -10,7 +10,7 @@ use Ecotone\Modelling\WithAggregateEvents;
 #[Aggregate]
 class VisitorRegistrationApplication
 {
-    const REGISTER_VISITOR_APPLICATION = 'visitorApplication.register';
+    public const REGISTER_VISITOR_APPLICATION = 'visitorApplication.register';
 
     use WithAggregateEvents;
 
@@ -19,8 +19,8 @@ class VisitorRegistrationApplication
 
     private string $applicantFullname;
 
-    private function __construct(int $applicationId, string $applicantFullname){
-
+    private function __construct(int $applicationId, string $applicantFullname)
+    {
         $this->applicationId = $applicationId;
         $this->applicantFullname = $applicantFullname;
 

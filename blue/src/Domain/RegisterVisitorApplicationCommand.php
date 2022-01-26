@@ -14,7 +14,7 @@ class RegisterVisitorApplicationCommand
         $this->applicantFullname = $applicantFullname;
     }
 
-    public static function createWith(int $aggregateId, string $applicantFullname) : self
+    public static function createWith(int $aggregateId, string $applicantFullname): self
     {
         return new self($aggregateId, $applicantFullname);
     }

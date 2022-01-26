@@ -1,10 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Domain\Ticket\Command;
 
 class PrepareTicket
 {
     private string $ticketType;
+
     private string $description;
 
     public function __construct(string $ticketType, string $description)

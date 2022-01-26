@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Domain\Ticket;
 
@@ -7,7 +7,6 @@ use App\Domain\Ticket\Command\PrepareTicket;
 use App\Domain\Ticket\Event\TicketWasAssigned;
 use App\Domain\Ticket\Event\TicketWasCancelled;
 use App\Domain\Ticket\Event\TicketWasPrepared;
-use Ecotone\Modelling\Attribute\AggregateFactory;
 use Ecotone\Modelling\Attribute\AggregateIdentifier;
 use Ecotone\Modelling\Attribute\CommandHandler;
 use Ecotone\Modelling\Attribute\EventSourcingAggregate;
@@ -19,15 +18,19 @@ use Ramsey\Uuid\Uuid;
 #[EventSourcingAggregate]
 class Ticket
 {
-    const PREPARE_TICKET_TICKET = "ticket.prepareTicket";
-    const CANCEL_TICKET         = "ticket.cancel";
-    const ASSIGN_TICKET = "ticket.assign";
+    public const PREPARE_TICKET_TICKET = "ticket.prepareTicket";
+
+    public const CANCEL_TICKET = "ticket.cancel";
+
+    public const ASSIGN_TICKET = "ticket.assign";
 
     use WithAggregateVersioning;
 
     #[AggregateIdentifier]
     private string $ticketId;
+
     private bool $isCancelled;
+
     private bool $isAssigned;
 
     #[CommandHandler(self::PREPARE_TICKET_TICKET)]
@@ -62,9 +65,9 @@ class Ticket
     #[EventSourcingHandler]
     public function applyTicketWasPrepared(TicketWasPrepared $event): void
     {
-        $this->ticketId    = $event->getTicketId();
+        $this->ticketId = $event->getTicketId();
         $this->isCancelled = false;
-        $this->isAssigned  = false;
+        $this->isAssigned = false;
     }
 
     #[EventSourcingHandler]

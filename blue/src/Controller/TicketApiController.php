@@ -1,9 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Domain\Ticket\Command\AssignTicket;
-use App\Domain\Ticket\Command\ReleaseTicket;
 use App\Domain\Ticket\Ticket;
 use App\ReadModel\LastPreparedTicketsProjection;
 use Ecotone\Modelling\CommandBus;
@@ -39,7 +37,9 @@ class TicketApiController extends AbstractController
     public function cancel(Request $request): Response
     {
         $ticketId = $request->get("ticketId");
-        $this->commandBus->sendWithRouting(Ticket::CANCEL_TICKET, ["ticketId" => $ticketId]);
+        $this->commandBus->sendWithRouting(Ticket::CANCEL_TICKET, [
+            "ticketId" => $ticketId,
+        ]);
 
         return new RedirectResponse("/tickets/" . $ticketId);
     }
@@ -48,13 +48,15 @@ class TicketApiController extends AbstractController
     public function assign(Request $request): Response
     {
         $ticketId = $request->get("ticketId");
-        $this->commandBus->sendWithRouting(Ticket::ASSIGN_TICKET, array_merge(["ticketId" => $ticketId], $request->request->all()));
+        $this->commandBus->sendWithRouting(Ticket::ASSIGN_TICKET, array_merge([
+            "ticketId" => $ticketId,
+        ], $request->request->all()));
 
         return new RedirectResponse("/tickets/" . $ticketId);
     }
 
     #[Route("/last")]
-    public function lastPreparedTickets() : Response
+    public function lastPreparedTickets(): Response
     {
 //        return $this->render("last_prepared_tickets.html.twig",[
 //            "tickets" => $this->queryBus->sendWithRouting(LastPreparedTicketsProjection::GET_PREPARED_TICKETS)
@@ -64,5 +66,4 @@ class TicketApiController extends AbstractController
 
         return new JsonResponse($tickets);
     }
-
 }
