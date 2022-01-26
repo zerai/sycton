@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class CiPlaceholderTest extends TestCase
 {
-    public function testCiPlaceholder():void
+    public function testCiPlaceholder(): void
     {
         self::assertTrue(true);
     }

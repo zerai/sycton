@@ -11,7 +11,7 @@ class VisitorRegistrationApplicationTest extends TestCase
 {
     public function testAttributesAfterConstruct(): void
     {
-        $command =  RegisterVisitorApplicationCommand::createWith(1, 'a full name');
+        $command = RegisterVisitorApplicationCommand::createWith(1, 'a full name');
 
         $visitorApplication = VisitorRegistrationApplication::register($command);
 
@@ -20,13 +20,10 @@ class VisitorRegistrationApplicationTest extends TestCase
 
     public function testRiseEventAfterRegister(): void
     {
-        $command =  RegisterVisitorApplicationCommand::createWith(1, 'a full name');
+        $command = RegisterVisitorApplicationCommand::createWith(1, 'a full name');
 
         $visitorApplication = VisitorRegistrationApplication::register($command);
 
         self::assertInstanceOf(ApplicantRegistrationWasAcceptedEvent::class, $visitorApplication->getRecordedEvents()[0]);
-
     }
-
-
 }
