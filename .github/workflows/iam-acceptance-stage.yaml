@@ -1,0 +1,32 @@
+name: Iam - Acceptance stage
+
+on:
+  workflow_run:
+    workflows:
+      - iam-commit-stage
+    types:
+      - completed
+
+env:
+  PHP_EXTENSIONS: ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite
+  PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
+
+
+jobs:
+
+  placeholder-dump-context:
+    runs-on: ubuntu-18.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        php:
+          - '8.0'
+      fail-fast: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Dump GHA Context
+        uses: crazy-max/ghaction-dump-context@v1
