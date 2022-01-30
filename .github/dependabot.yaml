@@ -77,7 +77,7 @@ updates:
 
 ########################################################################################################################
 #
-#   Blu microservice
+#   Blue microservice
 #
 ########################################################################################################################
   - package-ecosystem: "composer"
@@ -93,7 +93,7 @@ updates:
       include: "scope"
       prefix: "blu - composer"
     labels:
-      - "blu dependency"
+      - "blue dependency"
     ignore:
       - dependency-name: "symfony/cache"
         versions: ["6.x"]
