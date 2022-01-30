@@ -3,7 +3,7 @@ name: Iam - Acceptance stage
 on:
   workflow_run:
     workflows:
-      - iam-commit-stage
+      - Iam - Commit stage
     types:
       - completed
 
