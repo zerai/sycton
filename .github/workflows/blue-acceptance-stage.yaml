@@ -12,6 +12,12 @@ env:
   PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
 
 
+defaults:
+  run:
+    shell: bash
+    working-directory: blue
+
+
 jobs:
 
   placeholder-dump-context:
@@ -30,3 +36,6 @@ jobs:
 
       - name: Dump GHA Context
         uses: crazy-max/ghaction-dump-context@v1
+
+      - name: List directory
+        run: ls -al
