@@ -37,3 +37,4 @@ services:
         class: Enqueue\AmqpExt\AmqpConnectionFactory
         arguments:
             - '%env(resolve:ENQUEUE_DSN)%'
+

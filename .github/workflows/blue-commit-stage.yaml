@@ -12,7 +12,13 @@ on:
 env:
   PHP_EXTENSIONS: ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite
   PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
+  SERVICE_DIRECTORY: blue
 
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ${{ env.SERVICE_DIRECTORY }}
 
 jobs:
   lint-composer:
@@ -64,9 +70,13 @@ jobs:
           restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
         continue-on-error: true
 
+#      - name: Install Composer dependencies
+#        run: |
+#          cd blue/
+#          composer install --prefer-dist --no-progress --ansi --no-scripts
+
       - name: Install Composer dependencies
         run: |
-          cd blue/
           composer install --prefer-dist --no-progress --ansi --no-scripts
 
       - name: Run composer validate
