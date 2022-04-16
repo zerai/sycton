@@ -11,7 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ItemController extends AbstractController
 {
-    public function __construct(private CommandBus $commandBus) {}
+    public function __construct(
+        private CommandBus $commandBus
+    ) {
+    }
 
     #[Route("/items", methods: ["POST"])]
     public function register(Request $request): Response
