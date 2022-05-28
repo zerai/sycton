@@ -4,9 +4,11 @@ on:
   push:
     paths:
       - "red/**"
+      - '.github/workflows/red-*.yaml'
   pull_request:
     paths:
       - "red/**"
+      - '.github/workflows/red-*.yaml'
 
 
 env:
