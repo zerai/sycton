@@ -19,6 +19,14 @@ defaults:
 
 
 jobs:
+  on-red-commit-stage-success:
+    runs-on: ubuntu-18.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo 'The triggering workflow passed'
+
+      - name: Dump GHA Context
+        uses: crazy-max/ghaction-dump-context@v1
 
   placeholder-dump-context:
     runs-on: ubuntu-18.04
@@ -33,9 +41,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Dump GHA Context
-        uses: crazy-max/ghaction-dump-context@v1
+        with:
+          ref: ${{ github.sha }}
 
       - name: List directory
         run: ls -al
