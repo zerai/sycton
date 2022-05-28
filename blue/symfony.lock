@@ -8,9 +8,6 @@
     "brick/math": {
         "version": "0.9.3"
     },
-    "composer/package-versions-deprecated": {
-        "version": "1.11.99.4"
-    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -65,6 +62,9 @@
     "ecotone/pdo-event-sourcing": {
         "version": "1.7.0"
     },
+    "ecotone/symfony-bundle": {
+        "version": "1.8.4"
+    },
     "enqueue/amqp-ext": {
         "version": "0.10",
         "recipe": {
@@ -103,6 +103,9 @@
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
+    },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.4.1"
     },
     "marc-mabe/php-enum": {
         "version": "v4.4.0"
