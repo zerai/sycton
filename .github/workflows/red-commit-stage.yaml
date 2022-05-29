@@ -144,7 +144,7 @@ jobs:
 
       - name: Run easy-coding-standard
         run: |
-          ./vendor/bin/ecs
+          ./vendor/bin/ecs --ansi
 
 
   validate-openapi:
