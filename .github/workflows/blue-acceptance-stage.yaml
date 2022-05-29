@@ -19,10 +19,24 @@ defaults:
 
 
 jobs:
+  on-blue-commit-stage-success:
+    runs-on: ubuntu-18.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.sha }}
+
+      - run: echo 'The triggering workflow passed'
+
+      - name: Dump GHA Context
+        uses: crazy-max/ghaction-dump-context@v1
+
 
   placeholder-dump-context:
     runs-on: ubuntu-18.04
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: [on-blue-commit-stage-success]
     timeout-minutes: 5
     strategy:
       matrix:
@@ -33,9 +47,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Dump GHA Context
-        uses: crazy-max/ghaction-dump-context@v1
+        with:
+          ref: ${{ github.sha }}
 
       - name: List directory
         run: ls -al
