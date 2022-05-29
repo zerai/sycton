@@ -290,17 +290,17 @@ jobs:
 
       - name: Run yml linter on configurations files
         run: |
-          ./bin/console lint:yaml config/
+          ./bin/console lint:yaml config/ --ansi
 
       - name: Run linter on symfony containers (prod|dev)
         run: |
-          ./bin/console lint:container -e prod
-          ./bin/console lint:container -e dev
+          ./bin/console lint:container -e prod --ansi
+          ./bin/console lint:container -e dev --ansi
         continue-on-error: true # ecotone issue (Invalid service "expressionEvaluationService": method "Ecotone\Messaging\Handler\SymfonyExpressionEvaluationAdapter::createWithExternalExpressionLanguage()" does not exist.)
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
-        run: ./bin/console doctrine:schema:update --force
+        run: ./bin/console doctrine:schema:update --force --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
           DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
@@ -308,7 +308,7 @@ jobs:
 
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
-        run: ./bin/console doctrine:migrations:migrate -n -vv
+        run: ./bin/console doctrine:migrations:migrate -n -vv --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
           DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
@@ -316,14 +316,14 @@ jobs:
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
-        run: ./bin/console doctrine:schema:update --force
+        run: ./bin/console doctrine:schema:update --force --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
           DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
           APP_ENV: test
 
       - name: Run database schema validate
-        run: ./bin/console doctrine:schema:validate
+        run: ./bin/console doctrine:schema:validate --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
           DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
