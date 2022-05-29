@@ -4,9 +4,11 @@ on:
   push:
     paths:
       - "iam/**"
+      - '.github/workflows/iam-*.yaml'
   pull_request:
     paths:
       - "iam/**"
+      - '.github/workflows/iam-*.yaml'
 
 
 env:
@@ -240,3 +242,66 @@ jobs:
         with:
           files: |
             iam/docs/api/v1/openapi.yaml
+
+
+  psalm:
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        php:
+          - '8.0'
+      fail-fast: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup php extension cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache PHP extensions
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: memory_limit=-1
+          coverage: none
+          tools: composer
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
+        continue-on-error: true
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-progress --ansi --no-scripts
+
+      - name: Install psalm
+        run: composer bin psalm install --no-progress --ansi
+
+      - name: Prepare symfony dev container for psalm symfony-plugin
+        run: bin/console debug:container -q
+
+      - name: Run psalm
+        run: ./vendor/bin/psalm
