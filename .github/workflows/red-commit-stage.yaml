@@ -217,8 +217,12 @@ jobs:
       - name: Install psalm
         run: composer bin psalm install --no-progress --ansi
 
+      - name: Prepare symfony dev container for psalm symfony-plugin
+        run: bin/console debug:container -q
+
       - name: Run psalm
         run: ./vendor/bin/psalm
+
 
   app-preconditions-checks:
     runs-on: ubuntu-18.04
