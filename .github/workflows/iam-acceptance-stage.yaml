@@ -23,19 +23,19 @@ jobs:
     runs-on: ubuntu-18.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - name: Checkout on ${{ github.sha }}
+      - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.sha }}
-          #ref: ${{ github.event.workflow_run.id }}
-      - run: echo branch from triggering workflow ${{ github.event.workflow_run.head_branch }}
-      - run: echo branch from triggering workflow ${{ github.event.workflow_run.head_branch }}
+          ref: ${{ github.event.workflow_run.head_branch }}
 
-      #      - run: |
-#          echo 'The triggering workflow passed'
-#          echo branch from triggering workflow ${ github.event.workflow_run.head_branch }
-#          echo SHA from triggering workflow ${ github.event.workflow_run.id }
-#          echo commit message from triggering workflow ${ github.event.workflow_run.message }
+      - name: info triggering workflow - branch name
+        run: echo ${{ github.event.workflow_run.head_branch }}
+
+      - name: info triggering workflow - SHA ${{ github.event.workflow_run.id }}
+        run: echo SHA from triggering workflow ${{ github.event.workflow_run.id }}
+
+      - name: info triggering workflow - commit message
+        run: echo commit message from triggering workflow ${{ github.event.workflow_run.message }}
 
       - name: Dump GHA Context
         uses: crazy-max/ghaction-dump-context@v1
