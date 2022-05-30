@@ -5,7 +5,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorBaseline="psalm-baseline.xml"
 >
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
+            <containerXml>var/cache/dev/App_KernelDevDebugContainer.xml</containerXml>
+        </pluginClass>
+    </plugins>
+
     <projectFiles>
         <directory name="src"/>
         <ignoreFiles>
@@ -13,9 +20,11 @@
         </ignoreFiles>
     </projectFiles>
 
-    <plugins>
-        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
-            <containerXml>var/cache/dev/App_KernelDevDebugContainer.xml</containerXml>
-        </pluginClass>
-    </plugins>
+    <issueHandlers>
+        <LessSpecificImplementedReturnType>
+            <errorLevel type="suppress">
+                <file name="src/Repository/BaseUserRepository.php"/>
+            </errorLevel>
+        </LessSpecificImplementedReturnType>
+    </issueHandlers>
 </psalm>
