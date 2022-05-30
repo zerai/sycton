@@ -7,6 +7,10 @@ use App\Repository\BaseUserRepository;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @covers \App\Repository\BaseUserRepository
+ * @group database
+ */
 class BaseUserRepositoryTest extends KernelTestCase
 {
     public function testCanPersistABaseUser(): void
