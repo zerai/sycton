@@ -6,6 +6,9 @@ use App\Entity\BaseUser;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
+/**
+ * @covers \App\Entity\BaseUser
+ */
 class BaseUserTest extends TestCase
 {
     public function testAttributesAfterConstructor()
