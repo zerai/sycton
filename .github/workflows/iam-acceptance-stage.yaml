@@ -28,12 +28,14 @@ jobs:
         with:
           ref: ${{ github.sha }}
           #ref: ${{ github.event.workflow_run.id }}
+      - run: echo branch from triggering workflow ${{ github.event.workflow_run.head_branch }}
+      - run: echo branch from triggering workflow ${ github.event.workflow_run.head_branch }
 
-      - run: |
-          echo 'The triggering workflow passed'
-          echo branch from triggering workflow ${ github.event.workflow_run.head_branch }
-          echo SHA from triggering workflow ${ github.event.workflow_run.id }
-          echo commit message from triggering workflow ${ github.event.workflow_run.message }
+      #      - run: |
+#          echo 'The triggering workflow passed'
+#          echo branch from triggering workflow ${ github.event.workflow_run.head_branch }
+#          echo SHA from triggering workflow ${ github.event.workflow_run.id }
+#          echo commit message from triggering workflow ${ github.event.workflow_run.message }
 
       - name: Dump GHA Context
         uses: crazy-max/ghaction-dump-context@v1
@@ -50,10 +52,10 @@ jobs:
       fail-fast: true
 
     steps:
-      - name: Checkout
+      - name: Checkout on ${{ github.event.workflow_run.head_branch }}
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: List directory
         run: ls -al
