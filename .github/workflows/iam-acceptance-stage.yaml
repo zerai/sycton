@@ -28,7 +28,19 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_branch }}
 
-      - name: info triggering workflow - branch name
+      - name: Dump GHA Context
+        uses: crazy-max/ghaction-dump-context@v1
+
+
+  triggering-workflow-info:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+      
+      - name: info triggering workflow - branch name ${{ github.event.workflow_run.head_branch }}
         run: echo ${{ github.event.workflow_run.head_branch }}
 
       - name: info triggering workflow - SHA ${{ github.event.workflow_run.head_commit.id }}
@@ -42,9 +54,6 @@ jobs:
 
       - name: info triggering workflow - committer '${{ github.event.workflow_run.head_commit.committer.name }}' -'${{ github.event.workflow_run.head_commit.committer.email }}'
         run: echo author '${{ github.event.workflow_run.head_commit.author.name }}' -'${{ github.event.workflow_run.head_commit.author.email }}'
-
-      - name: Dump GHA Context
-        uses: crazy-max/ghaction-dump-context@v1
 
 
   placeholder-dump-context:
