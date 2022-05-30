@@ -7,6 +7,9 @@ security:
 
         IdentityAccess\Infrastructure\Authentication\SecurityUser: 'auto'
 
+        App\Entity\BaseUser:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         users_in_memory:
@@ -18,9 +21,14 @@ security:
         app_user_provider:
             id: IdentityAccess\Infrastructure\Authentication\SecurityUserProvider
 
+        app_base_user_provider:
+            entity:
+                class: App\Entity\BaseUser
+                property: email
+
         all_users:
             chain:
-                providers: [ 'users_in_memory', 'app_user_provider' ]
+                providers: [ 'users_in_memory', 'app_user_provider', 'app_base_user_provider' ]
 
     firewalls:
         dev:
