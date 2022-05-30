@@ -26,12 +26,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.sha }}
+          #ref: ${{ github.sha }}
+          ref: ${{ github.event.workflow_run.id }}
 
-      - run: echo 'The triggering workflow passed'
+      - run: |
+          echo 'The triggering workflow passed'
+          echo branch from triggering workflow ${ github.event.workflow_run.head_branch }
+          echo SHA from triggering workflow ${ github.event.workflow_run.id }
+          echo commit message from triggering workflow ${ github.event.workflow_run.message }
 
       - name: Dump GHA Context
         uses: crazy-max/ghaction-dump-context@v1
+
 
   placeholder-dump-context:
     runs-on: ubuntu-18.04
