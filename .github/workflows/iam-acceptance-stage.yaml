@@ -31,11 +31,11 @@ jobs:
       - name: info triggering workflow - branch name
         run: echo ${{ github.event.workflow_run.head_branch }}
 
-      - name: info triggering workflow - SHA ${{ github.event.workflow_run.id }}
-        run: echo SHA from triggering workflow ${{ github.event.workflow_run.id }}
+      - name: info triggering workflow - SHA ${{ github.event.workflow_run.head_commit.id }}
+        run: echo SHA from triggering workflow ${{ github.event.workflow_run.head_commit.id }}
 
       - name: info triggering workflow - commit message
-        run: echo commit message from triggering workflow ${{ github.event.workflow_run.message }}
+        run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 
       - name: Dump GHA Context
         uses: crazy-max/ghaction-dump-context@v1
