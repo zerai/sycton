@@ -12,6 +12,7 @@ services:
       - "8010:80"
     depends_on:
       - db-iam
+      - db-iam-test
       - mbroker
     working_dir: /app
     user: application
@@ -22,7 +23,6 @@ services:
       WEB_DOCUMENT_INDEX: index.php
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_URL: pgsql://ecotone:ecotone@db-iam:5432/ecotone
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
 
   db-iam:
@@ -31,6 +31,15 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-ecotone}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
+      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
+
+  db-iam-test:
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    ports:
+      - "5410:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ecotone_test}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
       POSTGRES_USER: ${POSTGRES_USER:-ecotone}
 
