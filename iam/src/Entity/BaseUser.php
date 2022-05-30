@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BaseUserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -12,9 +13,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class BaseUser implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\GeneratedValue(strategy: 'NONE')]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    private UuidInterface $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private string $email;
@@ -25,7 +26,14 @@ class BaseUser implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private string $password;
 
-    public function getId(): ?int
+    public function __construct(UuidInterface $id, string $email, string $password)
+    {
+        $this->id = $id;
+        $this->email = $email;
+        $this->password = $password;
+    }
+
+    public function getId(): ?UuidInterface
     {
         return $this->id;
     }
@@ -62,6 +70,8 @@ class BaseUser implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @see UserInterface
+     *
+     * @psalm-return non-empty-array<array-key, "ROLE_USER"|string>
      */
     public function getRoles(): array
     {
