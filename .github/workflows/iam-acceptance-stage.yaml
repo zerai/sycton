@@ -37,6 +37,12 @@ jobs:
       - name: info triggering workflow - commit message
         run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 
+      - name: info triggering workflow - author '${{ github.event.workflow_run.head_commit.author.name }}' -'${{ github.event.workflow_run.head_commit.author.email }}'
+        run: echo author '${{ github.event.workflow_run.head_commit.author.name }}' -'${{ github.event.workflow_run.head_commit.author.email }}'
+
+      - name: info triggering workflow - committer '${{ github.event.workflow_run.head_commit.committer.name }}' -'${{ github.event.workflow_run.head_commit.committer.email }}'
+        run: echo author '${{ github.event.workflow_run.head_commit.author.name }}' -'${{ github.event.workflow_run.head_commit.author.email }}'
+
       - name: Dump GHA Context
         uses: crazy-max/ghaction-dump-context@v1
 
