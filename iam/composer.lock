@@ -1652,20 +1652,20 @@
         },
         {
             "name": "ecotone/dbal",
-            "version": "1.22.5",
+            "version": "1.22.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/dbal.git",
-                "reference": "65bce576cfca2363a4a9ed94bcde8192eb1fe0f0"
+                "reference": "9d1d402a27d710ccdf6f4825b64ea89f63c69b87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/65bce576cfca2363a4a9ed94bcde8192eb1fe0f0",
-                "reference": "65bce576cfca2363a4a9ed94bcde8192eb1fe0f0",
+                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/9d1d402a27d710ccdf6f4825b64ea89f63c69b87",
+                "reference": "9d1d402a27d710ccdf6f4825b64ea89f63c69b87",
                 "shasum": ""
             },
             "require": {
-                "ecotone/enqueue": "~1.22.5",
+                "ecotone/enqueue": "~1.22.9",
                 "enqueue/dbal": "^0.10.0"
             },
             "require-dev": {
@@ -1675,13 +1675,13 @@
                 "doctrine/dbal": ">=2.1",
                 "doctrine/orm": "^2.0|^3.0",
                 "doctrine/persistence": "^1.3|^2.0",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.22.5-dev"
+                    "dev-master": "1.22.9-dev"
                 }
             },
             "autoload": {
@@ -1706,7 +1706,7 @@
                 "ecotone"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/dbal/tree/1.22.5"
+                "source": "https://github.com/ecotoneframework/dbal/tree/1.22.9"
             },
             "funding": [
                 {
@@ -1718,20 +1718,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-10T18:42:04+00:00"
+            "time": "2022-06-01T20:12:34+00:00"
         },
         {
             "name": "ecotone/ecotone",
-            "version": "1.22.5",
+            "version": "1.22.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/ecotone.git",
-                "reference": "fd849d39a109914d566c6f07e64202053b398359"
+                "reference": "559b6250d82baef306c4da6dbeb8b19c8b58052b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/fd849d39a109914d566c6f07e64202053b398359",
-                "reference": "fd849d39a109914d566c6f07e64202053b398359",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/559b6250d82baef306c4da6dbeb8b19c8b58052b",
+                "reference": "559b6250d82baef306c4da6dbeb8b19c8b58052b",
                 "shasum": ""
             },
             "require": {
@@ -1743,14 +1743,14 @@
             "require-dev": {
                 "behat/behat": "^3.3.1",
                 "php-coveralls/php-coveralls": "^2.1.0",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.0.0",
                 "symfony/expression-language": "^3.0|^4.0|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.22.5-dev"
+                    "dev-master": "1.22.9-dev"
                 }
             },
             "autoload": {
@@ -1779,7 +1779,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ecotoneframework/ecotone/issues",
-                "source": "https://github.com/ecotoneframework/ecotone/tree/1.22.5"
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.22.9"
             },
             "funding": [
                 {
@@ -1791,36 +1791,36 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-10T18:42:04+00:00"
+            "time": "2022-06-01T20:12:34+00:00"
         },
         {
             "name": "ecotone/enqueue",
-            "version": "1.22.5",
+            "version": "1.22.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/enqueue.git",
-                "reference": "cabca415cf46793e3ec276b87fc31c2230355853"
+                "reference": "a667bc79d793528a3d81b1a9f6db87400a2b4312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/cabca415cf46793e3ec276b87fc31c2230355853",
-                "reference": "cabca415cf46793e3ec276b87fc31c2230355853",
+                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/a667bc79d793528a3d81b1a9f6db87400a2b4312",
+                "reference": "a667bc79d793528a3d81b1a9f6db87400a2b4312",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.22.5",
+                "ecotone/ecotone": "~1.22.9",
                 "enqueue/dsn": "*",
                 "queue-interop/queue-interop": "*"
             },
             "require-dev": {
                 "behat/behat": "^3.3.1",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^8.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.22.5-dev"
+                    "dev-master": "1.22.9-dev"
                 }
             },
             "autoload": {
@@ -1845,7 +1845,7 @@
                 "enqueue"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/enqueue/tree/1.22.5"
+                "source": "https://github.com/ecotoneframework/enqueue/tree/1.22.9"
             },
             "funding": [
                 {
@@ -1857,7 +1857,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-10T18:42:04+00:00"
+            "time": "2022-06-01T20:12:34+00:00"
         },
         {
             "name": "ecotone/jms-converter",
@@ -2196,16 +2196,16 @@
         },
         {
             "name": "enqueue/dbal",
-            "version": "0.10.15",
+            "version": "0.10.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-enqueue/dbal.git",
-                "reference": "1f08ebb74160b6ee2acf359b5572d1a4a5b9197b"
+                "reference": "d6c6d38290415d6383ab156a9cf580a99bd05522"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-enqueue/dbal/zipball/1f08ebb74160b6ee2acf359b5572d1a4a5b9197b",
-                "reference": "1f08ebb74160b6ee2acf359b5572d1a4a5b9197b",
+                "url": "https://api.github.com/repos/php-enqueue/dbal/zipball/d6c6d38290415d6383ab156a9cf580a99bd05522",
+                "reference": "d6c6d38290415d6383ab156a9cf580a99bd05522",
                 "shasum": ""
             },
             "require": {
@@ -2254,7 +2254,7 @@
                 "issues": "https://github.com/php-enqueue/enqueue-dev/issues",
                 "source": "https://github.com/php-enqueue/enqueue-dev"
             },
-            "time": "2021-10-29T20:26:35+00:00"
+            "time": "2022-01-10T17:47:44+00:00"
         },
         {
             "name": "enqueue/dsn",
@@ -3640,25 +3640,24 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.2.3",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "fc9bb7fb5388691fd7373cd44dcb4d63bbcf24df"
+                "reference": "8505afd4fea63b81a85d3b7b53ac3cb8dc347c28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/fc9bb7fb5388691fd7373cd44dcb4d63bbcf24df",
-                "reference": "fc9bb7fb5388691fd7373cd44dcb4d63bbcf24df",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/8505afd4fea63b81a85d3b7b53ac3cb8dc347c28",
+                "reference": "8505afd4fea63b81a85d3b7b53ac3cb8dc347c28",
                 "shasum": ""
             },
             "require": {
                 "brick/math": "^0.8 || ^0.9",
+                "ext-ctype": "*",
                 "ext-json": "*",
-                "php": "^7.2 || ^8.0",
-                "ramsey/collection": "^1.0",
-                "symfony/polyfill-ctype": "^1.8",
-                "symfony/polyfill-php80": "^1.14"
+                "php": "^8.0",
+                "ramsey/collection": "^1.0"
             },
             "replace": {
                 "rhumsaa/uuid": "self.version"
@@ -3695,20 +3694,17 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "4.x-dev"
-                },
                 "captainhook": {
                     "force-install": true
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Ramsey\\Uuid\\": "src/"
-                },
                 "files": [
                     "src/functions.php"
-                ]
+                ],
+                "psr-4": {
+                    "Ramsey\\Uuid\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3722,7 +3718,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.2.3"
+                "source": "https://github.com/ramsey/uuid/tree/4.3.1"
             },
             "funding": [
                 {
@@ -3734,7 +3730,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-25T23:10:38+00:00"
+            "time": "2022-03-27T21:42:02+00:00"
         },
         {
             "name": "symfony/cache",
@@ -4671,23 +4667,22 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.4.9",
+            "version": "v6.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "36a017fa4cce1eff1b8e8129ff53513abcef05ba"
+                "reference": "bf7b9d2ee692b6df2a41017d6023a2fe732d240c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/36a017fa4cce1eff1b8e8129ff53513abcef05ba",
-                "reference": "36a017fa4cce1eff1b8e8129ff53513abcef05ba",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/bf7b9d2ee692b6df2a41017d6023a2fe732d240c",
+                "reference": "bf7b9d2ee692b6df2a41017d6023a2fe732d240c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
+                "php": ">=8.0.2",
                 "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-mbstring": "~1.8",
-                "symfony/polyfill-php80": "^1.16"
+                "symfony/polyfill-mbstring": "~1.8"
             },
             "type": "library",
             "autoload": {
@@ -4715,7 +4710,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v5.4.9"
+                "source": "https://github.com/symfony/filesystem/tree/v6.0.9"
             },
             "funding": [
                 {
@@ -4731,7 +4726,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-20T13:55:35+00:00"
+            "time": "2022-05-21T13:33:31+00:00"
         },
         {
             "name": "symfony/finder",
@@ -10121,5 +10116,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
