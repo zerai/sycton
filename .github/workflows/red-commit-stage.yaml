@@ -23,20 +23,20 @@ defaults:
 
 
 jobs:
-  lint-composer:
+  unit-test:
+    name: Unit tests
     runs-on: ubuntu-18.04
     timeout-minutes: 5
     strategy:
       matrix:
         php:
           - '8.0'
+          - '8.1'
       fail-fast: true
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Setup php extension cache environment
+      - name: Setup cache environment
         id: cache-php-extensions
         uses: shivammathur/cache-extensions@v1
         with:
@@ -44,187 +44,46 @@ jobs:
           extensions: ${{ env.PHP_EXTENSIONS }}
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
-      - name: Cache PHP extensions
-        uses: actions/cache@v2.1.7
+      - name: Cache extensions
+        uses: actions/cache@v2
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
           ini-values: memory_limit=-1
           coverage: none
-          tools: composer, composer-normalize:2.16.0
+          tools: symfony
 
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-      - name: Cache composer dependencies
-        uses: actions/cache@v2.1.7
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
-        continue-on-error: true
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-${{ matrix.php }}
 
       - name: Install Composer dependencies
         run: |
           composer install --prefer-dist --no-progress --ansi --no-scripts
 
-      - name: Run composer validate
+      - name: Run test suite
         run: |
-          composer validate --strict --ansi
-
-      - name: Run composer normalize
-        run: |
-          composer-normalize --dry-run --ansi
-
-
-  coding-standard:
-    runs-on: ubuntu-18.04
-    timeout-minutes: 5
-    strategy:
-      matrix:
-        php:
-          - '8.0'
-      fail-fast: true
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup php extension cache environment
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-
-      - name: Cache PHP extensions
-        uses: actions/cache@v2.1.7
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          ini-values: memory_limit=-1
-          coverage: none
-          tools: composer
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v2.1.7
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
-        continue-on-error: true
-
-      - name: Install Composer dependencies
-        run: |
-          composer install --prefer-dist --no-progress --ansi --no-scripts
-
-      - name: Install easy-coding-standard
-        run: |
-          composer bin ecs install  --no-progress --ansi
-
-      - name: Run easy-coding-standard
-        run: |
-          ./vendor/bin/ecs --ansi
-
-
-  validate-openapi:
-    runs-on: ubuntu-18.04
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Validate Red openApi documentation
-        uses: mbowman100/swagger-validator-action@master
-        with:
-          files: |
-            red/docs/api/v1/openapi.yaml
-
-
-  psalm:
-    runs-on: ubuntu-18.04
-    timeout-minutes: 5
-    strategy:
-      matrix:
-        php:
-          - '8.0'
-      fail-fast: true
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup php extension cache environment
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-
-      - name: Cache PHP extensions
-        uses: actions/cache@v2.1.7
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          ini-values: memory_limit=-1
-          coverage: none
-          tools: composer
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v2.1.7
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
-        continue-on-error: true
-
-      - name: Install Composer dependencies
-        run: |
-          composer install --prefer-dist --no-progress --ansi --no-scripts
-
-      - name: Install psalm
-        run: composer bin psalm install --no-progress --ansi
-
-      - name: Prepare symfony dev container for psalm symfony-plugin
-        run: bin/console debug:container -q
-
-      - name: Run psalm
-        run: ./vendor/bin/psalm
+          ./vendor/bin/phpunit tests/Unit
+        env:
+          SYMFONY_DEPRECATIONS_HELPER: disabled
 
 
   app-preconditions-checks:
+    name: App preconditions checks
     runs-on: ubuntu-18.04
     timeout-minutes: 5
     services:
@@ -246,7 +105,6 @@ jobs:
         php:
           - '8.0'
       fail-fast: true
-
     steps:
       - uses: actions/checkout@v2
 
@@ -308,7 +166,7 @@ jobs:
 
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
-        run: ./bin/console doctrine:migrations:migrate -n -vv --ansi
+        run: ./bin/console doctrine:migrations:migrate -n -vv --allow-no-migration --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
           DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
@@ -329,7 +187,102 @@ jobs:
           DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
           APP_ENV: test
 
-  rector:
+
+  integration-test:
+    name: Integration tests
+    runs-on: ubuntu-18.04
+    needs: [app-preconditions-checks]
+    services:
+      pgsql:
+        image: postgres:13-alpine
+        env:
+          POSTGRES_DB: ci-db_test
+          POSTGRES_PASSWORD: ci-db-password
+          POSTGRES_USER: ci-db-user
+        ports:
+          - 5432/tcp
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+    strategy:
+      matrix:
+        php:
+          - '8.0'
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: memory_limit=-1
+          coverage: none
+          tools: symfony
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-${{ matrix.php }}
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-progress --ansi --no-scripts
+
+      - name: Run database migrations
+        if: ${{ github.ref_name == 'main' }}
+        run: ./bin/console doctrine:migrations:migrate -n -vv --allow-no-migration --ansi
+        env:
+          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
+          APP_ENV: test
+
+      - name: Run database schema update
+        if: ${{ github.ref_name != 'main' }}
+        run: ./bin/console doctrine:schema:update --force --ansi
+        env:
+          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
+          APP_ENV: test
+
+      - name: Run webserver
+        run: symfony server:start --port=8080 --dir=public --daemon --no-tls
+
+      - name: Run test suite
+        run: |
+          ./vendor/bin/phpunit tests/Integration
+        env:
+          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db
+          SYMFONY_DEPRECATIONS_HELPER: disabled
+
+
+  lint-composer:
+    name: Validate Lint Composer
     runs-on: ubuntu-18.04
     timeout-minutes: 5
     strategy:
@@ -337,7 +290,209 @@ jobs:
         php:
           - '8.0'
       fail-fast: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
+      - name: Setup php extension cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache PHP extensions
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: memory_limit=-1
+          coverage: none
+          tools: composer, composer-normalize:2.16.0
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
+        continue-on-error: true
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-progress --ansi --no-scripts
+
+      - name: Run composer validate
+        run: |
+          composer validate --strict --ansi
+
+      - name: Run composer normalize
+        run: |
+          composer-normalize --dry-run --ansi
+
+
+  coding-standard:
+    name: Coding standard
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        php:
+          - '8.0'
+      fail-fast: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup php extension cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache PHP extensions
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: memory_limit=-1
+          coverage: none
+          tools: composer
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
+        continue-on-error: true
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-progress --ansi --no-scripts
+
+      - name: Install easy-coding-standard
+        run: |
+          composer bin ecs install  --no-progress --ansi
+
+      - name: Run easy-coding-standard
+        run: |
+          ./vendor/bin/ecs --ansi
+
+
+  validate-openapi:
+    name: Validate OpenApi spec.
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Validate Blue openApi documentation
+        uses: mbowman100/swagger-validator-action@master
+        with:
+          files: |
+            blue/docs/api/v1/openapi.yaml
+  
+  
+
+  psalm:
+    name: Static Analysis
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        php:
+          - '8.0'
+      fail-fast: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup php extension cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache PHP extensions
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.15.0
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: memory_limit=-1
+          coverage: none
+          tools: composer
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2.1.7
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-php${{ matrix.php }}-composer-
+        continue-on-error: true
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --prefer-dist --no-progress --ansi --no-scripts
+
+      - name: Install psalm
+        run: composer bin psalm install --no-progress --ansi
+
+      - name: Prepare symfony dev container for psalm symfony-plugin
+        run: bin/console debug:container -q
+
+      - name: Run psalm
+        run: ./vendor/bin/psalm
+
+
+  rector:
+    name: Rector (maintenance)
+    runs-on: ubuntu-18.04
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        php:
+          - '8.0'
+      fail-fast: true
     steps:
       - name: Checkout
         uses: actions/checkout@v2
