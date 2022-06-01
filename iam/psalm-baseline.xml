@@ -6,4 +6,11 @@
       <code>non-empty-array&lt;array-key, "ROLE_USER"|string&gt;</code>
     </MixedReturnTypeCoercion>
   </file>
+  <file src="tests/Integration/BaseUserRepositoryTest.php">
+    <PossiblyNullReference occurrences="3">
+      <code>add</code>
+      <code>add</code>
+      <code>add</code>
+    </PossiblyNullReference>
+  </file>
 </files>
