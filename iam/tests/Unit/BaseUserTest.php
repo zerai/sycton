@@ -11,7 +11,7 @@ use Ramsey\Uuid\Uuid;
  */
 class BaseUserTest extends TestCase
 {
-    public function testAttributesAfterConstructor()
+    public function testAttributesAfterConstructor(): void
     {
         $uuid = Uuid::uuid4();
         $email = 'irrelevant@example.it';
