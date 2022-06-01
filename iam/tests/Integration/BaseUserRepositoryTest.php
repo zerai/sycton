@@ -81,8 +81,5 @@ class BaseUserRepositoryTest extends KernelTestCase
     {
         parent::tearDown();
         $this->repository = null;
-
     }
-
-
 }
