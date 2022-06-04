@@ -1788,32 +1788,32 @@
         },
         {
             "name": "ecotone/jms-converter",
-            "version": "1.22.5",
+            "version": "1.22.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/jms-converter.git",
-                "reference": "2a803d5a0bba6d472138dfb337f148ec0299e20b"
+                "reference": "f05c7e4feaf3cbeaec436eb8bd583059485c3bf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/2a803d5a0bba6d472138dfb337f148ec0299e20b",
-                "reference": "2a803d5a0bba6d472138dfb337f148ec0299e20b",
+                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/f05c7e4feaf3cbeaec436eb8bd583059485c3bf7",
+                "reference": "f05c7e4feaf3cbeaec436eb8bd583059485c3bf7",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": ">=1.10",
-                "ecotone/ecotone": "~1.22.5",
+                "ecotone/ecotone": "~1.22.11",
                 "jms/serializer": ">=3.11"
             },
             "require-dev": {
                 "behat/behat": "^3.3.1",
-                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan": "^1.7",
                 "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.22.5-dev"
+                    "dev-master": "1.22.11-dev"
                 }
             },
             "autoload": {
@@ -1843,7 +1843,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.22.5"
+                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.22.11"
             },
             "funding": [
                 {
@@ -1855,7 +1855,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-05-10T18:42:04+00:00"
+            "time": "2022-06-02T07:01:34+00:00"
         },
         {
             "name": "ecotone/pdo-event-sourcing",
@@ -2832,35 +2832,30 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.2.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e"
+                "reference": "981cc368a216c988e862a75e526b6076987d1b50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
-                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/981cc368a216c988e862a75e526b6076987d1b50",
+                "reference": "981cc368a216c988e862a75e526b6076987d1b50",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan": "^1.5",
                 "phpstan/phpstan-strict-rules": "^1.0",
                 "phpunit/phpunit": "^9.5",
                 "symfony/process": "^5.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "PHPStan\\PhpDocParser\\": [
@@ -2875,9 +2870,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.2.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.5.1"
             },
-            "time": "2021-09-16T20:46:02+00:00"
+            "time": "2022-05-05T11:32:40+00:00"
         },
         {
             "name": "prooph/common",
