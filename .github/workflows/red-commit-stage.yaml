@@ -45,14 +45,14 @@ jobs:
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
       - name: Cache extensions
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.22.0
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
@@ -65,7 +65,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -117,14 +117,14 @@ jobs:
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
       - name: Cache extensions
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.22.0
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
@@ -137,7 +137,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -223,14 +223,14 @@ jobs:
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
       - name: Cache extensions
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@2.22.0
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
@@ -243,7 +243,7 @@ jobs:
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -310,7 +310,7 @@ jobs:
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
+        uses: shivammathur/setup-php@2.22.0
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
@@ -372,7 +372,7 @@ jobs:
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
+        uses: shivammathur/setup-php@2.22.0
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
@@ -450,7 +450,7 @@ jobs:
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
+        uses: shivammathur/setup-php@2.22.0
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
@@ -513,7 +513,7 @@ jobs:
           restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.15.0
+        uses: shivammathur/setup-php@2.22.0
         with:
           php-version: ${{ matrix.php }}
           extensions: ${{ env.PHP_EXTENSIONS }}
