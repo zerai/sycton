@@ -20,11 +20,11 @@ defaults:
 
 jobs:
   on-red-commit-stage-success:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.sha }}
 
@@ -34,7 +34,7 @@ jobs:
         uses: crazy-max/ghaction-dump-context@v1
 
   placeholder-dump-context:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs: [on-red-commit-stage-success]
     timeout-minutes: 5
     strategy:
@@ -45,7 +45,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.sha }}
 

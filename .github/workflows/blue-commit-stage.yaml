@@ -24,7 +24,7 @@ defaults:
 jobs:
   unit-test:
     name: Unit tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
     strategy:
       matrix:
@@ -33,7 +33,7 @@ jobs:
           - '8.1'
       fail-fast: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup cache environment
         id: cache-php-extensions
@@ -61,7 +61,7 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -83,7 +83,7 @@ jobs:
 
   app-preconditions-checks:
     name: App preconditions checks
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
     services:
       pgsql:
@@ -105,7 +105,7 @@ jobs:
           - '8.0'
       fail-fast: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup cache environment
         id: cache-php-extensions
@@ -133,7 +133,7 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -189,7 +189,7 @@ jobs:
 
   integration-test:
     name: Integration tests
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs: [app-preconditions-checks]
     services:
       pgsql:
@@ -211,7 +211,7 @@ jobs:
           - '8.0'
       fail-fast: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup cache environment
         id: cache-php-extensions
@@ -239,7 +239,7 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -282,7 +282,7 @@ jobs:
 
   lint-composer:
     name: Validate Lint Composer
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
     strategy:
       matrix:
@@ -291,7 +291,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup php extension cache environment
         id: cache-php-extensions
@@ -302,7 +302,7 @@ jobs:
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
       - name: Cache PHP extensions
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -319,10 +319,10 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache composer dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -344,7 +344,7 @@ jobs:
 
   coding-standard:
     name: Coding standard
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
     strategy:
       matrix:
@@ -353,7 +353,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup php extension cache environment
         id: cache-php-extensions
@@ -364,7 +364,7 @@ jobs:
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
       - name: Cache PHP extensions
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -381,10 +381,10 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache composer dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -406,11 +406,11 @@ jobs:
 
   validate-openapi:
     name: Validate OpenApi spec.
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Validate Blue openApi documentation
         uses: mbowman100/swagger-validator-action@master
@@ -421,7 +421,7 @@ jobs:
 
   psalm:
     name: Static Analysis
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
     strategy:
       matrix:
@@ -430,7 +430,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup php extension cache environment
         id: cache-php-extensions
@@ -441,7 +441,7 @@ jobs:
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
       - name: Cache PHP extensions
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -458,10 +458,10 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache composer dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -484,7 +484,7 @@ jobs:
 
   rector:
     name: Rector (maintenance)
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
     strategy:
       matrix:
@@ -493,7 +493,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup php extension cache environment
         id: cache-php-extensions
@@ -504,7 +504,7 @@ jobs:
           key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
 
       - name: Cache PHP extensions
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -521,10 +521,10 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache composer dependencies
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-php${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}

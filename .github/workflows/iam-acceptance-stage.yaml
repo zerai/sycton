@@ -20,11 +20,11 @@ defaults:
 
 jobs:
   on-iam-commit-stage-success:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.workflow_run.head_branch }}
 
@@ -33,10 +33,10 @@ jobs:
 
 
   triggering-workflow-info:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout on branch ${{ github.event.workflow_run.head_branch }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.workflow_run.head_branch }}
       
@@ -57,7 +57,7 @@ jobs:
 
 
   placeholder-dump-context:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs: [on-iam-commit-stage-success]
     timeout-minutes: 5
     strategy:
@@ -68,7 +68,7 @@ jobs:
 
     steps:
       - name: Checkout on ${{ github.event.workflow_run.head_branch }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.event.workflow_run.head_branch }}
 
