@@ -1,8 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
+  <file src="src/Controller/RegisterVisitorController.php">
+    <ParseError occurrences="1">
+      <code>CommandBus</code>
+    </ParseError>
+  </file>
+  <file src="src/Controller/TicketApiController.php">
+    <ParseError occurrences="1">
+      <code>CommandBus</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/ApplicantRegistrationWasAcceptedEvent.php">
+    <ParseError occurrences="1">
+      <code>int</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/PdoVisitorApplicationtRepository.php">
+    <ParseError occurrences="1">
+      <code>Connection</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/RegisterVisitorApplicationCommand.php">
+    <ParseError occurrences="1">
+      <code>int</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/Ticket/Command/AssignTicket.php">
+    <ParseError occurrences="1">
+      <code>string</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/Ticket/Command/PrepareTicket.php">
+    <ParseError occurrences="1">
+      <code>string</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/Ticket/Event/TicketWasAssigned.php">
+    <ParseError occurrences="1">
+      <code>string</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/Ticket/Event/TicketWasCancelled.php">
+    <ParseError occurrences="1">
+      <code>string</code>
+    </ParseError>
+  </file>
+  <file src="src/Domain/Ticket/Event/TicketWasPrepared.php">
+    <ParseError occurrences="1">
+      <code>string</code>
+    </ParseError>
+  </file>
   <file src="src/Domain/VisitorRegistrationApplication.php">
+    <ParseError occurrences="1">
+      <code>int</code>
+    </ParseError>
     <UndefinedVariable occurrences="1">
       <code>$applicationId</code>
     </UndefinedVariable>
+  </file>
+  <file src="src/ReadModel/LastPreparedTicketsProjection.php">
+    <ParseError occurrences="1">
+      <code>Connection</code>
+    </ParseError>
+  </file>
+  <file src="src/ReadModel/UnassignedTicketsProjection.php">
+    <ParseError occurrences="1">
+      <code>Connection</code>
+    </ParseError>
+  </file>
+  <file src="vendor/laminas/laminas-code/src/Generator/TypeGenerator.php">
+    <ParseError occurrences="1">
+      <code>UnionType</code>
+    </ParseError>
+  </file>
+  <file src="vendor/laminas/laminas-code/src/Generator/TypeGenerator/IntersectionType.php">
+    <ParseError occurrences="1">
+      <code>array</code>
+    </ParseError>
   </file>
 </files>
