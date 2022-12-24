@@ -48,22 +48,43 @@ services:
   #
   ######################################################################################################################
 
+#  php-blue:
+#    image: webdevops/php-nginx-dev:8.0
+#    ports:
+#      - "8020:80"
+#    depends_on:
+#      - db-blue
+#    working_dir: /app
+#    user: application
+#    volumes:
+#      - "./blue:/app"
+#    environment:
+#      WEB_DOCUMENT_ROOT: /app/public
+#      WEB_DOCUMENT_INDEX: index.php
+#      APP_ENV: "dev"
+#      APP_DEBUG: "true"
+#      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
+
   php-blue:
-    image: webdevops/php-nginx-dev:8.0
+    build:
+      context: ./docker/php-cli
+      dockerfile: Dockerfile
     ports:
       - "8020:80"
     depends_on:
-      - db-blue
+      - db-red
     working_dir: /app
-    user: application
     volumes:
       - "./blue:/app"
     environment:
-      WEB_DOCUMENT_ROOT: /app/public
-      WEB_DOCUMENT_INDEX: index.php
       APP_ENV: "dev"
       APP_DEBUG: "true"
+      #APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
+      #PORT: 80
+      #LOGFILE: /app/var/workerman.log
       DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
+      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+    #command: "php /app/public/index.php start"
 
   projection-blue:
     image: webdevops/php-dev:8.0
