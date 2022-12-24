@@ -3,12 +3,6 @@
     "type": "project",
     "description": "funny stuff",
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/zerai/workerman-symfony-runtime.git"
-        }
-    ],
     "require": {
         "php": ">=8.0 || ^8.1",
         "ext-ctype": "*",
@@ -78,6 +72,12 @@
             "App\\Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zerai/workerman-symfony-runtime.git"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
