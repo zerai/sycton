@@ -4,7 +4,7 @@
     "description": "funny stuff",
     "license": "MIT",
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.0 || ^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.5",
@@ -14,13 +14,14 @@
         "ecotone/jms-converter": "^1.8",
         "ecotone/pdo-event-sourcing": "^1.8",
         "ecotone/symfony-bundle": "^1.5",
-        "symfony/console": "5.4.*",
-        "symfony/dotenv": "5.4.*",
-        "symfony/flex": "^1.17 || ^2",
-        "symfony/framework-bundle": "5.4.*",
-        "symfony/proxy-manager-bridge": "5.4.*",
-        "symfony/runtime": "5.4.*",
-        "symfony/yaml": "5.4.*"
+        "symfony/console": "6.*",
+        "symfony/dotenv": "6.*",
+        "symfony/flex": "^2",
+        "symfony/framework-bundle": "6.*",
+        "symfony/proxy-manager-bridge": "6.*",
+        "symfony/runtime": "6.*",
+        "symfony/yaml": "6.*",
+        "zerai/workerman-symfony-runtime": "@dev"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -53,11 +54,13 @@
     },
     "extra": {
         "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": false,
             "target-directory": "tools"
         },
         "symfony": {
             "allow-contrib": false,
-            "require": "5.4.*"
+            "require": "6.1.*"
         }
     },
     "autoload": {
@@ -70,6 +73,12 @@
             "App\\Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zerai/workerman-symfony-runtime.git"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
