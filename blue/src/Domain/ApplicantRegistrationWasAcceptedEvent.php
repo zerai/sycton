@@ -4,8 +4,9 @@ namespace App\Domain;
 
 class ApplicantRegistrationWasAcceptedEvent
 {
-    public function __construct(private int $applicationId)
-    {
+    public function __construct(
+        private readonly int $applicationId
+    ) {
     }
 
     public function getApplicationId(): int

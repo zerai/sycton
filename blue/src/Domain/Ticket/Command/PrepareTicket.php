@@ -4,8 +4,10 @@ namespace App\Domain\Ticket\Command;
 
 class PrepareTicket
 {
-    public function __construct(private string $ticketType, private string $description)
-    {
+    public function __construct(
+        private readonly string $ticketType,
+        private readonly string $description
+    ) {
     }
 
     public function getTicketType(): string

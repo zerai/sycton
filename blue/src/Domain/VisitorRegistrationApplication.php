@@ -10,12 +10,14 @@ use Ecotone\Modelling\WithAggregateEvents;
 #[Aggregate]
 class VisitorRegistrationApplication
 {
-    public const REGISTER_VISITOR_APPLICATION = 'visitorApplication.register';
+    final public const REGISTER_VISITOR_APPLICATION = 'visitorApplication.register';
 
     use WithAggregateEvents;
 
-    private function __construct(#[AggregateIdentifier] private int $applicationId, private string $applicantFullname)
-    {
+    private function __construct(
+        #[AggregateIdentifier]private readonly int $applicationId,
+        private readonly string $applicantFullname
+    ) {
         $this->recordThat(new ApplicantRegistrationWasAcceptedEvent($applicationId));
     }
 

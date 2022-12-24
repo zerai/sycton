@@ -21,14 +21,15 @@ use Ecotone\Modelling\Attribute\QueryHandler;
 #[Projection("last_prepared_tickets", Ticket::class)]
 class LastPreparedTicketsProjection
 {
-    public const TABLE_NAME = "last_prepared_tickets";
+    final public const TABLE_NAME = "last_prepared_tickets";
 
-    public const GET_PREPARED_TICKETS = "getPreparedTickets";
+    final public const GET_PREPARED_TICKETS = "getPreparedTickets";
 
-    public const GET_TICKET_DETAILS = "getTicketDetails";
+    final public const GET_TICKET_DETAILS = "getTicketDetails";
 
-    public function __construct(private Connection $connection)
-    {
+    public function __construct(
+        private readonly Connection $connection
+    ) {
     }
 
     #[QueryHandler(self::GET_TICKET_DETAILS)]

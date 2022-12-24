@@ -18,11 +18,11 @@ use Ramsey\Uuid\Uuid;
 #[EventSourcingAggregate]
 class Ticket
 {
-    public const PREPARE_TICKET_TICKET = "ticket.prepareTicket";
+    final public const PREPARE_TICKET_TICKET = "ticket.prepareTicket";
 
-    public const CANCEL_TICKET = "ticket.cancel";
+    final public const CANCEL_TICKET = "ticket.cancel";
 
-    public const ASSIGN_TICKET = "ticket.assign";
+    final public const ASSIGN_TICKET = "ticket.assign";
 
     use WithAggregateVersioning;
 

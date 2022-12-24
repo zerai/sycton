@@ -4,8 +4,9 @@ namespace App\Domain\Ticket\Event;
 
 class TicketWasCancelled
 {
-    public function __construct(private string $ticketId)
-    {
+    public function __construct(
+        private readonly string $ticketId
+    ) {
     }
 
     public function getTicketId(): string

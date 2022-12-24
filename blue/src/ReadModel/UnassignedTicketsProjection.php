@@ -19,12 +19,13 @@ use Ecotone\Modelling\Attribute\QueryHandler;
 #[Projection("unassigned_tickets", Ticket::class)]
 class UnassignedTicketsProjection
 {
-    public const TABLE_NAME = "unassigned_tickets";
+    final public const TABLE_NAME = "unassigned_tickets";
 
-    public const GET_UNASSIGED_TICKETS = "getUnassigedTickets";
+    final public const GET_UNASSIGED_TICKETS = "getUnassigedTickets";
 
-    public function __construct(private Connection $connection)
-    {
+    public function __construct(
+        private readonly Connection $connection
+    ) {
     }
 
     #[QueryHandler(self::GET_UNASSIGED_TICKETS)]

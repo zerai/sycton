@@ -15,8 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TicketApiController extends AbstractController
 {
-    public function __construct(private CommandBus $commandBus, private QueryBus $queryBus)
-    {
+    public function __construct(
+        private readonly CommandBus $commandBus,
+        private readonly QueryBus $queryBus
+    ) {
     }
 
     #[Route("/tickets", methods: ["POST"])]

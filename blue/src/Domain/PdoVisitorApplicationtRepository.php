@@ -10,10 +10,11 @@ use Ecotone\Modelling\StandardRepository;
 #[Repository]
 class PdoVisitorApplicationtRepository implements StandardRepository
 {
-    public const TABLE_NAME = "visitor_application";
+    final public const TABLE_NAME = "visitor_application";
 
-    public function __construct(private Connection $connection)
-    {
+    public function __construct(
+        private readonly Connection $connection
+    ) {
     }
 
     public function canHandle(string $aggregateClassName): bool

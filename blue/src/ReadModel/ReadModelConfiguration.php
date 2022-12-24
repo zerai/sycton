@@ -7,7 +7,7 @@ use Ecotone\Messaging\Attribute\ServiceContext;
 
 class ReadModelConfiguration
 {
-    public const ASYNCHRONOUS_PROJECTIONS_CHANNEL = "asynchronous_projections";
+    final public const ASYNCHRONOUS_PROJECTIONS_CHANNEL = "asynchronous_projections";
 
     #[ServiceContext]
     public function getConfiguration()
