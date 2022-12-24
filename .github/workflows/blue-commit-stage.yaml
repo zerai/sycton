@@ -478,7 +478,7 @@ jobs:
         run: bin/console debug:container -q
 
       - name: Run psalm
-        run: ./vendor/bin/psalm
+        run: ./vendor/bin/psalm --no-cache
 
 
   rector:
