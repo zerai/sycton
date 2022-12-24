@@ -4,7 +4,7 @@
     "description": "funny stuff",
     "license": "MIT",
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.0 || ^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/dbal": "^3.2",
@@ -56,6 +56,8 @@
     },
     "extra": {
         "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": false,
             "target-directory": "tools"
         },
         "symfony": {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
+  <file src="vendor/laminas/laminas-code/src/Generator/TypeGenerator.php">
+    <ParseError occurrences="1">
+      <code>UnionType</code>
+    </ParseError>
+  </file>
+  <file src="vendor/laminas/laminas-code/src/Generator/TypeGenerator/IntersectionType.php">
+    <ParseError occurrences="1">
+      <code>array</code>
+    </ParseError>
+  </file>
+</files>
