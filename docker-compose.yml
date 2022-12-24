@@ -79,12 +79,12 @@ services:
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      #APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
-      #PORT: 80
-      #LOGFILE: /app/var/workerman.log
+      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
+      PORT: 80
+      LOGFILE: /app/var/workerman.log
       DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-    #command: "php /app/public/index.php start"
+    command: "php /app/public/index.php start"
 
   projection-blue:
     image: webdevops/php-dev:8.0

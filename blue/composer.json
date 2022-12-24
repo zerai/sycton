@@ -23,7 +23,8 @@
         "symfony/monolog-bundle": "^3.7",
         "symfony/proxy-manager-bridge": "6.1.*",
         "symfony/runtime": "6.1.*",
-        "symfony/yaml": "6.1.*"
+        "symfony/yaml": "6.1.*",
+        "zerai/workerman-symfony-runtime": "@dev"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -75,6 +76,12 @@
             "App\\Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zerai/workerman-symfony-runtime.git"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
