@@ -6,6 +6,7 @@ use Rector\Core\ValueObject\PhpVersion;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
+use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -27,7 +28,8 @@ return static function (RectorConfig $rectorConfig): void {
         /**
          * SYMFONY
          */
-        SymfonySetList::SYMFONY_54,
+        //SymfonySetList::SYMFONY_54,
+        SymfonyLevelSetList::UP_TO_SYMFONY_60,
         SymfonySetList::SYMFONY_CODE_QUALITY,
 
         /**
