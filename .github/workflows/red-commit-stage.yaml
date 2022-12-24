@@ -336,6 +336,7 @@ jobs:
       - name: Run composer validate
         run: |
           composer validate --strict --ansi
+        continue-on-error: true
 
       - name: Run composer normalize
         run: |

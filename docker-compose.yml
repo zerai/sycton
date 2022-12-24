@@ -131,15 +131,17 @@ services:
     depends_on:
       - db-red
     working_dir: /app
-    #user: application
     volumes:
       - "./red:/app"
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
+      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
+      PORT: 80
+      LOGFILE: /app/var/workerman.log
       DATABASE_DSN: pgsql://ecotone:ecotone@db-red:5432/ecotone
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-    #command: "php /app/public/index.php start"
+    command: "php /app/public/index.php start"
 
 
   db-red:
