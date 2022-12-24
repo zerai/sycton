@@ -6,24 +6,46 @@ services:
   #   iam services
   #
   ######################################################################################################################
+#  php-iam:
+#    image: webdevops/php-nginx-dev:8.0
+#    ports:
+#      - "8010:80"
+#    depends_on:
+#      - db-iam
+#      - mbroker
+#    working_dir: /app
+#    user: application
+#    volumes:
+#      - "./iam:/app"
+#    environment:
+#      WEB_DOCUMENT_ROOT: /app/public
+#      WEB_DOCUMENT_INDEX: index.php
+#      APP_ENV: "dev"
+#      APP_DEBUG: "true"
+#      DATABASE_URL: pgsql://ecotone:ecotone@db-iam:5432/ecotone
+#      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+
   php-iam:
-    image: webdevops/php-nginx-dev:8.0
+    build:
+      context: ./docker/php-swoole
+      dockerfile: Dockerfile
     ports:
       - "8010:80"
+      - "8009:81"
     depends_on:
       - db-iam
-      - mbroker
     working_dir: /app
-    user: application
     volumes:
       - "./iam:/app"
     environment:
-      WEB_DOCUMENT_ROOT: /app/public
-      WEB_DOCUMENT_INDEX: index.php
       APP_ENV: "dev"
       APP_DEBUG: "true"
       DATABASE_URL: pgsql://ecotone:ecotone@db-iam:5432/ecotone
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+      APP_RUNTIME: Runtime\Swoole\Runtime
+      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
+      SWOOLE_PORT: ${SWOOLE_PORT-80}
+    command: "php /app/public/index.php"
 
   db-iam:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
@@ -72,7 +94,7 @@ services:
     ports:
       - "8020:80"
     depends_on:
-      - db-red
+      - db-blue
     working_dir: /app
     volumes:
       - "./blue:/app"
