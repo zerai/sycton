@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52942dfa9a5edbe940a8d2fb70064a5b",
+    "content-hash": "3e319a2d8b5b2dcade409fded411e26b",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1867,12 +1867,12 @@
             "version": "1.22.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ecotoneframework/event-sourcing.git",
+                "url": "https://github.com/ecotoneframework/pdo-event-sourcing.git",
                 "reference": "fda4959c957fbce381d22f61d3c3b8c823c168b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/event-sourcing/zipball/fda4959c957fbce381d22f61d3c3b8c823c168b3",
+                "url": "https://api.github.com/repos/ecotoneframework/pdo-event-sourcing/zipball/fda4959c957fbce381d22f61d3c3b8c823c168b3",
                 "reference": "fda4959c957fbce381d22f61d3c3b8c823c168b3",
                 "shasum": ""
             },
@@ -1915,7 +1915,7 @@
                 "ecotone"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/event-sourcing/tree/1.22.11"
+                "source": "https://github.com/ecotoneframework/pdo-event-sourcing/tree/1.22.11"
             },
             "funding": [
                 {
@@ -1934,12 +1934,12 @@
             "version": "1.22.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ecotoneframework/symfony.git",
+                "url": "https://github.com/ecotoneframework/symfony-bundle.git",
                 "reference": "9717bdaf9de2e29bc04eef5684674b25c645bac2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/symfony/zipball/9717bdaf9de2e29bc04eef5684674b25c645bac2",
+                "url": "https://api.github.com/repos/ecotoneframework/symfony-bundle/zipball/9717bdaf9de2e29bc04eef5684674b25c645bac2",
                 "reference": "9717bdaf9de2e29bc04eef5684674b25c645bac2",
                 "shasum": ""
             },
@@ -1991,7 +1991,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/symfony/tree/1.22.11"
+                "source": "https://github.com/ecotoneframework/symfony-bundle/tree/1.22.11"
             },
             "funding": [
                 {
@@ -8300,7 +8300,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.0",
+        "php": ">=8.0 || ^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },

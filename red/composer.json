@@ -3,8 +3,14 @@
     "type": "project",
     "description": "funny stuff",
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zerai/workerman-symfony-runtime.git"
+        }
+    ],
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.0 || ^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.5",
@@ -20,7 +26,8 @@
         "symfony/framework-bundle": "5.4.*",
         "symfony/proxy-manager-bridge": "5.4.*",
         "symfony/runtime": "5.4.*",
-        "symfony/yaml": "5.4.*"
+        "symfony/yaml": "5.4.*",
+        "zerai/workerman-symfony-runtime": "@dev"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -53,6 +60,8 @@
     },
     "extra": {
         "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": false,
             "target-directory": "tools"
         },
         "symfony": {
