@@ -4,14 +4,8 @@ namespace App\Domain\Ticket\Event;
 
 class TicketWasAssigned
 {
-    private string $ticketId;
-
-    private string $assignedTo;
-
-    public function __construct(string $ticketId, string $assignedTo)
+    public function __construct(private string $ticketId, private string $assignedTo)
     {
-        $this->ticketId = $ticketId;
-        $this->assignedTo = $assignedTo;
     }
 
     public function getTicketId(): string

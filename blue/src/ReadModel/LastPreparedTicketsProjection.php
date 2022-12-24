@@ -27,11 +27,8 @@ class LastPreparedTicketsProjection
 
     public const GET_TICKET_DETAILS = "getTicketDetails";
 
-    private Connection $connection;
-
-    public function __construct(Connection $connection)
+    public function __construct(private Connection $connection)
     {
-        $this->connection = $connection;
     }
 
     #[QueryHandler(self::GET_TICKET_DETAILS)]

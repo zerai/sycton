@@ -4,11 +4,8 @@ namespace App\Domain\Ticket\Event;
 
 class TicketWasCancelled
 {
-    private string $ticketId;
-
-    public function __construct(string $ticketId)
+    public function __construct(private string $ticketId)
     {
-        $this->ticketId = $ticketId;
     }
 
     public function getTicketId(): string

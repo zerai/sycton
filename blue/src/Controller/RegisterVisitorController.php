@@ -12,11 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterVisitorController extends AbstractController
 {
-    private CommandBus $commandBus;
-
-    public function __construct(CommandBus $commandBus)
+    public function __construct(private CommandBus $commandBus)
     {
-        $this->commandBus = $commandBus;
     }
 
     #[Route("/register/user", name: "visitor_registration", methods: ["POST"])]

@@ -14,16 +14,8 @@ class VisitorRegistrationApplication
 
     use WithAggregateEvents;
 
-    #[AggregateIdentifier]
-    private int $applicationId;
-
-    private string $applicantFullname;
-
-    private function __construct(int $applicationId, string $applicantFullname)
+    private function __construct(#[AggregateIdentifier] private int $applicationId, private string $applicantFullname)
     {
-        $this->applicationId = $applicationId;
-        $this->applicantFullname = $applicantFullname;
-
         $this->recordThat(new ApplicantRegistrationWasAcceptedEvent($applicationId));
     }
 

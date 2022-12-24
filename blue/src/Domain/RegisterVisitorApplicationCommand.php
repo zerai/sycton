@@ -4,14 +4,8 @@ namespace App\Domain;
 
 class RegisterVisitorApplicationCommand
 {
-    private int $applicationId;
-
-    private string $applicantFullname;
-
-    private function __construct(int $applicationId, string $applicantFullname)
+    private function __construct(private int $applicationId, private string $applicantFullname)
     {
-        $this->applicationId = $applicationId;
-        $this->applicantFullname = $applicantFullname;
     }
 
     public static function createWith(int $aggregateId, string $applicantFullname): self

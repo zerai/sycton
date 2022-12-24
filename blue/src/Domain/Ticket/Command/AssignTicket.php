@@ -4,14 +4,8 @@ namespace App\Domain\Ticket\Command;
 
 class AssignTicket
 {
-    private string $ticketId;
-
-    private string $assignTo;
-
-    public function __construct(string $ticketId, string $assignTo)
+    public function __construct(private string $ticketId, private string $assignTo)
     {
-        $this->ticketId = $ticketId;
-        $this->assignTo = $assignTo;
     }
 
     public function getTicketId(): string

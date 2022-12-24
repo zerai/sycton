@@ -12,11 +12,8 @@ class PdoVisitorApplicationtRepository implements StandardRepository
 {
     public const TABLE_NAME = "visitor_application";
 
-    private Connection $connection;
-
-    public function __construct(Connection $connection)
+    public function __construct(private Connection $connection)
     {
-        $this->connection = $connection;
     }
 
     public function canHandle(string $aggregateClassName): bool

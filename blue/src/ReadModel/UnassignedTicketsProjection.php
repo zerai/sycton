@@ -23,11 +23,8 @@ class UnassignedTicketsProjection
 
     public const GET_UNASSIGED_TICKETS = "getUnassigedTickets";
 
-    private Connection $connection;
-
-    public function __construct(Connection $connection)
+    public function __construct(private Connection $connection)
     {
-        $this->connection = $connection;
     }
 
     #[QueryHandler(self::GET_UNASSIGED_TICKETS)]
