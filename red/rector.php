@@ -14,6 +14,10 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/tests',
     ]);
 
+    $rectorConfig->skip([
+        __DIR__ . '/src/Kernel.php',
+    ]);
+
     $rectorConfig->phpVersion(PhpVersion::PHP_80);
     $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
 

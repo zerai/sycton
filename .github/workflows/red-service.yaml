@@ -1,0 +1,21 @@
+name: Red service CD/CI
+
+on:
+  push:
+    paths:
+      - "red/**"
+      - '.github/workflows/red-*.yaml'
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage
+    uses: zerai/sycton/.github/workflows/red-service-commit-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+  acceptance-stage-workflow:
+    name: Acceptance Stage
+    needs:
+      - commit-stage-workflow
+    uses: zerai/sycton/.github/workflows/red-service-acceptance-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
