@@ -70,23 +70,6 @@ services:
   #
   ######################################################################################################################
 
-#  php-blue:
-#    image: webdevops/php-nginx-dev:8.0
-#    ports:
-#      - "8020:80"
-#    depends_on:
-#      - db-blue
-#    working_dir: /app
-#    user: application
-#    volumes:
-#      - "./blue:/app"
-#    environment:
-#      WEB_DOCUMENT_ROOT: /app/public
-#      WEB_DOCUMENT_INDEX: index.php
-#      APP_ENV: "dev"
-#      APP_DEBUG: "true"
-#      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
-
   php-blue:
     build:
       context: ./docker/php-cli
@@ -95,7 +78,6 @@ services:
       - "8020:80"
     depends_on:
       - db-blue
-    working_dir: /app
     volumes:
       - "./blue:/app"
     environment:
