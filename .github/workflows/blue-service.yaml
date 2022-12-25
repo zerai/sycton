@@ -1,0 +1,21 @@
+name: Blue service CD/CI
+
+on:
+  push:
+    paths:
+      - "blue/**"
+      - '.github/workflows/blue-*.yaml'
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage [blue]
+    uses: zerai/sycton/.github/workflows/blue-service-commit-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+  acceptance-stage-workflow:
+    name: Acceptance Stage [blue]
+    needs:
+      - commit-stage-workflow
+    uses: zerai/sycton/.github/workflows/blue-service-acceptance-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
