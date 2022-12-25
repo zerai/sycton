@@ -1,0 +1,21 @@
+name: Iam service CD/CI
+
+on:
+  push:
+    paths:
+      - "iam/**"
+      - '.github/workflows/iam-*.yaml'
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage [iam]
+    uses: zerai/sycton/.github/workflows/iam-service-commit-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+  acceptance-stage-workflow:
+    name: Acceptance Stage [iam]
+    needs:
+      - commit-stage-workflow
+    uses: zerai/sycton/.github/workflows/iam-service-acceptance-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
