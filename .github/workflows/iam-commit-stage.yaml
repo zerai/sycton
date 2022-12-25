@@ -5,10 +5,10 @@ on:
     paths:
       - "iam/**"
       - '.github/workflows/iam-*.yaml'
-  pull_request:
-    paths:
-      - "iam/**"
-      - '.github/workflows/iam-*.yaml'
+#  pull_request:
+#    paths:
+#      - "iam/**"
+#      - '.github/workflows/iam-*.yaml'
 
 
 env:
@@ -29,7 +29,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.1'
       fail-fast: true
 
     steps:
@@ -105,7 +105,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.1'
       fail-fast: true
 
     steps:
@@ -183,7 +183,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.1'
       fail-fast: true
 
     steps:
@@ -259,7 +259,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.1'
       fail-fast: true
 
     steps:
@@ -336,7 +336,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.1'
       fail-fast: true
 
     steps:
@@ -420,7 +420,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '8.0'
+          - '8.1'
       fail-fast: true
 
     steps:
