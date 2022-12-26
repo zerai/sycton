@@ -1,21 +1,36 @@
 # sycton
 
+[![Iam service CD/CI](https://github.com/zerai/sycton/actions/workflows/iam-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/iam-service.yaml)
+[![Blue service CD/CI](https://github.com/zerai/sycton/actions/workflows/blue-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/blue-service.yaml)
+[![Red service CD/CI](https://github.com/zerai/sycton/actions/workflows/red-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/red-service.yaml)
 
 
-## iam
+## iam service 
+
 Endpoint: [127.0.0.1:8010](http://127.0.0.1:8010)
 
-Openapi spec: [127.0.0.1:8011](http://127.0.0.1:8011)
+OpenApi spec: [127.0.0.1:8011](http://127.0.0.1:8011)
 
-## blue service
+Stack: [ php-cli:8.1 - swoole - symfony5.4 ]
+
+
+## Blue service
+
 Endpoint: [127.0.0.1:8020](http://127.0.0.1:8020)
 
-Openapi spec: [127.0.0.1:8021](http://127.0.0.1:8021)
+OpenApi spec: [127.0.0.1:8021](http://127.0.0.1:8021)
 
-## red service
+Stack: [ php-cli:8.1 - workerman - symfony6.1 ]
+
+
+## Red service
+
 Endpoint: [127.0.0.1:8030](http://127.0.0.1:8030)
 
-Openapi spec: [127.0.0.1:8031](http://127.0.0.1:8031)
+OpenApi spec: [127.0.0.1:8031](http://127.0.0.1:8031)
+
+Stack: [ php-cli:8.1 - workerman - symfony6.1 ]
+
 
 ## rabbit-mq
 
