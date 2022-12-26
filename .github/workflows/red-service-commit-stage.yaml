@@ -328,10 +328,12 @@ jobs:
         run: |
           composer bin psalm install  --no-progress --ansi
 
+      - name: Create symfony container for psalm
+        run: ./bin/console lint:container -e dev
+        continue-on-error: true
+
       - name: Run psalm
-        run: |
-          ./bin/console debug:container
-          ./vendor/bin/psalm --no-cache
+        run: ./vendor/bin/psalm --no-cache
 
 
   rector:
@@ -390,9 +392,11 @@ jobs:
       - name: Install rector
         run: composer bin rector install --no-progress --ansi
 
+      - name: Create symfony container for rector
+        run: ./bin/console lint:container -e dev
+        continue-on-error: true
+
       - name: Run rector
-        run: |
-          ./bin/console debug:container
-          ./vendor/bin/rector process --dry-run --ansi
+        run: ./vendor/bin/rector process --dry-run --ansi
         continue-on-error: true
 
