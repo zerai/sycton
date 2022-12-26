@@ -7,13 +7,13 @@ on:
       - '.github/workflows/iam-*.yaml'
 jobs:
   commit-stage-workflow:
-    name: Commit Stage [iam]
+    name: Commit Stage
     uses: zerai/sycton/.github/workflows/iam-service-commit-stage.yaml@main
     with:
       triggering-sha: "${{ github.sha }}"
 
   acceptance-stage-workflow:
-    name: Acceptance Stage [iam]
+    name: Acceptance Stage
     needs:
       - commit-stage-workflow
     uses: zerai/sycton/.github/workflows/iam-service-acceptance-stage.yaml@main
