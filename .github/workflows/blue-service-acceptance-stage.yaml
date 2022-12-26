@@ -125,10 +125,6 @@ jobs:
           ./bin/console lint:container -e dev --ansi
         continue-on-error: true
 
-#      - name: Validate twig templates
-#        run: |
-#          ./bin/console lint:twig templates/ --ansi
-
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi

@@ -263,10 +263,6 @@ jobs:
           ./vendor/bin/ecs
 
 
-
-
-
-
   psalm:
     name: Static analysis
     runs-on: ubuntu-20.04
