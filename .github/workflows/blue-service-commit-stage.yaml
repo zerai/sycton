@@ -181,6 +181,7 @@ jobs:
 
 
   validate-openapi:
+    name: Validate OpenApi schema
     runs-on: ubuntu-20.04
     timeout-minutes: 5
     steps:
@@ -394,6 +395,8 @@ jobs:
         run: composer bin rector install --no-progress --ansi
 
       - name: Run rector
-        run: ./vendor/bin/rector process --dry-run --ansi
+        run: |
+          ./bin/console debug:container
+          ./vendor/bin/rector process --dry-run --ansi
         continue-on-error: true
 
