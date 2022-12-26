@@ -330,7 +330,7 @@ jobs:
 
       - name: Run psalm
         run: |
-          ./bin/console debug:container -e dev
+          ./bin/console debug:container
           ./vendor/bin/psalm --no-cache
 
 
