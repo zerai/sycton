@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c05f93cd7e63693d797fd95c09880df7",
+    "content-hash": "998c835d6f046d8c60e9ff45b8f1a1ba",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -3944,6 +3944,61 @@
                 }
             ],
             "time": "2022-12-19T22:30:49+00:00"
+        },
+        {
+            "name": "runtime/swoole",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-runtime/swoole.git",
+                "reference": "eeba8e5987a00b02cc6732a64a948956b5362942"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-runtime/swoole/zipball/eeba8e5987a00b02cc6732a64a948956b5362942",
+                "reference": "eeba8e5987a00b02cc6732a64a948956b5362942",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/runtime": "^5.3 || ^6.0"
+            },
+            "conflict": {
+                "ext-swoole": "<4.6.0"
+            },
+            "require-dev": {
+                "illuminate/http": "^8.48",
+                "swoole/ide-helper": "^4.6",
+                "symfony/http-foundation": "^5.3 || ^6.0",
+                "symfony/http-kernel": "^5.4 || ^6.0",
+                "symfony/phpunit-bridge": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Runtime\\Swoole\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "Swoole runtime",
+            "support": {
+                "source": "https://github.com/php-runtime/swoole/tree/0.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/nyholm",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-26T17:19:48+00:00"
         },
         {
             "name": "symfony/cache",
