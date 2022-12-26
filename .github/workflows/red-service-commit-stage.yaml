@@ -93,6 +93,9 @@ jobs:
       - name: Install dependencies
         run: |
           composer install --prefer-dist --no-progress --ansi
+        # TODO DATABASE_DNS andrebbe rimosso ma genera errore dopo composer install alla cancellazione della cache.
+        env:
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run unit tests
         run: |
@@ -398,5 +401,4 @@ jobs:
 
       - name: Run rector
         run: ./vendor/bin/rector process --dry-run --ansi
-        continue-on-error: true
 
