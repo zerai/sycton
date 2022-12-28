@@ -45,6 +45,7 @@ services:
       APP_RUNTIME: Runtime\Swoole\Runtime
       SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
       SWOOLE_PORT: ${SWOOLE_PORT-80}
+      SWOOLE_HOT_RELOAD: 1
     command: "php /app/public/index.php"
 
   db-iam:
