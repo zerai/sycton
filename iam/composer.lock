@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06520ae62cb462bfa98ff2cfe14c7aea",
+    "content-hash": "e77161f9cccd05f9cee50785c611adf2",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -3751,61 +3751,6 @@
             "time": "2022-12-19T22:30:49+00:00"
         },
         {
-            "name": "runtime/swoole",
-            "version": "0.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-runtime/swoole.git",
-                "reference": "eeba8e5987a00b02cc6732a64a948956b5362942"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-runtime/swoole/zipball/eeba8e5987a00b02cc6732a64a948956b5362942",
-                "reference": "eeba8e5987a00b02cc6732a64a948956b5362942",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/runtime": "^5.3 || ^6.0"
-            },
-            "conflict": {
-                "ext-swoole": "<4.6.0"
-            },
-            "require-dev": {
-                "illuminate/http": "^8.48",
-                "swoole/ide-helper": "^4.6",
-                "symfony/http-foundation": "^5.3 || ^6.0",
-                "symfony/http-kernel": "^5.4 || ^6.0",
-                "symfony/phpunit-bridge": "^5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Runtime\\Swoole\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com"
-                }
-            ],
-            "description": "Swoole runtime",
-            "support": {
-                "source": "https://github.com/php-runtime/swoole/tree/0.3.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/nyholm",
-                    "type": "github"
-                }
-            ],
-            "time": "2022-02-26T17:19:48+00:00"
-        },
-        {
             "name": "symfony/cache",
             "version": "v5.4.15",
             "source": {
@@ -7288,6 +7233,68 @@
                 }
             ],
             "time": "2022-11-25T16:04:03+00:00"
+        },
+        {
+            "name": "zerai/openswoole-runtime",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zerai/openswoole-runtime.git",
+                "reference": "9973a5a4314303ce29d9147dec8c8b859913e6d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zerai/openswoole-runtime/zipball/9973a5a4314303ce29d9147dec8c8b859913e6d5",
+                "reference": "9973a5a4314303ce29d9147dec8c8b859913e6d5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openswoole": ">=22.0",
+                "php": ">=8.0.5",
+                "symfony/runtime": "^5.4 || ^6.0"
+            },
+            "conflict": {
+                "ext-openswoole": "<20.0"
+            },
+            "require-dev": {
+                "illuminate/http": "^9.14",
+                "openswoole/ide-helper": "^22.0",
+                "phpunit/phpunit": "^9.5",
+                "symfony/http-foundation": "^5.4 || ^6.0",
+                "symfony/http-kernel": "^5.4 || ^6.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Runtime\\Swoole\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Runtime\\Swoole\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com"
+                }
+            ],
+            "description": "OpenSwoole runtime",
+            "support": {
+                "source": "https://github.com/zerai/openswoole-runtime/tree/main"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/nyholm"
+                }
+            ],
+            "time": "2022-12-28T21:24:32+00:00"
         }
     ],
     "packages-dev": [
@@ -9911,13 +9918,16 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zerai/openswoole-runtime": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1",
         "ext-ctype": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-openswoole": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

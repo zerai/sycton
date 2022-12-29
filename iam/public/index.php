@@ -3,9 +3,9 @@
 use App\Kernel;
 
 $_SERVER['APP_RUNTIME_OPTIONS'] = [
-    'mode' => SWOOLE_BASE,
+    'mode' => SWOOLE_PROCESS,
     'settings' => [
-        \Swoole\Constant::OPTION_WORKER_NUM => swoole_cpu_num() * 2,
+        \Swoole\Constant::OPTION_WORKER_NUM => 2,
         \Swoole\Constant::OPTION_ENABLE_STATIC_HANDLER => true,
         \Swoole\Constant::OPTION_DOCUMENT_ROOT => dirname(__DIR__).'/public'
     ],
