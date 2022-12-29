@@ -127,8 +127,8 @@ jobs:
 
   checks-composer:
     name: Validate Composer
-    runs-on: ubuntu-20.04
-    timeout-minutes: 2
+    runs-on: ubuntu-22.04
+    timeout-minutes: 4
     strategy:
       matrix:
         php:
@@ -181,7 +181,7 @@ jobs:
 
   validate-openapi:
     name: Validate OpenApi schema
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     steps:
       - name: Checkout
@@ -196,7 +196,7 @@ jobs:
 
   coding-standard:
     name: Coding Standard
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 3
     strategy:
       matrix:
@@ -265,7 +265,7 @@ jobs:
 
   psalm:
     name: Static analysis
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 3
     strategy:
       matrix:
@@ -334,7 +334,7 @@ jobs:
 
 
   rector:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     strategy:
       matrix:
