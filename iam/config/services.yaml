@@ -36,6 +36,11 @@ services:
     IdentityAccess\:
         resource: '../srcIam/src/'
 
+    Doctrine\DBAL\Connection:
+        factory: [ "Doctrine\\DBAL\\DriverManager","getConnection" ]
+        arguments:
+            - url: "%env(resolve:DATABASE_DSN)%"
+
     Enqueue\Dbal\DbalConnectionFactory:
         factory: [ 'Ecotone\Dbal\DbalConnection', 'createForManagerRegistry' ]
         arguments: [ "@doctrine","default" ]
