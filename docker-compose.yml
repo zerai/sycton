@@ -42,7 +42,7 @@ services:
       APP_DEBUG: "true"
       DATABASE_URL: pgsql://ecotone:ecotone@db-iam:5432/ecotone
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      APP_RUNTIME: Runtime\Swoole\Runtime
+      APP_RUNTIME: Zerai\OpenSwoole\Runtime
       SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
       SWOOLE_PORT: ${SWOOLE_PORT-80}
       SWOOLE_HOT_RELOAD: 1

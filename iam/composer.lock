@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e77161f9cccd05f9cee50785c611adf2",
+    "content-hash": "69b59c2eaba61c360fa5c62235add5b1",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -7235,66 +7235,125 @@
             "time": "2022-11-25T16:04:03+00:00"
         },
         {
-            "name": "zerai/openswoole-runtime",
-            "version": "dev-main",
+            "name": "webmozart/assert",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zerai/openswoole-runtime.git",
-                "reference": "9973a5a4314303ce29d9147dec8c8b859913e6d5"
+                "url": "https://github.com/webmozarts/assert.git",
+                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zerai/openswoole-runtime/zipball/9973a5a4314303ce29d9147dec8c8b859913e6d5",
-                "reference": "9973a5a4314303ce29d9147dec8c8b859913e6d5",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
+                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
                 "shasum": ""
             },
             "require": {
-                "ext-openswoole": ">=22.0",
-                "php": ">=8.0.5",
-                "symfony/runtime": "^5.4 || ^6.0"
+                "ext-ctype": "*",
+                "php": "^7.2 || ^8.0"
             },
             "conflict": {
-                "ext-openswoole": "<20.0"
+                "phpstan/phpstan": "<0.12.20",
+                "vimeo/psalm": "<4.6.1 || 4.6.2"
             },
             "require-dev": {
+                "phpunit/phpunit": "^8.5.13"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.10-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Assert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "Assertions to validate method input/output with nice error messages.",
+            "keywords": [
+                "assert",
+                "check",
+                "validate"
+            ],
+            "support": {
+                "issues": "https://github.com/webmozarts/assert/issues",
+                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
+            },
+            "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "zerai/openswoole-runtime",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zerai/openswoole-runtime.git",
+                "reference": "7010b5d046338f4a04743015d0389837acac892c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zerai/openswoole-runtime/zipball/7010b5d046338f4a04743015d0389837acac892c",
+                "reference": "7010b5d046338f4a04743015d0389837acac892c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openswoole": "^22.0",
+                "php": ">=8.0.5",
+                "symfony/runtime": "^5.4 || ^6.0",
+                "webmozart/assert": "^1.9"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8",
                 "illuminate/http": "^9.14",
                 "openswoole/ide-helper": "^22.0",
                 "phpunit/phpunit": "^9.5",
                 "symfony/http-foundation": "^5.4 || ^6.0",
                 "symfony/http-kernel": "^5.4 || ^6.0"
             },
-            "default-branch": true,
             "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false,
+                    "target-directory": "tools"
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "Runtime\\Swoole\\": "src/"
+                    "Zerai\\OpenSwoole\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Runtime\\Swoole\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com"
+                    "name": "Zerai Teclai",
+                    "email": "teclaizerai@gmail.com"
                 }
             ],
-            "description": "OpenSwoole runtime",
+            "description": "A openswoole runtime component.",
+            "homepage": "https://github.com/zerai/openswoole-runtime",
+            "keywords": [
+                "openswoole",
+                "symfony runtime"
+            ],
             "support": {
-                "source": "https://github.com/zerai/openswoole-runtime/tree/main"
+                "issues": "https://github.com/zerai/openswoole-runtime/issues",
+                "source": "https://github.com/zerai/openswoole-runtime/tree/0.1.0"
             },
-            "funding": [
-                {
-                    "type": "github",
-                    "url": "https://github.com/nyholm"
-                }
-            ],
-            "time": "2022-12-28T21:24:32+00:00"
+            "time": "2022-12-30T02:46:22+00:00"
         }
     ],
     "packages-dev": [
@@ -9918,9 +9977,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "zerai/openswoole-runtime": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

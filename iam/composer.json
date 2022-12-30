@@ -27,7 +27,7 @@
         "symfony/runtime": "5.4.*",
         "symfony/security-bundle": "5.4.*",
         "symfony/yaml": "5.4.*",
-        "zerai/openswoole-runtime": "@dev"
+        "zerai/openswoole-runtime": "^0.1"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",
@@ -84,12 +84,6 @@
             "IdentityAccess\\Tests\\": "srcIam/tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/zerai/openswoole-runtime.git"
-        }
-    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
