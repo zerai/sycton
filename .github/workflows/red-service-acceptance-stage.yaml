@@ -18,8 +18,8 @@ env:
   USE_COMPOSER_CACHE: '0'
   USE_PHP_EXTENSION_CACHE: '0'
   # PHP SETTINGS
-  PHP_EXTENSIONS: ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite
-  PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
+  PHP_EXTENSIONS: ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite, openswoole
+  PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v2
   # ARTIFACTS SETTINGS
   ARTIFATC_NAME_FOR_INTEGRATION_TEST_COVERAGE: '[red-service]-integration-test-coverage-reports-on-SHA'
   INTEGRATION_TEST_CLOVER_FILENAME: 'coverage-integration-test-clover.xml'
