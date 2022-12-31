@@ -335,7 +335,7 @@ jobs:
         run: ./bin/console debug:container -e dev
 
       - name: Run psalm
-        run: ./vendor/bin/psalm -c psal.xml --no-cache
+        run: ./vendor/bin/psalm -c psalm.xml --no-cache
 
 
   rector:
