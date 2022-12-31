@@ -22,6 +22,7 @@
         "symfony/proxy-manager-bridge": "6.*",
         "symfony/runtime": "6.*",
         "symfony/yaml": "6.*",
+        "zerai/openswoole-runtime": "^0.1.0",
         "zerai/workerman-symfony-runtime": "@dev"
     },
     "replace": {
