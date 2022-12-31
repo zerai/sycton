@@ -15,8 +15,8 @@ defaults:
 
 env:
   # GHA SETTINGS
-  USE_COMPOSER_CACHE: '1'
-  USE_PHP_EXTENSION_CACHE: '1'
+  USE_COMPOSER_CACHE: '0'
+  USE_PHP_EXTENSION_CACHE: '0'
   # PHP SETTINGS
   PHP_EXTENSIONS: ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite
   PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
@@ -34,8 +34,8 @@ env:
 jobs:
   app-preconditions-checks:
     name: App preconditions checks (php-${{ matrix.php }})
-    runs-on: ubuntu-20.04
-    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
     continue-on-error: ${{ matrix.is-php-experimental }}
     services:
       pgsql:
@@ -130,17 +130,20 @@ jobs:
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
 
   integration-test:
@@ -239,6 +242,7 @@ jobs:
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run only integration test
         run: |
