@@ -336,7 +336,7 @@ jobs:
         continue-on-error: true
 
       - name: Run psalm
-        run: ./vendor/bin/psalm --no-cache
+        run: ./vendor/bin/psalm -c psal.xml --no-cache
 
 
   rector:
