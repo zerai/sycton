@@ -71,12 +71,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "MessageGame\\": "_message-game/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "MessageGame\\Tests\\": "_message-game/tests/"
         }
     },
     "repositories": [
