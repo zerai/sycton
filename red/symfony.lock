@@ -531,6 +531,9 @@
     "theseer/tokenizer": {
         "version": "1.2.1"
     },
+    "twig/extra-bundle": {
+        "version": "v3.5.0"
+    },
     "webmozart/assert": {
         "version": "1.10.0"
     },
