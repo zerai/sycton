@@ -17,16 +17,16 @@
         "ecotone/jms-converter": "^1.8",
         "ecotone/pdo-event-sourcing": "^1.8",
         "ecotone/symfony-bundle": "^1.8",
-        "symfony/console": "6.0.*",
-        "symfony/dotenv": "6.0.*",
+        "symfony/console": "6.2.*",
+        "symfony/dotenv": "6.2.*",
         "symfony/flex": "^1.17 || ^2",
-        "symfony/framework-bundle": "6.0.*",
-        "symfony/http-kernel": "6.0.*",
+        "symfony/framework-bundle": "6.2.*",
+        "symfony/http-kernel": "6.2.*",
         "symfony/monolog-bundle": "^3.7",
-        "symfony/proxy-manager-bridge": "6.0.*",
-        "symfony/runtime": "6.0.*",
-        "symfony/security-bundle": "6.0.*",
-        "symfony/yaml": "6.0.*",
+        "symfony/proxy-manager-bridge": "6.2.*",
+        "symfony/runtime": "6.2.*",
+        "symfony/security-bundle": "6.2.*",
+        "symfony/yaml": "6.2.*",
         "zerai/openswoole-runtime": "^0.1"
     },
     "replace": {
@@ -41,12 +41,12 @@
         "bamarni/composer-bin-plugin": "^1.4",
         "dama/doctrine-test-bundle": "^7.0",
         "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "6.0.*",
-        "symfony/css-selector": "6.0.*",
+        "symfony/browser-kit": "6.2.*",
+        "symfony/css-selector": "6.2.*",
         "symfony/maker-bundle": "^1.36",
-        "symfony/phpunit-bridge": "^6.0",
-        "symfony/stopwatch": "6.0.*",
-        "symfony/web-profiler-bundle": "6.0.*"
+        "symfony/phpunit-bridge": "^6.2",
+        "symfony/stopwatch": "6.2.*",
+        "symfony/web-profiler-bundle": "6.2.*"
     },
     "config": {
         "allow-plugins": {
@@ -69,7 +69,7 @@
         },
         "symfony": {
             "allow-contrib": false,
-            "require": "6.0.*"
+            "require": "6.2.*"
         }
     },
     "autoload": {

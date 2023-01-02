@@ -31,7 +31,7 @@ return static function (RectorConfig $rectorConfig): void {
         /**
          * SYMFONY
          */
-        SymfonySetList::SYMFONY_60,
+        SymfonySetList::SYMFONY_62,
         SymfonySetList::SYMFONY_CODE_QUALITY,
 
         /**
