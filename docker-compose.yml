@@ -6,35 +6,15 @@ services:
   #   iam services
   #
   ######################################################################################################################
-#  php-iam:
-#    image: webdevops/php-nginx-dev:8.0
-#    ports:
-#      - "8010:80"
-#    depends_on:
-#      - db-iam
-#      - mbroker
-#    working_dir: /app
-#    user: application
-#    volumes:
-#      - "./iam:/app"
-#    environment:
-#      WEB_DOCUMENT_ROOT: /app/public
-#      WEB_DOCUMENT_INDEX: index.php
-#      APP_ENV: "dev"
-#      APP_DEBUG: "true"
-#      DATABASE_URL: pgsql://ecotone:ecotone@db-iam:5432/ecotone
-#      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-
   php-iam:
     build:
       context: ./docker/php-swoole
       dockerfile: Dockerfile
     ports:
       - "8010:80"
-      - "8009:81"
     depends_on:
       - db-iam
-    working_dir: /app
+      - mbroker
     volumes:
       - "./iam:/app"
     environment:
@@ -79,33 +59,34 @@ services:
       - "8020:80"
     depends_on:
       - db-blue
+      - mbroker
     volumes:
       - "./blue:/app"
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
+      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
+      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
       PORT: 80
       LOGFILE: /app/var/workerman.log
-      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
-      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
     command: "php /app/public/index.php start"
 
-  projection-blue:
-    image: webdevops/php-dev:8.0
-    depends_on:
-      - db-blue
-    working_dir: /app
-    user: application
-    volumes:
-      - "./blue:/app"
-    environment:
-      WEB_DOCUMENT_ROOT: /app/public
-      WEB_DOCUMENT_INDEX: index.php
-      APP_ENV: "dev"
-      APP_DEBUG: "true"
-      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
-    command: "/app/bin/console ecotone:run asynchronous_projections -vvv"
+#  projection-blue:
+#    image: webdevops/php-dev:8.0
+#    depends_on:
+#      - db-blue
+#    working_dir: /app
+#    user: application
+#    volumes:
+#      - "./blue:/app"
+#    environment:
+#      WEB_DOCUMENT_ROOT: /app/public
+#      WEB_DOCUMENT_INDEX: index.php
+#      APP_ENV: "dev"
+#      APP_DEBUG: "true"
+#      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
+#    command: "/app/bin/console ecotone:run asynchronous_projections -vvv"
 
   db-blue:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
@@ -143,11 +124,17 @@ services:
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
-      PORT: 80
-      LOGFILE: /app/var/workerman.log
       DATABASE_DSN: pgsql://ecotone:ecotone@db-red:5432/ecotone?serverVersion=13&charset=utf8"
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+      # -- Workerman runtime envs
+      #APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
+      #PORT: 80
+      #LOGFILE: /app/var/workerman.log
+      # -- Swoole runtime envs
+      APP_RUNTIME: Zerai\OpenSwoole\Runtime
+      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
+      SWOOLE_PORT: ${SWOOLE_PORT-80}
+      SWOOLE_HOT_RELOAD: 1
     command: "php /app/public/index.php start"
 
   db-red:
