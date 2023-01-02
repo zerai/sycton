@@ -11,7 +11,7 @@ Endpoint: [127.0.0.1:8010](http://127.0.0.1:8010)
 
 OpenApi spec: [127.0.0.1:8011](http://127.0.0.1:8011)
 
-Stack: [ php-cli:8.1 - swoole - symfony-6.0 ]
+Stack: [ php-cli:8.1 - swoole - symfony-6.2 ]
 
 
 ## Blue service
