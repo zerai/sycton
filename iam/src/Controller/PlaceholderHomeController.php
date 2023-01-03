@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PlaceholderHomeController extends AbstractController
 {
-    #[Route('/', name: 'placeholder_home')]
-    public function __invoke(): Response
-    {
-        return new JsonResponse([
-            'serviceName' => 'Iam service',
-        ]);
-    }
+//    #[Route('/', name: 'placeholder_home')]
+//    public function __invoke(): Response
+//    {
+//        return new JsonResponse([
+//            'serviceName' => 'Iam service',
+//        ]);
+//    }
 }
