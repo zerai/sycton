@@ -2,11 +2,11 @@
 
 namespace App\Controller\Auth;
 
+use App\Entity\Client;
 use App\Entity\OAuth2ClientProfile;
 use App\Entity\OAuth2UserConsent;
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
-use League\Bundle\OAuth2ServerBundle\Model\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

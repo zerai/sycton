@@ -15,6 +15,10 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+            LeagueOAuth2ServerBundle:
+                is_bundle: true
+                prefix: '"League\Bundle\OAuth2ServerBundle\Model'
+                alias: LeagueOAuth2ServerBundle
 
 when@test:
     doctrine:
