@@ -33,7 +33,7 @@ FROM step_2 as step_3
 #RUN docker-php-ext-install curl intl mbstring zip bcmath imap opcache gd pdo_pgsql pcntl sockets ampq
 #RUN docker-php-ext-enable curl intl mbstring zip bcmath imap opcache gd pdo_pgsql pcntl sockets
 COPY --from=mlocati/php-extension-installer:latest /usr/bin/install-php-extensions /usr/bin/install-php-extensions
-RUN install-php-extensions curl intl mbstring zip bcmath imap opcache gd pdo_pgsql pcntl sockets iconv amqp openswoole-^22.0 inotify
+RUN install-php-extensions curl intl mbstring zip bcmath imap opcache gd pdo_pgsql pcntl sockets iconv amqp openssl openswoole-^22.0 inotify
 
 
 # Cleaning
