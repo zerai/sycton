@@ -2,5 +2,5 @@ doctrine_migrations:
     migrations_paths:
         # namespace is arbitrary but should be different from App\Migrations
         # as migrations classes should NOT be autoloaded
-        'BlueServiceDbigrations': '%kernel.project_dir%/migrations'
+        'BlueServiceDbMigrations': '%kernel.project_dir%/migrations'
     enable_profiler: false
