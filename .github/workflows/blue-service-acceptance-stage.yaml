@@ -34,7 +34,7 @@ env:
 jobs:
   app-preconditions-checks:
     name: App preconditions checks (php-${{ matrix.php }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
     continue-on-error: ${{ matrix.is-php-experimental }}
     services:
@@ -145,7 +145,7 @@ jobs:
 
   integration-test:
     name: Integration tests (php-${{ matrix.php }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs:
       - app-preconditions-checks
     timeout-minutes: 15
@@ -277,7 +277,7 @@ jobs:
 
   functional-test:
     name: Functional tests (php-${{ matrix.php }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs:
       - app-preconditions-checks
     timeout-minutes: 15
@@ -412,7 +412,7 @@ jobs:
 
 #  behat-test:
 #    name: Behat acceptance tests (php-${{ matrix.php }})
-#    runs-on: ubuntu-20.04
+#    runs-on: ubuntu-22.04
 #    needs:
 #      - app-preconditions-checks
 #    timeout-minutes: 15
