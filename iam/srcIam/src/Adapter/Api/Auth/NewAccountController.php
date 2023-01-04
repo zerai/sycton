@@ -16,29 +16,29 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class NewAccountController extends AbstractController
 {
-    private CommandBus $commandBus;
-
-    private UserPasswordHasherInterface $passwordHasher;
-
-    public function __construct(CommandBus $commandBus, UserPasswordHasherInterface $passwordHasher)
-    {
-        $this->commandBus = $commandBus;
-        $this->passwordHasher = $passwordHasher;
-    }
-
-    #[Route("/auth/register", name: 'auth_register', methods: ["POST"])]
-    public function register(Request $request): Response
-    {
-        $plaintextPassword = $request->request->get('hashedPassword');
-
-        $command = new RegisterUser(
-            $request->request->get('email'),
-            SecurityUser::encryptPassword($plaintextPassword, $this->passwordHasher),
-            Uuid::uuid4()->toString()
-        );
-
-        $this->commandBus->sendWithRouting(User::REGISTER_USER, $command);
-
-        return new RedirectResponse("/");
-    }
+//    private CommandBus $commandBus;
+//
+//    private UserPasswordHasherInterface $passwordHasher;
+//
+//    public function __construct(CommandBus $commandBus, UserPasswordHasherInterface $passwordHasher)
+//    {
+//        $this->commandBus = $commandBus;
+//        $this->passwordHasher = $passwordHasher;
+//    }
+//
+//    #[Route("/auth/register", name: 'auth_register', methods: ["POST"])]
+//    public function register(Request $request): Response
+//    {
+//        $plaintextPassword = $request->request->get('hashedPassword');
+//
+//        $command = new RegisterUser(
+//            $request->request->get('email'),
+//            SecurityUser::encryptPassword($plaintextPassword, $this->passwordHasher),
+//            Uuid::uuid4()->toString()
+//        );
+//
+//        $this->commandBus->sendWithRouting(User::REGISTER_USER, $command);
+//
+//        return new RedirectResponse("/");
+//    }
 }

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.4.0@62db5d4f6a7ae0a20f7cc5a4952d730272fc0863">
+  <file src="src/Command/BootstrapCommand.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$clientDemo</code>
+    </ArgumentTypeCoercion>
+    <InvalidStringClass occurrences="1">
+      <code>new $this-&gt;clientFqcn($name, $identifier, $secret)</code>
+    </InvalidStringClass>
+    <UnusedParam occurrences="1">
+      <code>$clientDescription</code>
+    </UnusedParam>
+  </file>
+  <file src="src/Controller/Auth/OauthConsentController.php">
+    <MixedArrayOffset occurrences="1">
+      <code>$scopeNames[$scope]</code>
+    </MixedArrayOffset>
+    <PossiblyNullArgument occurrences="1">
+      <code>$request-&gt;query-&gt;get('scope')</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="1">
+      <code>getName</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/Controller/Auth/OauthWellKnownController.php">
+    <MixedArgument occurrences="2">
+      <code>$details['rsa']['e']</code>
+      <code>$details['rsa']['n']</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="2">
+      <code>$details['rsa']['e']</code>
+      <code>$details['rsa']['n']</code>
+    </MixedArrayAccess>
+    <PossiblyNullOperand occurrences="1">
+      <code>$kernelDirectory</code>
+    </PossiblyNullOperand>
+  </file>
+  <file src="src/Entity/AccessToken.php">
+    <MissingReturnType occurrences="1">
+      <code>convertToJWT</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>$this-&gt;getIdentifier()</code>
+    </MixedArgument>
+  </file>
+  <file src="src/Entity/OAuth2UserConsent.php">
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>$scopes</code>
+    </PossiblyNullPropertyAssignmentValue>
+  </file>
+  <file src="src/Entity/User.php">
+    <InvalidNullableReturnType occurrences="1">
+      <code>string</code>
+    </InvalidNullableReturnType>
+    <MissingReturnType occurrences="1">
+      <code>eraseCredentials</code>
+    </MissingReturnType>
+    <MixedReturnTypeCoercion occurrences="4">
+      <code>$this-&gt;oAuth2UserConsents</code>
+      <code>Collection&lt;int, OAuth2UserConsent&gt;</code>
+      <code>array</code>
+      <code>array_unique($roles)</code>
+    </MixedReturnTypeCoercion>
+    <NullArgument occurrences="1">
+      <code>null</code>
+    </NullArgument>
+    <NullableReturnStatement occurrences="1">
+      <code>$this-&gt;password</code>
+    </NullableReturnStatement>
+    <PossiblyNullReference occurrences="1">
+      <code>toRfc4122</code>
+    </PossiblyNullReference>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>! $this-&gt;oAuth2UserConsents-&gt;contains($oAuth2UserConsent)</code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="src/EventSubscriber/AuthorizationCodeSubscriber.php">
+    <DeprecatedClass occurrences="2">
+      <code>Security</code>
+      <code>Security</code>
+    </DeprecatedClass>
+    <MissingPropertyType occurrences="1">
+      <code>$firewallName</code>
+    </MissingPropertyType>
+    <MixedArgument occurrences="2">
+      <code>$request-&gt;getSession()-&gt;get('consent_granted')</code>
+      <code>$this-&gt;firewallName</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="1">
+      <code>getName</code>
+    </MixedMethodCall>
+    <PossiblyNullReference occurrences="1">
+      <code>getSession</code>
+    </PossiblyNullReference>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getFirewallConfig</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Repository/OAuth2ClientProfileRepository.php">
+    <LessSpecificImplementedReturnType occurrences="2">
+      <code>OAuth2ClientProfile[]</code>
+      <code>OAuth2ClientProfile[]</code>
+    </LessSpecificImplementedReturnType>
+  </file>
+  <file src="src/Repository/OAuth2UserConsentRepository.php">
+    <LessSpecificImplementedReturnType occurrences="2">
+      <code>OAuth2UserConsent[]</code>
+      <code>OAuth2UserConsent[]</code>
+    </LessSpecificImplementedReturnType>
+  </file>
+  <file src="src/Repository/UserRepository.php">
+    <LessSpecificImplementedReturnType occurrences="2">
+      <code>User[]</code>
+      <code>User[]</code>
+    </LessSpecificImplementedReturnType>
+    <UnusedVariable occurrences="1">
+      <code>$entityManager</code>
+    </UnusedVariable>
+  </file>
+</files>

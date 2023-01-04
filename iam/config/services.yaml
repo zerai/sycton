@@ -24,6 +24,14 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    League\OAuth2\Server\Repositories\AccessTokenRepositoryInterface:
+        class: App\Repository\AccessTokenRepository
+        decorates: 'League\Bundle\OAuth2ServerBundle\Repository\AccessTokenRepository'
+
+    League\OAuth2\Server\Repositories\ClientRepositoryInterface:
+        class: App\Repository\ClientRepository
+        decorates: 'League\Bundle\OAuth2ServerBundle\Repository\ClientRepository'
+
 
     ####################################################################################################################
     ####################################################################################################################
