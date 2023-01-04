@@ -9,12 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    public function index(): Response
+    public function __invoke(): Response
     {
-        return $this->render('index/index.html.twig', [
+        return $this->json([
             'serviceName' => 'Iam service',
             'role' => 'Authorization server',
-            'controller_name' => 'Authorization server',
         ]);
     }
 }
