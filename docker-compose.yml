@@ -53,7 +53,7 @@ services:
 
   php-blue:
     build:
-      context: ./docker/php-cli
+      context: ./docker/php-swoole
       dockerfile: Dockerfile
     ports:
       - "8020:80"
@@ -67,9 +67,15 @@ services:
       APP_DEBUG: "true"
       DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+      # -- Workerman runtime envs
       APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
       PORT: 80
       LOGFILE: /app/var/workerman.log
+      # -- Swoole runtime envs
+#      APP_RUNTIME: Zerai\OpenSwoole\Runtime
+#      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
+#      SWOOLE_PORT: ${SWOOLE_PORT-80}
+#      SWOOLE_HOT_RELOAD: 1
     command: "php /app/public/index.php start"
 
 #  projection-blue:
