@@ -17,7 +17,7 @@ doctrine:
                 alias: App
             LeagueOAuth2ServerBundle:
                 is_bundle: true
-                prefix: '"League\Bundle\OAuth2ServerBundle\Model'
+                prefix: 'League\Bundle\OAuth2ServerBundle\Model'
                 alias: LeagueOAuth2ServerBundle
 
 when@test:
