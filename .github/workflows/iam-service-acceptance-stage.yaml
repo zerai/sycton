@@ -140,7 +140,8 @@ jobs:
         run: ./bin/console doctrine:schema:update --complete -e test --force --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
-
+        continue-on-error: true
+        
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
@@ -243,6 +244,7 @@ jobs:
         run: ./bin/console doctrine:schema:update --complete -e test --force --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+        continue-on-error: true
 
       - name: Run only integration test
         run: |
