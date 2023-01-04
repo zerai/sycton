@@ -8,6 +8,7 @@ class PlaceholderHomeControllerTest extends WebTestCase
 {
     public function testPlaceholdeHomeController(): void
     {
+        self::markTestSkipped('remove... obsolete');
         $client = static::createClient();
 
         $client->request('GET', '/');
