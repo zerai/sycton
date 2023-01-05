@@ -1,12 +1,32 @@
 lexik_jose:
-    ttl: 1000
+#    ttl: 1000
+#    server_name: '%env(SL_JOSE_BRIDGE_SERVER_NAME)%'
+#    key_set: '%env(SL_JOSE_BRIDGE_SIGNATURE_KEYSET)%'
+#    key_index: '93wgUTMbJm8ZN7MUTQx7xYRpifPiY7GAaAZKTZ9Y3MI'
+#    signature_algorithm: 'HS512'
+#    encryption:
+#        enabled: true
+#        key_set: '%env(SL_JOSE_BRIDGE_ENCRYPTION_KEYSET)%'
+#        key_index: 'zCPR8Cv8jbWW1wBckl5LoZt-_bX5vzBJpr1esJbk2aU'
+#        key_encryption_algorithm: 'A256GCMKW'
+#        content_encryption_algorithm: 'A256GCM'
+
+    # ttl - mandatory, but not used for token verification
+    ttl: 3600
+    # server_name - 'https://myidentityserver.example.com/oauth/anonymous'
     server_name: '%env(SL_JOSE_BRIDGE_SERVER_NAME)%'
-    key_set: '%env(SL_JOSE_BRIDGE_SIGNATURE_KEYSET)%'
-    key_index: '93wgUTMbJm8ZN7MUTQx7xYRpifPiY7GAaAZKTZ9Y3MI'
-    signature_algorithm: 'HS512'
-    encryption:
-        enabled: true
-        key_set: '%env(SL_JOSE_BRIDGE_ENCRYPTION_KEYSET)%'
-        key_index: 'zCPR8Cv8jbWW1wBckl5LoZt-_bX5vzBJpr1esJbk2aU'
-        key_encryption_algorithm: 'A256GCMKW'
-        content_encryption_algorithm: 'A256GCM'
+    # key_index - # mandatory, but not used for token verification
+    key_index: 0
+    # audience - the name of the registered clientApp
+    audience: 'demo-client'
+    key_set_remote:
+        type: 'jku'
+        url: 'https://myidentityserver.example.com/oauth/anonymous/jwks'
+    # signature_algoritm - should be the value of the alg claim that will be used in the incoming tokens.
+    signature_algorithm: "RS256"
+
+    jose:
+        jku_factory:
+            enabled: true
+            client: 'httplug.client.app' # The Httplug client
+            request_factory: 'Psr\Http\Message\RequestFactoryInterface'
