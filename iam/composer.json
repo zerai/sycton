@@ -1,7 +1,7 @@
 {
-    "name": "opendaje/symfony-es-cqrs-boilerplate",
+    "name": "zerai/sycton-iam",
     "type": "project",
-    "description": "symfony es cqrs boilerplate",
+    "description": "funny stuff",
     "license": "proprietary",
     "require": {
         "php": ">=8.1",
