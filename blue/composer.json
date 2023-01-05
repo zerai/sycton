@@ -20,6 +20,8 @@
         "php-http/cache-plugin": "^1.7",
         "php-http/curl-client": "^2.2",
         "php-http/httplug-bundle": "^1.27",
+        "sensio/framework-extra-bundle": "^6.2",
+        "spomky-labs/lexik-jose-bridge": ">=3.0.2",
         "symfony/console": "6.1.*",
         "symfony/dotenv": "6.1.*",
         "symfony/flex": "^1.17 || ^2",
@@ -30,6 +32,7 @@
         "symfony/security-bundle": "6.1.*",
         "symfony/uid": "6.1.*",
         "symfony/yaml": "6.1.*",
+        "web-token/jwt-signature-algorithm-rsa": "^3.1",
         "zerai/openswoole-runtime": "^0.1.0",
         "zerai/workerman-symfony-runtime": "@dev"
     },
