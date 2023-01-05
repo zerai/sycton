@@ -7,7 +7,7 @@
 
 ## iam service 
 
-Endpoint: [127.0.0.1:8010](http://127.0.0.1:8010)
+Endpoint: [iam.localtest.me](http://iam.localtest.me)
 
 OpenApi spec: [127.0.0.1:8011](http://127.0.0.1:8011)
 
@@ -16,7 +16,7 @@ Stack: [ php-cli:8.1 - swoole - symfony-6.2 ]
 
 ## Blue service
 
-Endpoint: [127.0.0.1:8020](http://127.0.0.1:8020)
+Endpoint: [blue.localtest.me](http://blue.localtest.me)
 
 OpenApi spec: [127.0.0.1:8021](http://127.0.0.1:8021)
 
@@ -25,7 +25,7 @@ Stack: [ php-cli:8.1 - swoole - symfony-6.1 ]
 
 ## Red service
 
-Endpoint: [127.0.0.1:8030](http://127.0.0.1:8030)
+Endpoint: [red.localtest.me](http://red.localtest.me)
 
 OpenApi spec: [127.0.0.1:8031](http://127.0.0.1:8031)
 
