@@ -15,7 +15,7 @@ class SecuredApiController extends AbstractController
     {
         return new JsonResponse([
             "serviceName" => "Blue service",
-            "route" => "secured by firewall"
+            "route" => "secured by firewall",
         ]);
     }
 }
