@@ -10,6 +10,7 @@ league_oauth2_server:
         default: ['email']
     persistence:
         doctrine: null
+    role_prefix: ROLE_OAUTH2_
 
 when@test:
     league_oauth2_server:
