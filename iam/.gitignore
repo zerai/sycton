@@ -30,3 +30,8 @@ todo.txt
 ###> bamarni/composer-bin-plugin ###
 /tools/**/vendor
 ###< bamarni/composer-bin-plugin ###
+
+###> league/oauth2-server-bundle ###
+/config/jwt/*.pem
+/config/jwt/*.key
+###< league/oauth2-server-bundle ###
