@@ -24,7 +24,17 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        api:
+            pattern: ^/api
+            security: true
+            context: api
+            stateless: true
+            provider: all_users
+            oauth2: true
         main:
+            pattern: ^/
+            security: true
+            context: api
             lazy: true
             provider: all_users
 
@@ -34,6 +44,7 @@ security:
                 check_path: login
             logout:
                 path: logout
+                target: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -44,8 +55,21 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/token, role: PUBLIC_ACCESS }
+        - { path: ^/authorize, roles: PUBLIC_ACCESS }
+
+        - { path: ^/login, role: PUBLIC_ACCESS }
+        - { path: ^/logout, roles: PUBLIC_ACCESS }
+        - { path: ^/auth/register, roles: PUBLIC_ACCESS }
+
+
+        - { path: ^/api, role: ROLE_OAUTH2_EMAIL ROLE_USER }
+
         - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+
+
+
+
 
 when@test:
     security:

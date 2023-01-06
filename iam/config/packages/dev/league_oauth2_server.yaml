@@ -1,0 +1,9 @@
+league_oauth2_server:
+    authorization_server:
+        private_key: '%kernel.project_dir%/config/jwt/dev/private.key'
+        private_key_passphrase: null
+        encryption_key: 'a_dumb_key'
+        encryption_key_type: 'plain'
+    resource_server:
+        public_key: '%kernel.project_dir%/config/jwt/dev/public.key'
+

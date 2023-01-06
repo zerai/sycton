@@ -65,6 +65,8 @@ services:
 
   db-iam:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
+    networks:
+      - syctone
     ports:
       - "5432:5432"
     environment:
