@@ -34,4 +34,5 @@ todo.txt
 ###> league/oauth2-server-bundle ###
 /config/jwt/*.pem
 /config/jwt/*.key
+!config/jwt/dev
 ###< league/oauth2-server-bundle ###
