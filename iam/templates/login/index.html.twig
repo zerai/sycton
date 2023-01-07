@@ -1,20 +1,36 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/assets/bootstrap-4.0.0-dist/css/floating-labels.css') }}">
+{% endblock %}
+
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <div class="container-fluid">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="row-cols-6">
+            <form action="{{ path('login') }}" method="post" class="form-signin">
+                <div class="form-label-group">
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="username">Email address</label>
+                </div>
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                <div class="form-label-group">
+                    <input type="password" id="password" name="_password" class="form-control" placeholder="Password" required>
+                    <label for="password">Password</label>
+                </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
-
-        {# If you want to control the URL the user is redirected to on success
-        <input type="hidden" name="_target_path" value="/account"/> #}
-
-        <button type="submit">login</button>
-    </form>
+{#                <div class="checkbox mb-3">#}
+{#                    <label>#}
+{#                        <input type="checkbox" value="remember-me"> Remember me#}
+{#                    </label>#}
+{#                </div>#}
+                {#        #}{# If you want to control the URL the user is redirected to on success#}
+                {#        <input type="hidden" name="_target_path" value="/account"/> #}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">login</button>
+                <p class="mt-5 mb-3 text-muted text-center">&copy; 2022-2023</p>
+            </form>
+        </div>
+    </div>
 {% endblock %}
