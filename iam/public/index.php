@@ -7,7 +7,9 @@ $_SERVER['APP_RUNTIME_OPTIONS'] = [
     'settings' => [
         \Swoole\Constant::OPTION_WORKER_NUM => 2,
         \Swoole\Constant::OPTION_ENABLE_STATIC_HANDLER => true,
-        \Swoole\Constant::OPTION_DOCUMENT_ROOT => dirname(__DIR__).'/public'
+        \Swoole\Constant::OPTION_DOCUMENT_ROOT => dirname(__DIR__).'/public',
+        \Swoole\Constant::OPTION_ENABLE_STATIC_HANDLER => true,
+        \Swoole\Constant::OPTION_STATIC_HANDLER_LOCATIONS => ['/assets'],
     ],
 ];
 
