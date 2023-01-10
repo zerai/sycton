@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
+<files psalm-version="5.4.0@62db5d4f6a7ae0a20f7cc5a4952d730272fc0863">
   <file src="src/Repository/ExternalIncomingMessageRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
+    <LessSpecificImplementedReturnType occurrences="3">
+      <code>ExternalIncomingMessage[]</code>
       <code>ExternalIncomingMessage[]</code>
       <code>ExternalIncomingMessage[]</code>
     </LessSpecificImplementedReturnType>
-  </file>
-  <file src="vendor/laminas/laminas-code/src/Generator/TypeGenerator.php">
-    <ParseError occurrences="1">
-      <code>UnionType</code>
-    </ParseError>
-  </file>
-  <file src="vendor/laminas/laminas-code/src/Generator/TypeGenerator/IntersectionType.php">
-    <ParseError occurrences="1">
-      <code>array</code>
-    </ParseError>
-  </file>
-  <file src="vendor/monolog/monolog/src/Monolog/Level.php">
-    <ParseError occurrences="4">
-      <code>$name</code>
-      <code>Level</code>
-      <code>case</code>
-      <code>}</code>
-    </ParseError>
-  </file>
-  <file src="vendor/monolog/monolog/src/Monolog/LogRecord.php">
-    <ParseError occurrences="1">
-      <code>\DateTimeImmutable</code>
-    </ParseError>
   </file>
 </files>
