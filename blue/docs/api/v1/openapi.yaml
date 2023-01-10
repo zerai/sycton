@@ -11,7 +11,7 @@ info:
     url: 'https://github.com/zerai/sycton/blob/main/LICENSE'
   description: Blue Service
 servers:
-  - url: 'http://localhost:8021'
+  - url: 'http://blue.localtest.me'
     description: Local
 paths:
   '/api/service':

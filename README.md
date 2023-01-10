@@ -9,7 +9,7 @@
 
 Endpoint: [http://iam.localtest.me](http://iam.localtest.me)
 
-OpenApi spec: [http://127.0.0.1:8011](http://127.0.0.1:8011)
+OpenApi spec: [http://swagger.iam.localtest.me](http://swagger.iam.localtest.me)
 
 Stack: [ php-cli:8.1 - swoole - symfony-6.2 ]
 
@@ -18,7 +18,7 @@ Stack: [ php-cli:8.1 - swoole - symfony-6.2 ]
 
 Endpoint: [http://blue.localtest.me](http://blue.localtest.me)
 
-OpenApi spec: [http://127.0.0.1:8021](http://127.0.0.1:8021)
+OpenApi spec: [http://swagger.blue.localtest.me](http://swagger.blue.localtest.me)
 
 Stack: [ php-cli:8.1 - swoole - symfony-6.1 ]
 
@@ -27,7 +27,7 @@ Stack: [ php-cli:8.1 - swoole - symfony-6.1 ]
 
 Endpoint: [http://red.localtest.me](http://red.localtest.me)
 
-OpenApi spec: [http://127.0.0.1:8031](http://127.0.0.1:8031)
+OpenApi spec: [http://swagger.red.localtest.me](http://swagger.red.localtest.me)
 
 Stack: [ php-cli:8.1 - workerman - symfony-6.1 ]
 
