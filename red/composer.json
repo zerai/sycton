@@ -15,15 +15,15 @@
         "ecotone/pdo-event-sourcing": "^1.8",
         "ecotone/symfony-bundle": "^1.5",
         "runtime/swoole": "^0.3.1",
-        "symfony/console": "6.*",
-        "symfony/dotenv": "6.*",
+        "symfony/console": "6.2.*",
+        "symfony/dotenv": "6.2.*",
         "symfony/flex": "^2",
-        "symfony/framework-bundle": "6.*",
+        "symfony/framework-bundle": "6.2.*",
         "symfony/monolog-bundle": "^3.8",
-        "symfony/proxy-manager-bridge": "6.*",
-        "symfony/runtime": "6.*",
-        "symfony/twig-bundle": "6.1.*",
-        "symfony/yaml": "6.*",
+        "symfony/proxy-manager-bridge": "6.2.*",
+        "symfony/runtime": "6.2.*",
+        "symfony/twig-bundle": "6.2.*",
+        "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "^2.12 || ^3.0",
         "twig/twig": "^2.12 || ^3.0",
         "zerai/openswoole-runtime": "^0.1.0",
@@ -41,12 +41,12 @@
         "bamarni/composer-bin-plugin": "^1.4",
         "dama/doctrine-test-bundle": "^7.1",
         "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "6.1.*",
-        "symfony/css-selector": "6.1.*",
+        "symfony/browser-kit": "6.2.*",
+        "symfony/css-selector": "6.2.*",
         "symfony/maker-bundle": "^1.48",
         "symfony/phpunit-bridge": "^6.0",
-        "symfony/stopwatch": "6.1.*",
-        "symfony/web-profiler-bundle": "6.1.*"
+        "symfony/stopwatch": "6.2.*",
+        "symfony/web-profiler-bundle": "6.2.*"
     },
     "config": {
         "allow-plugins": {
@@ -69,7 +69,7 @@
         },
         "symfony": {
             "allow-contrib": false,
-            "require": "6.1.*"
+            "require": "6.2.*"
         }
     },
     "autoload": {
