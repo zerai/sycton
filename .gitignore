@@ -1,2 +1,7 @@
 /.idea
 /.vscode
+
+/catalog
+/basket
+/ordering
+/payment
