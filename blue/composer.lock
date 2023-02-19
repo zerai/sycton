@@ -8986,16 +8986,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v6.1.9",
+            "version": "v6.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "a90ee25248cacfe0b1eab3b6c20e492ec5e22357"
+                "reference": "750a731856cd1b01c15ee0ea241addca75a376e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/a90ee25248cacfe0b1eab3b6c20e492ec5e22357",
-                "reference": "a90ee25248cacfe0b1eab3b6c20e492ec5e22357",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/750a731856cd1b01c15ee0ea241addca75a376e0",
+                "reference": "750a731856cd1b01c15ee0ea241addca75a376e0",
                 "shasum": ""
             },
             "require": {
@@ -9031,7 +9031,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v6.1.9"
+                "source": "https://github.com/symfony/css-selector/tree/v6.1.11"
             },
             "funding": [
                 {
@@ -9047,7 +9047,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-12-28T14:22:24+00:00"
+            "time": "2023-01-01T08:36:55+00:00"
         },
         {
             "name": "symfony/dom-crawler",
