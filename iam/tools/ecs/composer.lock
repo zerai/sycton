@@ -9,20 +9,20 @@
     "packages-dev": [
         {
             "name": "symplify/easy-coding-standard",
-            "version": "10.0.8",
+            "version": "10.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "12ef3b0f500d485e6313926e5f2900a74c578394"
+                "reference": "c93878b3c052321231519b6540e227380f90be17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/12ef3b0f500d485e6313926e5f2900a74c578394",
-                "reference": "12ef3b0f500d485e6313926e5f2900a74c578394",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/c93878b3c052321231519b6540e227380f90be17",
+                "reference": "c93878b3c052321231519b6540e227380f90be17",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "conflict": {
                 "friendsofphp/php-cs-fixer": "<3.0",
@@ -34,7 +34,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "9.5-dev"
+                    "dev-main": "10.3-dev"
                 }
             },
             "autoload": {
@@ -48,7 +48,7 @@
             ],
             "description": "Prefixed scoped version of ECS package",
             "support": {
-                "source": "https://github.com/symplify/easy-coding-standard/tree/10.0.8"
+                "source": "https://github.com/symplify/easy-coding-standard/tree/10.3.3"
             },
             "funding": [
                 {
@@ -60,7 +60,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-31T12:19:54+00:00"
+            "time": "2022-06-13T14:03:37+00:00"
         }
     ],
     "aliases": [],
@@ -70,5 +70,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
