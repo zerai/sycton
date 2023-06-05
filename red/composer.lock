@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "557d7e7e81e09b4557b6c1397125f86e",
+    "content-hash": "8a56d97459346a178abbb03cb7c29c57",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -4723,16 +4723,16 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "v6.2.0",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
-                "reference": "bdc3766f31a0944cadfcdf52170ad3fb80b1540b"
+                "reference": "ceadb434fe2a6763a03d2d110441745834f3dd1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/bdc3766f31a0944cadfcdf52170ad3fb80b1540b",
-                "reference": "bdc3766f31a0944cadfcdf52170ad3fb80b1540b",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/ceadb434fe2a6763a03d2d110441745834f3dd1e",
+                "reference": "ceadb434fe2a6763a03d2d110441745834f3dd1e",
                 "shasum": ""
             },
             "require": {
@@ -4777,7 +4777,7 @@
                 "environment"
             ],
             "support": {
-                "source": "https://github.com/symfony/dotenv/tree/v6.2.0"
+                "source": "https://github.com/symfony/dotenv/tree/v6.3.0"
             },
             "funding": [
                 {
@@ -4793,7 +4793,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-30T13:41:10+00:00"
+            "time": "2023-04-21T14:41:17+00:00"
         },
         {
             "name": "symfony/error-handler",
