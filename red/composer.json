@@ -23,7 +23,7 @@
         "symfony/proxy-manager-bridge": "6.2.*",
         "symfony/runtime": "6.2.*",
         "symfony/twig-bundle": "6.2.*",
-        "symfony/yaml": "6.2.*",
+        "symfony/yaml": "6.3.*",
         "twig/extra-bundle": "^2.12 || ^3.0",
         "twig/twig": "^2.12 || ^3.0",
         "zerai/openswoole-runtime": "^0.1.0",
