@@ -23,7 +23,7 @@
         "symfony/monolog-bundle": "^3.7",
         "symfony/proxy-manager-bridge": "6.1.*",
         "symfony/runtime": "6.1.*",
-        "symfony/yaml": "6.1.*",
+        "symfony/yaml": "6.3.*",
         "zerai/openswoole-runtime": "^0.1.0",
         "zerai/workerman-symfony-runtime": "@dev"
     },
