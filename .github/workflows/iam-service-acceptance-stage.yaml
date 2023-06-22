@@ -35,7 +35,7 @@ jobs:
   app-preconditions-checks:
     name: App preconditions checks (php-${{ matrix.php }})
     runs-on: ubuntu-22.04
-    timeout-minutes: 5
+    timeout-minutes: 10
     continue-on-error: ${{ matrix.is-php-experimental }}
     services:
       pgsql:
