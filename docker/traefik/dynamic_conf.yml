@@ -1,0 +1,15 @@
+# Dynamic configuration
+tls:
+  certificates:
+#    - certFile: /etc/traefik/localtestme.crt
+#      keyFile: /etc/traefik/localtestme.key
+    - certFile: /etc/traefik/_wildcard.localtest.me.pem
+      keyFile: /etc/traefik/_wildcard.localtest.me-key.pem
+
+      #stores:
+        #- default
+    # Note that since no store is defined,
+    # the certificate below will be stored in the `default` store.
+    #- certFile: /path/to/other-domain.cert
+    #  keyFile: /path/to/other-domain.key
+

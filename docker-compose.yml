@@ -12,11 +12,24 @@ services:
     networks:
       - syctone
     command:
-      #- "--log.level=DEBUG"
+      - '--global.checknewversion=true'
+      - '--global.sendanonymoususage=false'
+      - "--log.level=DEBUG"
+      - "--accesslog"
+      - "--api"
+      - "--api.dashboard=true"
       - "--api.insecure=true"
+
       - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.filename=/etc/traefik/certificates.yml"
+      - "--providers.docker.exposedbydefault=true"
+      #- "--providers.docker.exposedbydefault=false"
+      - "--providers.docker.defaultrule=Host(`{{ normalize .Name }}.localtest.me`)"
+
       - "--entrypoints.web.address=:80"
+      #- "--entryPoints.web.forwardedHeaders.insecure"
+      - "--entrypoints.websecure.address=:443"
+
       #- "--entryPoints.metrics.address=:8082"
       #- "--metrics.prometheus.entryPoint=metrics"
       #- "--metrics.prometheus.addrouterslabels=true"
@@ -24,9 +37,16 @@ services:
     ports:
       - "80:80"  # The HTTP port
       - "8080:8080" # The Web UI (enabled by --api.insecure=true)
+      - "443:443"
       #- "8082:8082" # The prometheus port
+    labels:
+      traefik.http.routers.traefik-http.entrypoints: web
+      traefik.http.routers.traefik-http.service: api@internal
+      traefik.http.routers.traefik-http.rule: Host(`localtest.me`)
+
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - "./docker/traefik:/etc/traefik"
 
 
   ######################################################################################################################
@@ -59,9 +79,13 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=syctone"
-      - "traefik.http.routers.php-iam.entrypoints=web"
+      - "traefik.http.routers.php-iam.entrypoints=websecure"
       - "traefik.http.routers.php-iam.rule=Host(`iam.localtest.me`)"
       - "traefik.http.services.php-iam.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.php-iam.tls=true"
+      - "traefik.http.routers.php-iam.tls.domains[0].main=iam.localtest.me"
+      - "traefik.http.routers.php-iam.tls.domains[0].sans=iam-dev.localtest.me,iam-test.localtest.me"
 
   db-iam:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
@@ -123,9 +147,14 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=syctone"
-      - "traefik.http.routers.php-blue.entrypoints=web"
+      - "traefik.http.routers.php-blue.entrypoints=websecure"
       - "traefik.http.routers.php-blue.rule=Host(`blue.localtest.me`)"
       - "traefik.http.services.php-blue.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.php-blue.tls=true"
+      - "traefik.http.routers.php-blue.tls.domains[0].main=blue.localtest.me"
+      - "traefik.http.routers.php-blue.tls.domains[0].sans=blue-dev.localtest.me,blue-test.localtest.me"
+
 
   db-blue:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
@@ -186,9 +215,14 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=syctone"
-      - "traefik.http.routers.php-red.entrypoints=web"
+      - "traefik.http.routers.php-red.entrypoints=websecure"
       - "traefik.http.routers.php-red.rule=Host(`red.localtest.me`)"
       - "traefik.http.services.php-red.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.php-red.tls=true"
+      - "traefik.http.routers.php-red.tls.domains[0].main=red.localtest.me"
+      - "traefik.http.routers.php-red.tls.domains[0].sans=red-dev.localtest.me,red-test.localtest.me"
+
 
   db-red:
     image: postgres:${POSTGRES_VERSION:-13}-alpine
