@@ -98,6 +98,15 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
+        },
+        "cs": "./vendor/bin/ecs",
+        "cs:fix": "./vendor/bin/ecs --fix",
+        "phpstan": "./vendor/bin/phpstan",
+        "psalm": "./vendor/bin/psalm",
+        "rc": "./vendor/bin/rector --dry-run",
+        "rc:fix": "./vendor/bin/rector",
+        "tf": "./bin/phpunit --testsuite=functional --testdox",
+        "ti": "./bin/phpunit --testsuite=integration --testdox",
+        "tu": "./bin/phpunit --testsuite=unit --testdox"
     }
 }
