@@ -5027,16 +5027,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.2.11",
+            "version": "v6.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "5aa03db8ef0a5457c316ec580e69562d97734c77"
+                "reference": "dad41ae62bacb7fd96c463278ad583f81ccdffb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/5aa03db8ef0a5457c316ec580e69562d97734c77",
-                "reference": "5aa03db8ef0a5457c316ec580e69562d97734c77",
+                "url": "https://api.github.com/repos/symfony/console/zipball/dad41ae62bacb7fd96c463278ad583f81ccdffb5",
+                "reference": "dad41ae62bacb7fd96c463278ad583f81ccdffb5",
                 "shasum": ""
             },
             "require": {
@@ -5103,7 +5103,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.2.11"
+                "source": "https://github.com/symfony/console/tree/v6.2.12"
             },
             "funding": [
                 {
@@ -5119,7 +5119,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-26T08:16:21+00:00"
+            "time": "2023-05-29T12:46:33+00:00"
         },
         {
             "name": "symfony/dependency-injection",
