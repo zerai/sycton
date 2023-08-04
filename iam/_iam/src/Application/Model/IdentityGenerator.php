@@ -4,5 +4,5 @@ namespace IdentityAccess\Application\Model;
 
 interface IdentityGenerator
 {
-    public function generateUuid();
+    public function generateUuid(): string;
 }

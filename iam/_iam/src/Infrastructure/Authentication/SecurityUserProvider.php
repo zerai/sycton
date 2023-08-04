@@ -30,6 +30,7 @@ class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInt
     public function loadUserByIdentifier($identifier): UserInterface
     {
         try {
+            /** @var SecurityUser $securityUser */
             $securityUser = $this->queryBus->sendWithRouting(UserList::GET_SECURITY_USER, $identifier);
 
             return $securityUser;
@@ -45,6 +46,8 @@ class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInt
     }
 
     /**
+     * @param string $username
+     *
      * @deprecated since Symfony 5.3, loadUserByIdentifier() is used instead
      */
     public function loadUserByUsername($username): UserInterface
