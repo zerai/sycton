@@ -37,7 +37,7 @@ services:
     ####################################################################################################################
 
     IdentityAccess\:
-        resource: '../srcIam/src/'
+        resource: '../_iam/src/'
 
     Doctrine\DBAL\Connection:
         factory: [ "Doctrine\\DBAL\\DriverManager","getConnection" ]

@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.23.0@f1fe6ff483bf325c803df9f510d09a03fd796f88">
+<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+  <file src="_iam/src/Adapter/Api/Auth/LogoutController.php">
+    <MissingReturnType occurrences="1">
+      <code>logout</code>
+    </MissingReturnType>
+  </file>
+  <file src="_iam/src/Adapter/Api/Auth/NewAccountController.php">
+    <InvalidArgument occurrences="2">
+      <code>$plaintextPassword</code>
+      <code>$request-&gt;request-&gt;get('email')</code>
+    </InvalidArgument>
+  </file>
+  <file src="_iam/src/Adapter/Api/Users/ChangePasswordController.php">
+    <InvalidArgument occurrences="2">
+      <code>$request-&gt;request-&gt;get('password')</code>
+      <code>$request-&gt;request-&gt;get('userId')</code>
+    </InvalidArgument>
+  </file>
+  <file src="_iam/src/Adapter/Api/Users/UserListController.php">
+    <MixedAssignment occurrences="1">
+      <code>$users</code>
+    </MixedAssignment>
+  </file>
+  <file src="_iam/src/Application/Model/Identity/ReadModel/UserList.php">
+    <MixedArgument occurrences="2">
+      <code>$userData['email']</code>
+      <code>$userData['password']</code>
+    </MixedArgument>
+  </file>
+  <file src="_iam/src/Application/Model/Identity/User.php">
+    <MissingConstructor occurrences="3">
+      <code>$email</code>
+      <code>$hashedPassword</code>
+      <code>$userId</code>
+    </MissingConstructor>
+  </file>
+  <file src="_iam/src/Application/Model/Identity/UserId.php">
+    <UnsafeInstantiation occurrences="1">
+      <code>new static($identity)</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="_iam/src/Infrastructure/Authentication/SecurityUser.php">
+    <MixedReturnTypeCoercion occurrences="2">
+      <code>array</code>
+      <code>array_unique($roles)</code>
+    </MixedReturnTypeCoercion>
+  </file>
+  <file src="_iam/src/Infrastructure/Authentication/SecurityUserProvider.php">
+    <MissingParamType occurrences="2">
+      <code>$class</code>
+      <code>$identifier</code>
+    </MissingParamType>
+    <MixedArgument occurrences="1">
+      <code>$class</code>
+    </MixedArgument>
+  </file>
+  <file src="_iam/src/Infrastructure/EcotoneDistributed.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>AmqpBackedMessageChannelBuilder</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>AmqpBackedMessageChannelBuilder::create("iam")</code>
+    </MixedReturnStatement>
+  </file>
   <file src="src/EventListener/AuthorizeRequestListener.php">
     <PossiblyUndefinedVariable occurrences="3">
       <code>$errors</code>

@@ -8,12 +8,20 @@ use Ecotone\Messaging\Attribute\ServiceContext;
 
 class EcotoneDistributed
 {
+    /**
+     * @return AmqpBackedMessageChannelBuilder
+     */
     #[ServiceContext]
     public function iamChannel()
     {
         return AmqpBackedMessageChannelBuilder::create("iam");
     }
 
+    /**
+     * @return AmqpDistributedBusConfiguration[]
+     *
+     * @psalm-return array{0: AmqpDistributedBusConfiguration}
+     */
     #[ServiceContext]
     public function configure()
     {

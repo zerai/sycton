@@ -7,5 +7,5 @@ kernel:
     type: annotation
 
 iam_api:
-    resource: ../srcIam/src/Adapter/Api/Auth/
+    resource: ../_iam/src/Adapter/Api/Auth/
     type: annotation
