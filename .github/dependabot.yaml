@@ -167,7 +167,7 @@ updates:
       - "red dependency"
     ignore:
       - dependency-name: "symfony/browser-kit"
-        versions: [ "6.2.x" ]
+        versions: [ "6.3.x","6.4.x" ]
       - dependency-name: "symfony/cache"
         versions: [ "6.2.x" ,"6.3.x","6.4.x"]
       - dependency-name: "symfony/config"
