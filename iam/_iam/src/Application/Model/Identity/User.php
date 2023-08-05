@@ -40,6 +40,21 @@ class User
         return [new UserPasswordWasChanged($command->getUserId(), $command->getPassword())];
     }
 
+    public function id(): string
+    {
+        return $this->userId;
+    }
+
+    public function email(): string
+    {
+        return $this->email;
+    }
+
+    public function password(): string
+    {
+        return $this->hashedPassword;
+    }
+
     #[EventSourcingHandler]
     public function applyUserWasRegistered(UserWasRegistered $event): void
     {
