@@ -2,12 +2,6 @@
     "bamarni/composer-bin-plugin": {
         "version": "1.4.1"
     },
-    "beberlei/assert": {
-        "version": "v3.3.2"
-    },
-    "brick/math": {
-        "version": "0.9.3"
-    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.5"
     },
@@ -30,8 +24,7 @@
             "branch": "main",
             "version": "1.10",
             "ref": "64d8583af5ea57b7afa4aba4b159907f3a148b05"
-        },
-        "files": []
+        }
     },
     "doctrine/cache": {
         "version": "2.2.0"
@@ -99,38 +92,17 @@
     "doctrine/sql-formatter": {
         "version": "1.1.2"
     },
-    "ecotone/amqp": {
-        "version": "1.8.4"
-    },
-    "ecotone/dbal": {
-        "version": "1.8.4"
-    },
-    "ecotone/ecotone": {
-        "version": "1.8.2"
-    },
-    "ecotone/enqueue": {
-        "version": "1.8.4"
-    },
-    "ecotone/jms-converter": {
-        "version": "1.8.2"
-    },
-    "ecotone/pdo-event-sourcing": {
-        "version": "1.8.2"
-    },
     "ecotone/symfony-bundle": {
-        "version": "1.8.2"
+        "version": "1.94.0"
     },
     "enqueue/amqp-ext": {
         "version": "0.10",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
+            "branch": "main",
             "version": "0.7",
             "ref": "3c5175ca17ff2dc08715e460214e9ce77aa46580"
         }
-    },
-    "enqueue/amqp-tools": {
-        "version": "0.10.9"
     },
     "enqueue/dbal": {
         "version": "0.10",
@@ -141,29 +113,11 @@
             "ref": "4dd47013ecec8a158d186f63ec4b51f1defff897"
         }
     },
-    "enqueue/dsn": {
-        "version": "0.10.8"
-    },
-    "enqueue/enqueue": {
-        "version": "0.10.15"
-    },
-    "enqueue/null": {
-        "version": "0.10.15"
-    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
-    "jms/metadata": {
-        "version": "2.6.1"
-    },
-    "jms/serializer": {
-        "version": "3.17.1"
-    },
     "laminas/laminas-code": {
         "version": "4.5.1"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.4.1"
     },
     "league/oauth2-server-bundle": {
         "version": "0.4",
@@ -177,9 +131,6 @@
             "config/packages/league_oauth2_server.yaml",
             "config/routes/league_oauth2_server.yaml"
         ]
-    },
-    "marc-mabe/php-enum": {
-        "version": "v4.4.0"
     },
     "monolog/monolog": {
         "version": "2.3.5"
@@ -220,9 +171,6 @@
     "phpspec/prophecy": {
         "version": "v1.15.0"
     },
-    "phpstan/phpdoc-parser": {
-        "version": "1.2.0"
-    },
     "phpunit/php-code-coverage": {
         "version": "9.2.10"
     },
@@ -252,19 +200,13 @@
             "tests/bootstrap.php"
         ]
     },
-    "prooph/common": {
-        "version": "v4.5.0"
-    },
-    "prooph/event-store": {
-        "version": "v7.6.1"
-    },
     "prooph/pdo-event-store": {
-        "version": "1.13",
+        "version": "1.15",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.7",
-            "ref": "f35cb6fe1edf5853c6d78d429c8ae3564bdd1bd8"
+            "branch": "main",
+            "version": "1.15",
+            "ref": "020f87be92de58907f180d552e1a1b0d8c34cdd1"
         },
         "files": [
             "config/packages/prooph_pdo_event_store.yaml"
@@ -281,18 +223,6 @@
     },
     "psr/log": {
         "version": "2.0.0"
-    },
-    "queue-interop/amqp-interop": {
-        "version": "0.8.2"
-    },
-    "queue-interop/queue-interop": {
-        "version": "0.8.1"
-    },
-    "ramsey/collection": {
-        "version": "1.2.2"
-    },
-    "ramsey/uuid": {
-        "version": "4.2.3"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"

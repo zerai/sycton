@@ -133,19 +133,19 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update --complete -e test --force --ansi
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
         continue-on-error: true
         
       - name: Run database schema validate
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
 
   integration-test:
@@ -237,13 +237,13 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update --complete -e test --force --ansi
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
         continue-on-error: true
 
       - name: Run only integration test
@@ -252,8 +252,8 @@ jobs:
           --coverage-clover $INTEGRATION_TEST_CLOVER_FILENAME \
           --testdox-text $INTEGRATION_TEST_DOC_FILENAME
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
-          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_DSN: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
           SYMFONY_DEPRECATIONS_HELPER: disabled
 
       - name: Get integration test coverage artifact name
@@ -370,13 +370,13 @@ jobs:
         if: ${{ github.ref_name == 'main' }}
         run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
         run: ./bin/console doctrine:schema:update --complete -e test --force --ansi
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 
       - name: Run webserver
         run: symfony server:start --port=8080 --dir=public --daemon --no-tls
@@ -387,8 +387,8 @@ jobs:
           --coverage-clover $FUNCTIONAL_TEST_CLOVER_FILENAME \
           --testdox-text $FUNCTIONAL_TEST_DOC_FILENAME
         env:
-          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
-          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db_test?serverVersion=13&charset=utf8
+          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_DSN: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db_test?serverVersion=13&charset=utf8
           SYMFONY_DEPRECATIONS_HELPER: disabled
 
       - name: Get functional test coverage artifact name
@@ -508,13 +508,13 @@ jobs:
 #        if: ${{ github.ref_name == 'main' }}
 #        run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
 #        env:
-#          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+#          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 #
 #      - name: Run database schema update
 #        if: ${{ github.ref_name != 'main' }}
 #        run: ./bin/console doctrine:schema:update --complete -e test --force --ansi
 #        env:
-#          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+#          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
 #
 #      - name: Setup Node
 #        uses: actions/setup-node@v3
@@ -547,6 +547,6 @@ jobs:
 #      - name: Run behat tests
 #        run: vendor/bin/behat --colors
 #        env:
-#          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
-#          DATABASE_DSN: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db_test?serverVersion=13&charset=utf8
+#          DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+#          DATABASE_DSN: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db_test?serverVersion=13&charset=utf8
 #          SYMFONY_DEPRECATIONS_HELPER: disabled
