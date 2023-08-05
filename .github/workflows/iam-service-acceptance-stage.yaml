@@ -253,7 +253,7 @@ jobs:
           --testdox-text $INTEGRATION_TEST_DOC_FILENAME
         env:
           DATABASE_URL: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
-          DATABASE_DSN: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+          DATABASE_DSN: pgsql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db_test?serverVersion=13&charset=utf8
           SYMFONY_DEPRECATIONS_HELPER: disabled
 
       - name: Get integration test coverage artifact name
