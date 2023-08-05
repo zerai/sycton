@@ -5,10 +5,12 @@ namespace IdentityAccess\Tests\Integration\ReadModel;
 use Ecotone\Lite\EcotoneLite;
 use Ecotone\Lite\Test\FlowTestSupport;
 use Enqueue\Dbal\DbalConnectionFactory;
+use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 use IdentityAccess\Application\Model\Identity\ReadModel\UserList;
-use IdentityAccess\Application\Model\Identity\ReadModel\UserListProjection;
 use IdentityAccess\Application\Model\Identity\User;
+use IdentityAccess\Infrastructure\Authentication\SecurityUser;
 use IdentityAccess\Tests\EcotoneDbConnectionConf;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class UserListTest extends KernelTestCase
@@ -16,10 +18,32 @@ class UserListTest extends KernelTestCase
     protected function setUp(): void
     {
         $this->getTestSupport()
-            //->deleteEventStream(User::class)
-            //->initializeProjection('UserList')
-            //->resetProjection('UserList')
+            ->deleteEventStream(User::class)
+            ->initializeProjection('UserList')
+            ->resetProjection('UserList')
         ;
+    }
+
+    public function test_projection_query_get_security_user(): void
+    {
+        $userId = Uuid::uuid4()->toString();
+        $email = 'irrelevant@example.com';
+        $password = 'irrelevant';
+
+        $expectedProjectionQueryResult = SecurityUser::createFromReadModel($email, $password);
+
+        self::assertEquals(
+            $expectedProjectionQueryResult,
+            $this->getTestSupport()
+                // 2. Providing initial events to run projection on
+                ->withEventsFor($userId, User::class, [
+                    new UserWasRegistered($userId, $email, $password),
+                ])
+                // 3. Triggering projection
+                ->triggerProjection('UserList')
+                // 4. Running query on projection to validate the state
+                ->sendQueryWithRouting(UserList::GET_SECURITY_USER, $email)
+        );
     }
 
     private function getTestSupport(): FlowTestSupport
@@ -32,7 +56,7 @@ class UserListTest extends KernelTestCase
                 new UserList((self::bootKernel())->getContainer()->get('doctrine.dbal.default_connection')),
 
             ],
-            //runForProductionEventStore: true
+            runForProductionEventStore: true
         );
     }
 }
