@@ -3,3 +3,4 @@ ecotone:
   serviceName: 'customer'
   namespaces:
     - 'Customer'
+  defaultErrorChannel: "dbal_dead_letter"
