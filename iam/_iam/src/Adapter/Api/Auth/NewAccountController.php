@@ -29,10 +29,12 @@ class NewAccountController extends AbstractController
     #[Route("/auth/register", name: 'auth_register', methods: ["POST"])]
     public function register(Request $request): Response
     {
-        $plaintextPassword = $request->request->get('hashedPassword');
+        $parameters = (array) json_decode($request->getContent(), true);
+        $email = (string) $parameters['email'];
+        $plaintextPassword = (string) $parameters['password'];
 
         $command = new RegisterUser(
-            $request->request->get('email'),
+            $email,
             SecurityUser::encryptPassword($plaintextPassword, $this->passwordHasher),
             Uuid::uuid4()->toString()
         );
