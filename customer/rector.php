@@ -17,6 +17,9 @@ return static function (RectorConfig $rectorConfig): void {
         //__DIR__ . '/public',
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/_customer/src',
+        __DIR__ . '/_customer/tests',
+
     ]);
 
     $rectorConfig->skip([
@@ -28,7 +31,6 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->phpVersion(PhpVersion::PHP_81);
     $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
-
 
     // register a single rule
     //$rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);

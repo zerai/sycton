@@ -21,7 +21,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters->set(Option::PATHS, [
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/_customer/src',
+        __DIR__ . '/_customer/tests',
         __DIR__ . '/ecs.php',
+        __DIR__ . '/rector.php',
     ]);
 
     $parameters->set(

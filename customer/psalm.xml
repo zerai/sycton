@@ -17,6 +17,7 @@
 
     <projectFiles>
         <directory name="src"/>
+        <directory name="_customer/src"/>
         <ignoreFiles>
             <directory name="vendor/"/>
             <directory name="tools/"/>
