@@ -1,0 +1,21 @@
+name: Customer service CD/CI
+
+on:
+  push:
+    paths:
+      - "customer/**"
+      - '.github/workflows/customer-*.yaml'
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage
+    uses: zerai/sycton/.github/workflows/customer-service-commit-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+  acceptance-stage-workflow:
+    name: Acceptance Stage
+    needs:
+      - commit-stage-workflow
+    uses: zerai/sycton/.github/workflows/customer-service-acceptance-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
