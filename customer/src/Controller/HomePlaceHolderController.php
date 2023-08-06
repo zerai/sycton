@@ -14,7 +14,7 @@ class HomePlaceHolderController extends AbstractController
     public function register(Request $request): Response
     {
         return new JsonResponse([
-            "serviceName" => "Red service",
+            "serviceName" => "Customer service",
         ]);
     }
 }
