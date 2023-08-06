@@ -1,3 +1,5 @@
 ecotone:
-  loadSrcNamespaces: true
-  serviceName: 'red'
+  loadSrcNamespaces: false
+  serviceName: 'customer'
+  namespaces:
+    - 'Customer'
