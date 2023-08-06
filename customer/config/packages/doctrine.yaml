@@ -15,16 +15,6 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
-            BaseItem:
-                is_bundle: false
-                dir: '%kernel.project_dir%/src/Domain/Item'
-                prefix: 'App\Domain\Item'
-                alias: BaseItem
-#            DistItem:
-#                is_bundle: false
-#                dir: '%kernel.project_dir%/src/Domain/Ditem'
-#                prefix: 'App\Domain\Ditem'
-#                alias: DistItem
 
 when@test:
     doctrine:
