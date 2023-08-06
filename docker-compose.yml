@@ -343,5 +343,17 @@ services:
       PGADMIN_DEFAULT_EMAIL: "admin@example.com"
       PGADMIN_DEFAULT_PASSWORD: "admin"
 
+  pulse:
+    image: ecotoneframework/ecotone-pulse:0.1.0
+    working_dir: "/data/app"
+    networks:
+      - syctone
+    environment:
+      SERVICES: '[{"name":"iam","databaseDsn":"pgsql://ecotone:ecotone@db-iam:5432/ecotone"},{"name":"customer","databaseDsn":"pgsql://ecotone:ecotone@db-customer:5432/ecotone"}]'
+      AMQP_DSN: "amqp://guest:guest@rabbitmq:5672//"
+      APP_ENV: dev
+    ports:
+      - 3006:80
+
 networks:
   syctone: ~
