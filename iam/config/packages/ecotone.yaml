@@ -3,3 +3,4 @@ ecotone:
   serviceName: 'iam'
   namespaces:
     - 'IdentityAccess'
+  defaultErrorChannel: "dbal_dead_letter"
