@@ -15,14 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ChangePasswordController extends AbstractController
 {
-    private CommandBus $commandBus;
-
-    private UserPasswordHasherInterface $passwordHasher;
-
-    public function __construct(CommandBus $commandBus, UserPasswordHasherInterface $passwordHasher)
-    {
-        $this->commandBus = $commandBus;
-        $this->passwordHasher = $passwordHasher;
+    public function __construct(
+        private readonly CommandBus $commandBus,
+        private readonly UserPasswordHasherInterface $passwordHasher
+    ) {
     }
 
     #[Route("/users/change-password", name: 'api_users_change_password', methods: ["POST"])]

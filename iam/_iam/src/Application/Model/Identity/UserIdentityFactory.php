@@ -7,7 +7,7 @@ use IdentityAccess\Application\Model\IdentityGenerator;
 class UserIdentityFactory
 {
     public function __construct(
-        private IdentityGenerator $generator
+        private readonly IdentityGenerator $generator
     ) {
     }
 

@@ -15,9 +15,9 @@ use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 #[EventSourcingAggregate]
 class User
 {
-    public const REGISTER_USER = "user.registerUser";
+    final public const REGISTER_USER = "user.registerUser";
 
-    public const CHANGE_PASSWORD = "user.changePassword";
+    final public const CHANGE_PASSWORD = "user.changePassword";
 
     use WithAggregateVersioning;
 

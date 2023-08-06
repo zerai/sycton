@@ -2,14 +2,10 @@
 
 namespace IdentityAccess\Application\Model\Identity;
 
-class UserId
+class UserId implements \Stringable
 {
-    private string $identity;
-
-    private function __construct(string $identity)
+    private function __construct(private readonly string $identity)
     {
-        // TODO add assert validation
-        $this->identity = $identity;
     }
 
     public static function fromString(string $identity): static

@@ -18,12 +18,12 @@ use IdentityAccess\Infrastructure\Authentication\SecurityUser;
 #[Projection('UserList', User::class)]
 class UserList
 {
-    public const GET_USER_LIST = "getUserList";
+    final public const GET_USER_LIST = "getUserList";
 
-    public const GET_SECURITY_USER = "getSecurityUser";
+    final public const GET_SECURITY_USER = "getSecurityUser";
 
     public function __construct(
-        private Connection $connection
+        private readonly Connection $connection
     ) {
     }
 

@@ -5,9 +5,9 @@ namespace IdentityAccess\Application\Model\Identity\Command;
 class RegisterUser
 {
     public function __construct(
-        private string $email,
-        private string $hashedPassword,
-        private string $userId
+        private readonly string $email,
+        private readonly string $hashedPassword,
+        private readonly string $userId
     ) {
     }
 

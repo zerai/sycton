@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInterface
 {
     public function __construct(
-        private QueryBus $queryBus
+        private readonly QueryBus $queryBus
     ) {
     }
 
@@ -34,7 +34,7 @@ class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInt
             $securityUser = $this->queryBus->sendWithRouting(UserList::GET_SECURITY_USER, $identifier);
 
             return $securityUser;
-        } catch (\Exception $exception) {
+        } catch (\Exception) {
             throw new UserNotFoundException('User not found.');
         }
 
@@ -69,7 +69,7 @@ class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInt
     public function refreshUser(UserInterface $user): UserInterface
     {
         if (! $user instanceof SecurityUser) {
-            throw new UnsupportedUserException(sprintf('Invalid user class "%s".', \get_class($user)));
+            throw new UnsupportedUserException(sprintf('Invalid user class "%s".', $user::class));
         }
 
         // Return a User object after making sure its data is "fresh".
