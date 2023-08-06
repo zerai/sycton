@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "557d7e7e81e09b4557b6c1397125f86e",
+    "content-hash": "8f99df688eb6f40a6005b14520718771",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -3177,6 +3177,7 @@
                 "issues": "https://github.com/php-http/message-factory/issues",
                 "source": "https://github.com/php-http/message-factory/tree/master"
             },
+            "abandoned": "psr/http-factory",
             "time": "2015-12-19T14:08:53+00:00"
         },
         {
