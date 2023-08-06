@@ -1,6 +1,7 @@
 # sycton
 
 [![Iam service CD/CI](https://github.com/zerai/sycton/actions/workflows/iam-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/iam-service.yaml)
+[![Customer service CD/CI](https://github.com/zerai/sycton/actions/workflows/customer-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/customer-service.yaml)
 [![Blue service CD/CI](https://github.com/zerai/sycton/actions/workflows/blue-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/blue-service.yaml)
 [![Red service CD/CI](https://github.com/zerai/sycton/actions/workflows/red-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/red-service.yaml)
 
@@ -12,6 +13,15 @@ Endpoint: [http://iam.localtest.me](http://iam.localtest.me)
 OpenApi spec: [http://swagger.iam.localtest.me](http://swagger.iam.localtest.me)
 
 Stack: [ php-cli:8.1 - swoole - symfony-6.2 ]
+
+
+## customer service
+
+Endpoint: [http://customer.localtest.me](http://iam.localtest.me)
+
+OpenApi spec: [http://swagger.customer.localtest.me](http://swagger.iam.localtest.me)
+
+Stack: [ php-cli:8.1 - workerman - symfony-6.1 ]
 
 
 ## Blue service
