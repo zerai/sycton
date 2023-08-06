@@ -1,0 +1,14 @@
+{
+    "require-dev": {
+        "psalm/plugin-phpunit": "*",
+        "psalm/plugin-symfony": "*",
+        "vimeo/psalm": "^5.0",
+        "weirdan/doctrine-psalm-plugin": "*"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    }
+}

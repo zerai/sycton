@@ -188,8 +188,10 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     steps:
-      - name: Checkout
+      - name: Checkout on SHA-${{ inputs.triggering-sha }}
         uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.triggering-sha }}
 
       - name: Validate customer service openApi schema
         uses: mbowman100/swagger-validator-action@2.0

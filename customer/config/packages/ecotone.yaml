@@ -1,0 +1,5 @@
+ecotone:
+  loadSrcNamespaces: false
+  serviceName: 'customer'
+  namespaces:
+    - 'Customer'
