@@ -389,7 +389,9 @@ jobs:
       - name: Install rector
         run: composer bin rector install --no-progress --ansi
 
+      - name: Prepare container
+        run: ./bin/console lint:container
+
       - name: Run rector
         run: ./vendor/bin/rector process --dry-run --ansi
-        continue-on-error: true
 
