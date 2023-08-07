@@ -5,9 +5,9 @@ namespace IdentityAccess\Application\Model\Identity\Event;
 class UserWasRegistered
 {
     public function __construct(
-        private string $userId,
-        private string $email,
-        private string $hashedPassword
+        private readonly string $userId,
+        private readonly string $email,
+        private readonly string $hashedPassword
     ) {
     }
 

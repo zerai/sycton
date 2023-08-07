@@ -18,6 +18,8 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->skip([
         __DIR__ . '/src/Kernel.php',
+
+        __DIR__ . '/src/EventListener/AuthorizeRequestListener.php',
     ]);
 
     $rectorConfig->phpVersion(PhpVersion::PHP_81);

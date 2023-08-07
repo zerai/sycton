@@ -5,8 +5,8 @@ namespace IdentityAccess\Application\Model\Identity\Event;
 class UserPasswordWasChanged
 {
     public function __construct(
-        private string $userId,
-        private string $password
+        private readonly string $userId,
+        private readonly string $password
     ) {
     }
 
