@@ -10,8 +10,8 @@ use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
-use IdentityAccess\Application\Model\Identity\Event\RoleWasAssignedToUser;
 use IdentityAccess\Application\Model\Identity\Event\UserPasswordWasChanged;
+use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 use IdentityAccess\Application\Model\Identity\User;
 use IdentityAccess\Infrastructure\Authentication\SecurityUser;
@@ -80,7 +80,7 @@ class UserListProjection
     }
 
     #[EventHandler]
-    public function onRoleWasAssignedToUser(RoleWasAssignedToUser $event, array $metadata): void
+    public function onRoleWasAssignedToUser(UserRoleWasAssigned $event, array $metadata): void
     {
         $rolesFromDb = $this->connection->executeQuery(
             <<<SQL

@@ -5,7 +5,7 @@ namespace IdentityAccess\Tests\Integration\ReadModel;
 use Ecotone\Lite\EcotoneLite;
 use Ecotone\Lite\Test\FlowTestSupport;
 use Enqueue\Dbal\DbalConnectionFactory;
-use IdentityAccess\Application\Model\Identity\Event\RoleWasAssignedToUser;
+use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 use IdentityAccess\Application\Model\Identity\ReadModel\UserListProjection;
 use IdentityAccess\Application\Model\Identity\User;
@@ -41,8 +41,8 @@ class UserListProjectionTest extends KernelTestCase
                 // 2. Providing initial events to run projection on
                 ->withEventsFor($userId, User::class, [
                     new UserWasRegistered($userId, $email, $password),
-                    new RoleWasAssignedToUser($userId, 'ROLE_USER'),
-                    new RoleWasAssignedToUser($userId, 'ROLE_SECONDARY'),
+                    new UserRoleWasAssigned($userId, 'ROLE_USER'),
+                    new UserRoleWasAssigned($userId, 'ROLE_SECONDARY'),
                 ])
                 // 3. Triggering projection
                 ->triggerProjection(UserListProjection::NAME)

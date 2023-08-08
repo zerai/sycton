@@ -5,7 +5,7 @@ namespace IdentityAccess\Tests\Unit\Identity;
 use Ecotone\Lite\EcotoneLite;
 use Ecotone\Lite\Test\FlowTestSupport;
 use IdentityAccess\Application\Model\Identity\Command\RegisterUser;
-use IdentityAccess\Application\Model\Identity\Event\RoleWasAssignedToUser;
+use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 use IdentityAccess\Application\Model\Identity\User;
 use PHPUnit\Framework\TestCase;
@@ -65,7 +65,7 @@ class UserTest extends TestCase
         self::assertEquals(
             [
                 new UserWasRegistered($userId, $email, $hashedPassword),
-                new RoleWasAssignedToUser($userId, 'ROLE_USER'),
+                new UserRoleWasAssigned($userId, 'ROLE_USER'),
             ],
             $emittedEvents,
             sprintf("ERROR: User::class emitted events does not match.")

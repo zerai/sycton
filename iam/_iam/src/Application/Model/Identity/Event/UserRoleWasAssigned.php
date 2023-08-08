@@ -2,7 +2,7 @@
 
 namespace IdentityAccess\Application\Model\Identity\Event;
 
-class RoleWasAssignedToUser
+class UserRoleWasAssigned
 {
     public function __construct(
         public readonly string $userId,

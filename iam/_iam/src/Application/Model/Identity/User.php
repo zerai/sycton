@@ -8,9 +8,10 @@ use Ecotone\Modelling\Attribute\EventSourcingAggregate;
 use Ecotone\Modelling\Attribute\EventSourcingHandler;
 use Ecotone\Modelling\WithAggregateVersioning;
 use IdentityAccess\Application\Model\Identity\Command\ChangeUserPassword;
+use IdentityAccess\Application\Model\Identity\Command\PromoteToRole;
 use IdentityAccess\Application\Model\Identity\Command\RegisterUser;
-use IdentityAccess\Application\Model\Identity\Event\RoleWasAssignedToUser;
 use IdentityAccess\Application\Model\Identity\Event\UserPasswordWasChanged;
+use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 
 #[EventSourcingAggregate]
@@ -19,6 +20,8 @@ class User
     final public const REGISTER_USER = "user.registerUser";
 
     final public const CHANGE_PASSWORD = "user.changePassword";
+
+    final public const ASSIGN_ROLE = "user.addRole";
 
     use WithAggregateVersioning;
 
@@ -36,7 +39,7 @@ class User
     {
         return [
             new UserWasRegistered($command->getUserId(), $command->getEmail(), $command->getHashedPassword()),
-            new RoleWasAssignedToUser($command->getUserId(), 'ROLE_USER'),
+            new UserRoleWasAssigned($command->getUserId(), 'ROLE_USER'),
         ];
     }
 
@@ -44,6 +47,12 @@ class User
     public function changePassword(ChangeUserPassword $command): array
     {
         return [new UserPasswordWasChanged($command->getUserId(), $command->getPassword())];
+    }
+
+    #[CommandHandler(self::ASSIGN_ROLE)]
+    public function addRole(PromoteToRole $command): array
+    {
+        return [new UserRoleWasAssigned($command->userId, $command->role)];
     }
 
     public function id(): string
@@ -72,7 +81,6 @@ class User
         $this->userId = $event->getUserId();
         $this->email = $event->getEmail();
         $this->hashedPassword = $event->getHashedPassword();
-        $this->roles = ['ROLE_USER'];
     }
 
     #[EventSourcingHandler]
@@ -80,5 +88,11 @@ class User
     {
         $this->userId = $event->getUserId();
         $this->hashedPassword = $event->getPassword();
+    }
+
+    #[EventSourcingHandler]
+    public function applyUserRoleWasAssigned(UserRoleWasAssigned $event): void
+    {
+        $this->roles[] = $event->role;
     }
 }
