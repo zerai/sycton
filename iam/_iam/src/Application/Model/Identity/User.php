@@ -10,6 +10,8 @@ use Ecotone\Modelling\WithAggregateVersioning;
 use IdentityAccess\Application\Model\Identity\Command\ChangeUserPassword;
 use IdentityAccess\Application\Model\Identity\Command\PromoteToRole;
 use IdentityAccess\Application\Model\Identity\Command\RegisterUser;
+use IdentityAccess\Application\Model\Identity\Command\RevokeRole;
+use IdentityAccess\Application\Model\Identity\Event\RoleWasRevoked;
 use IdentityAccess\Application\Model\Identity\Event\UserPasswordWasChanged;
 use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
@@ -21,7 +23,9 @@ class User
 
     final public const CHANGE_PASSWORD = "user.changePassword";
 
-    final public const ASSIGN_ROLE = "user.addRole";
+    final public const ASSIGN_ROLE = "user.assignRole";
+
+    final public const REVOKE_ROLE = "user.revokeRole";
 
     use WithAggregateVersioning;
 
@@ -50,9 +54,15 @@ class User
     }
 
     #[CommandHandler(self::ASSIGN_ROLE)]
-    public function addRole(PromoteToRole $command): array
+    public function assignRole(PromoteToRole $command): array
     {
         return [new UserRoleWasAssigned($command->userId, $command->role)];
+    }
+
+    #[CommandHandler(self::REVOKE_ROLE)]
+    public function revokeRole(RevokeRole $command): array
+    {
+        return [new RoleWasRevoked($command->userId, $command->role)];
     }
 
     public function id(): string
@@ -94,5 +104,13 @@ class User
     public function applyUserRoleWasAssigned(UserRoleWasAssigned $event): void
     {
         $this->roles[] = $event->role;
+    }
+
+    #[EventSourcingHandler]
+    public function applyRoleWasRevoked(RoleWasRevoked $event): void
+    {
+        if (($key = array_search($event->role, $this->roles)) !== false) {
+            unset($this->roles[$key]);
+        }
     }
 }
