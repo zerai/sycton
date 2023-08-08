@@ -5,22 +5,23 @@ namespace IdentityAccess\Tests\Integration\ReadModel;
 use Ecotone\Lite\EcotoneLite;
 use Ecotone\Lite\Test\FlowTestSupport;
 use Enqueue\Dbal\DbalConnectionFactory;
+use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
-use IdentityAccess\Application\Model\Identity\ReadModel\UserList;
+use IdentityAccess\Application\Model\Identity\ReadModel\UserListProjection;
 use IdentityAccess\Application\Model\Identity\User;
 use IdentityAccess\Infrastructure\Authentication\SecurityUser;
 use IdentityAccess\Tests\EcotoneDbConnectionConf;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class UserListTest extends KernelTestCase
+class UserListProjectionTest extends KernelTestCase
 {
     protected function setUp(): void
     {
         $this->getTestSupport()
             ->deleteEventStream(User::class)
-            ->initializeProjection('UserList')
-            ->resetProjection('UserList')
+            ->initializeProjection(UserListProjection::NAME)
+            ->resetProjection(UserListProjection::NAME)
         ;
     }
 
@@ -29,8 +30,10 @@ class UserListTest extends KernelTestCase
         $userId = Uuid::uuid4()->toString();
         $email = 'irrelevant@example.com';
         $password = 'irrelevant';
+        $addedRole = 'ROLE_USER';
+        $addedRole2 = 'ROLE_SECONDARY';
 
-        $expectedProjectionQueryResult = SecurityUser::createFromReadModel($email, $password);
+        $expectedProjectionQueryResult = SecurityUser::createFromReadModel($email, $password, [$addedRole, $addedRole2]);
 
         self::assertEquals(
             $expectedProjectionQueryResult,
@@ -38,11 +41,13 @@ class UserListTest extends KernelTestCase
                 // 2. Providing initial events to run projection on
                 ->withEventsFor($userId, User::class, [
                     new UserWasRegistered($userId, $email, $password),
+                    new UserRoleWasAssigned($userId, 'ROLE_USER'),
+                    new UserRoleWasAssigned($userId, 'ROLE_SECONDARY'),
                 ])
                 // 3. Triggering projection
-                ->triggerProjection('UserList')
+                ->triggerProjection(UserListProjection::NAME)
                 // 4. Running query on projection to validate the state
-                ->sendQueryWithRouting(UserList::GET_SECURITY_USER, $email)
+                ->sendQueryWithRouting(UserListProjection::GET_SECURITY_USER, $email)
         );
     }
 
@@ -50,10 +55,10 @@ class UserListTest extends KernelTestCase
     {
         return EcotoneLite::bootstrapFlowTestingWithEventStore(
         // 1. Setting projection and aggregate that we want to resolve
-        [UserList::class, User::class],
+        [UserListProjection::class, User::class],
             [
                 DbalConnectionFactory::class => new DbalConnectionFactory(EcotoneDbConnectionConf::databaseDns()),
-                new UserList((self::bootKernel())->getContainer()->get('doctrine.dbal.default_connection')),
+                new UserListProjection((self::bootKernel())->getContainer()->get('doctrine.dbal.default_connection')),
 
             ],
             runForProductionEventStore: true

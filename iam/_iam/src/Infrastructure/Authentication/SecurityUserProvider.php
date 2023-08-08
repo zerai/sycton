@@ -3,7 +3,7 @@
 namespace IdentityAccess\Infrastructure\Authentication;
 
 use Ecotone\Modelling\QueryBus;
-use IdentityAccess\Application\Model\Identity\ReadModel\UserList;
+use IdentityAccess\Application\Model\Identity\ReadModel\UserListProjection;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,7 +31,7 @@ class SecurityUserProvider implements UserProviderInterface, PasswordUpgraderInt
     {
         try {
             /** @var SecurityUser $securityUser */
-            $securityUser = $this->queryBus->sendWithRouting(UserList::GET_SECURITY_USER, $identifier);
+            $securityUser = $this->queryBus->sendWithRouting(UserListProjection::GET_SECURITY_USER, $identifier);
 
             return $securityUser;
         } catch (\Exception) {

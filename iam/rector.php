@@ -7,6 +7,7 @@ use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNeverTypeRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -20,6 +21,10 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/src/Kernel.php',
 
         __DIR__ . '/src/EventListener/AuthorizeRequestListener.php',
+        ReturnNeverTypeRector::class => [
+            __DIR__ . '/tests',
+            __DIR__ . '/_iam/tests',
+        ],
     ]);
 
     $rectorConfig->phpVersion(PhpVersion::PHP_81);
