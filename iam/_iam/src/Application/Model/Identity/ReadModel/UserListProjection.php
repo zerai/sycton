@@ -10,6 +10,7 @@ use Ecotone\EventSourcing\Attribute\ProjectionInitialization;
 use Ecotone\EventSourcing\Attribute\ProjectionReset;
 use Ecotone\Modelling\Attribute\EventHandler;
 use Ecotone\Modelling\Attribute\QueryHandler;
+use IdentityAccess\Application\Model\Identity\Event\RoleWasRevoked;
 use IdentityAccess\Application\Model\Identity\Event\UserPasswordWasChanged;
 use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
@@ -97,6 +98,35 @@ class UserListProjection
             $currentRoles = explode(",", (string) $rolesFromDb['roles']);
         }
         $currentRoles[] = $event->role;
+
+        $this->connection->update(self::NAME, [
+            "roles" => implode(",", $currentRoles),
+        ], [
+            "user_id" => $event->userId,
+        ]);
+    }
+
+    #[EventHandler]
+    public function onRoleWasRevoked(RoleWasRevoked $event, array $metadata): void
+    {
+        $rolesFromDb = $this->connection->executeQuery(
+            <<<SQL
+                SELECT roles FROM user_list_projection WHERE user_id = :user_id
+            SQL,
+            [
+                'user_id' => $event->userId,
+            ]
+        )->fetchAllAssociative()[0];
+
+        if (null === $rolesFromDb['roles']) {
+            $currentRoles = [];
+        } else {
+            $currentRoles = explode(",", (string) $rolesFromDb['roles']);
+        }
+
+        if (($key = array_search($event->role, $currentRoles)) !== false) {
+            unset($currentRoles[$key]);
+        }
 
         $this->connection->update(self::NAME, [
             "roles" => implode(",", $currentRoles),
