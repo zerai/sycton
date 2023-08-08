@@ -35,6 +35,8 @@ updates:
         versions: [ "6.3.x","6.4.x"]
       - dependency-name: "symfony/css-selector"
         versions: [ "6.3.x","6.4.x"]
+      - dependency-name: "symfony/debug-bundle"
+        versions: [ "6.3.x","6.4.x"]
       - dependency-name: "symfony/dependency-injection"
         versions: [ "6.3.x","6.4.x"]
       - dependency-name: "symfony/dotenv"
