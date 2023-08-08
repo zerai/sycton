@@ -23,9 +23,9 @@ class SecurityUser implements UserInterface, PasswordAuthenticatedUserInterface
         );
     }
 
-    public static function createFromReadModel(string $email, string $password): self
+    public static function createFromReadModel(string $email, string $password, array $roles): self
     {
-        return new self($password, $email, []);
+        return new self($password, $email, $roles);
     }
 
     public function getEmail(): string

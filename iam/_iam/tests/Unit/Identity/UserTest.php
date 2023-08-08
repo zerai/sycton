@@ -5,6 +5,7 @@ namespace IdentityAccess\Tests\Unit\Identity;
 use Ecotone\Lite\EcotoneLite;
 use Ecotone\Lite\Test\FlowTestSupport;
 use IdentityAccess\Application\Model\Identity\Command\RegisterUser;
+use IdentityAccess\Application\Model\Identity\Event\RoleWasAssignedToUser;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 use IdentityAccess\Application\Model\Identity\User;
 use PHPUnit\Framework\TestCase;
@@ -48,6 +49,13 @@ class UserTest extends TestCase
             sprintf("ERROR: expected User::password() '%s', got: %s.", $hashedPassword, $retrievedPassword)
         );
 
+        /** Verifying aggregate roles property, after calling command */
+        $this->assertEquals(
+            ['ROLE_USER'],
+            $retrievedRoles = $user->roles(),
+            vsprintf("ERROR: expected User::role() 'ROLE_USER', got: %s.", $retrievedRoles)
+        );
+
         /** Retrieve emitted events, after calling command */
         $emittedEvents = $this->getTestSupport()
             ->sendCommandWithRoutingKey(User::REGISTER_USER, new RegisterUser($email, $hashedPassword, $userId))
@@ -55,7 +63,10 @@ class UserTest extends TestCase
 
         /** Verifying emitted events, after calling command */
         self::assertEquals(
-            [new UserWasRegistered($userId, $email, $hashedPassword)],
+            [
+                new UserWasRegistered($userId, $email, $hashedPassword),
+                new RoleWasAssignedToUser($userId, 'ROLE_USER'),
+            ],
             $emittedEvents,
             sprintf("ERROR: User::class emitted events does not match.")
         );
