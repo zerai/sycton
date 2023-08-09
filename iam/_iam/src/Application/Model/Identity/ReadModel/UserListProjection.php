@@ -16,6 +16,8 @@ use IdentityAccess\Application\Model\Identity\Event\UserRoleWasAssigned;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 use IdentityAccess\Application\Model\Identity\User;
 use IdentityAccess\Infrastructure\Authentication\SecurityUser;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 #[Projection(self::NAME, User::class)]
 class UserListProjection
@@ -27,20 +29,21 @@ class UserListProjection
     final public const GET_SECURITY_USER = "getSecurityUser";
 
     public function __construct(
-        private readonly Connection $connection
+        private readonly Connection $connection,
+        private readonly LoggerInterface $logger = new NullLogger(),
     ) {
     }
 
     #[QueryHandler(self::GET_USER_LIST)]
     public function getUserList(): array
     {
+        $tableName = self::NAME;
         try {
             return $this->connection->executeQuery(
-                <<<SQL
-                    SELECT * FROM user_list_projection
-                SQL
+                "SELECT * FROM $tableName"
             )->fetchAllAssociative();
         } catch (TableNotFoundException) {
+            $this->logger->critical('Projection error: $tableName table not found');
             return [];
         }
     }
@@ -48,10 +51,9 @@ class UserListProjection
     #[QueryHandler(self::GET_SECURITY_USER)]
     public function getSecurityUser(string $securityIdentifier): SecurityUser
     {
+        $tableName = self::NAME;
         $userData = $this->connection->executeQuery(
-            <<<SQL
-                SELECT email, password, roles FROM user_list_projection WHERE email = :email
-            SQL,
+            "SELECT email, password, roles FROM $tableName WHERE email = :email",
             [
                 "email" => $securityIdentifier,
             ]
@@ -83,10 +85,9 @@ class UserListProjection
     #[EventHandler]
     public function onRoleWasAssignedToUser(UserRoleWasAssigned $event, array $metadata): void
     {
+        $tableName = self::NAME;
         $rolesFromDb = $this->connection->executeQuery(
-            <<<SQL
-                SELECT roles FROM user_list_projection WHERE user_id = :user_id
-            SQL,
+            "SELECT roles FROM $tableName WHERE user_id = :user_id",
             [
                 'user_id' => $event->userId,
             ]
@@ -109,10 +110,9 @@ class UserListProjection
     #[EventHandler]
     public function onRoleWasRevoked(RoleWasRevoked $event, array $metadata): void
     {
+        $tableName = self::NAME;
         $rolesFromDb = $this->connection->executeQuery(
-            <<<SQL
-                SELECT roles FROM user_list_projection WHERE user_id = :user_id
-            SQL,
+            "SELECT roles FROM $tableName WHERE user_id = :user_id",
             [
                 'user_id' => $event->userId,
             ]
@@ -138,35 +138,27 @@ class UserListProjection
     #[ProjectionInitialization]
     public function initialization(): void
     {
-        $this->connection->executeStatement(
-            <<<SQL
-                CREATE TABLE IF NOT EXISTS user_list_projection (
+        $sql = 'CREATE TABLE IF NOT EXISTS ' . self::NAME . ' (
                     user_id VARCHAR(36) PRIMARY KEY,
                     email VARCHAR(25),
                     password VARCHAR(200),
                     roles VARCHAR(255)
-                )
-            SQL
-        );
+                )';
+        $this->connection->executeStatement($sql);
     }
 
     #[ProjectionReset]
     public function reset(): void
     {
-        $this->connection->executeStatement(
-            <<<SQL
-                DELETE FROM user_list_projection
-            SQL
-        );
+        $sql = 'DELETE FROM ' . self::NAME;
+        $this->connection->executeStatement($sql);
     }
 
     #[ProjectionDelete]
     public function delete(): void
     {
-        $this->connection->executeStatement(
-            <<<SQL
-                DROP TABLE user_list_projection
-            SQL
-        );
+        $sql = 'DROP TABLE ' . self::NAME;
+
+        $this->connection->executeStatement($sql);
     }
 }
