@@ -3,4 +3,9 @@ ecotone:
   serviceName: 'iam'
   namespaces:
     - 'IdentityAccess'
-  defaultErrorChannel: "dbal_dead_letter"
+  defaultErrorChannel: "dbal_dead_letter" # Provides default poller configuration with error channel for all async consumers
+  defaultMemoryLimit: 512   # Provides default memory limit in megabytes for all async consumers
+  defaultConnectionExceptionRetry:  # Provides default connection retry strategy for all async consumers in case of connection failure
+    initialDelay: 100
+    maxAttempts: 3
+    multiplier: 3
