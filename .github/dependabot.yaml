@@ -12,7 +12,7 @@ updates:
     target-branch: "main"
     directory: "iam/"
     versioning-strategy: "increase-if-necessary"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
     assignees:
@@ -80,14 +80,14 @@ updates:
 
   ########################################################################################################################
   #
-  #   Blue microservice
+  #   Customer microservice
   #
   ########################################################################################################################
   - package-ecosystem: "composer"
     target-branch: "main"
     directory: "customer/"
     versioning-strategy: "increase-if-necessary"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
     assignees:
@@ -158,7 +158,7 @@ updates:
     target-branch: "main"
     directory: "blue/"
     versioning-strategy: "increase-if-necessary"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
     assignees:
@@ -228,7 +228,7 @@ updates:
     target-branch: "main"
     directory: "red/"
     versioning-strategy: "increase-if-necessary"
-    open-pull-requests-limit: 10
+    open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
     assignees:
