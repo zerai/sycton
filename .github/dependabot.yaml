@@ -214,3 +214,23 @@ updates:
         versions: [ "6.2.x" ,"6.3.x","6.4.x"]
       - dependency-name: "symfony/yaml"
         versions: [ "6.2.x" ,"6.3.x","6.4.x"]
+
+
+  ########################################################################################################################
+  #
+  #   Github Actions dependencies
+  #
+  ########################################################################################################################
+  - package-ecosystem: "github-actions"
+    target-branch: "main"
+    directory: "/"
+    open-pull-requests-limit: 5
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "zerai"
+    commit-message:
+      include: "scope"
+      prefix: "github-actions"
+    labels:
+      - "GHA dependency"
