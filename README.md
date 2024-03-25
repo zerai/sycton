@@ -8,7 +8,7 @@
 
 ## iam service 
 
-Endpoint: [http://iam.localtest.me](http://iam.localtest.me)
+Endpoint: [https://iam.localtest.me](https://iam.localtest.me)
 
 OpenApi spec: [http://swagger.iam.localtest.me](http://swagger.iam.localtest.me)
 
@@ -17,7 +17,7 @@ Stack: [ php-cli:8.1 - swoole - symfony-6.2 ]
 
 ## customer service
 
-Endpoint: [http://customer.localtest.me](http://iam.localtest.me)
+Endpoint: [https://customer.localtest.me](https://iam.localtest.me)
 
 OpenApi spec: [http://swagger.customer.localtest.me](http://swagger.iam.localtest.me)
 
@@ -26,7 +26,7 @@ Stack: [ php-cli:8.1 - workerman - symfony-6.1 ]
 
 ## Blue service
 
-Endpoint: [http://blue.localtest.me](http://blue.localtest.me)
+Endpoint: [https://blue.localtest.me](https://blue.localtest.me)
 
 OpenApi spec: [http://swagger.blue.localtest.me](http://swagger.blue.localtest.me)
 
@@ -35,7 +35,7 @@ Stack: [ php-cli:8.1 - swoole - symfony-6.1 ]
 
 ## Red service
 
-Endpoint: [http://red.localtest.me](http://red.localtest.me)
+Endpoint: [https://red.localtest.me](https://red.localtest.me)
 
 OpenApi spec: [http://swagger.red.localtest.me](http://swagger.red.localtest.me)
 
