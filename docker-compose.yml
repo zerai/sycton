@@ -349,7 +349,7 @@ services:
     networks:
       - syctone
     environment:
-      SERVICES: '[{"name":"iam","databaseDsn":"pgsql://ecotone:ecotone@db-iam:5432/ecotone"},{"name":"customer","databaseDsn":"pgsql://ecotone:ecotone@db-customer:5432/ecotone"}]'
+      SERVICES: '[{"name":"iam","databaseDsn":"pgsql://ecotone:ecotone@db-iam:5432/ecotone"},{"name":"customer","databaseDsn":"pgsql://ecotone:ecotone@db-customer:5432/ecotone"},{"name":"blue","databaseDsn":"pgsql://ecotone:ecotone@db-blue:5432/ecotone"},{"name":"red","databaseDsn":"pgsql://ecotone:ecotone@db-red:5432/ecotone"}]'
       AMQP_DSN: "amqp://guest:guest@rabbitmq:5672//"
       APP_ENV: dev
     ports:
