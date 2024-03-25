@@ -82,7 +82,7 @@ jobs:
 
       - name: Cache PHP extensions
         if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -104,7 +104,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache Composer dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
@@ -198,7 +198,7 @@ jobs:
 
       - name: Cache PHP extensions
         if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.cache-php-extensions.outputs.dir }}
           key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -220,7 +220,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache Composer dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
@@ -335,7 +335,7 @@ jobs:
 #
 #      - name: Cache PHP extensions
 #        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-#        uses: actions/cache@v3
+#        uses: actions/cache@v4
 #        with:
 #          path: ${{ steps.cache-php-extensions.outputs.dir }}
 #          key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -357,7 +357,7 @@ jobs:
 #          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 #
 #      - name: Cache Composer dependencies
-#        uses: actions/cache@v3
+#        uses: actions/cache@v4
 #        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
 #        with:
 #          path: ${{ steps.composer-cache.outputs.dir }}
@@ -390,7 +390,7 @@ jobs:
 #      #        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 #      #
 #      #      - name: Cache Yarn
-#      #        uses: actions/cache@v3
+#      #        uses: actions/cache@v4
 #      #        with:
 #      #          path: ${{ steps.yarn-cache.outputs.dir }}
 #      #          key: ${{ runner.os }}-node-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json **/yarn.lock') }}
@@ -498,7 +498,7 @@ jobs:
 #
 #      - name: Cache PHP extensions
 #        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-#        uses: actions/cache@v3
+#        uses: actions/cache@v4
 #        with:
 #          path: ${{ steps.cache-php-extensions.outputs.dir }}
 #          key: ${{ steps.cache-php-extensions.outputs.key }}
@@ -520,7 +520,7 @@ jobs:
 #          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 #
 #      - name: Cache Composer dependencies
-#        uses: actions/cache@v3
+#        uses: actions/cache@v4
 #        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
 #        with:
 #          path: ${{ steps.composer-cache.outputs.dir }}
@@ -553,7 +553,7 @@ jobs:
 #      #        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 #      #
 #      #      - name: Cache Yarn
-#      #        uses: actions/cache@v3
+#      #        uses: actions/cache@v4
 #      #        with:
 #      #          path: ${{ steps.yarn-cache.outputs.dir }}
 #      #          key: ${{ runner.os }}-node-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json **/yarn.lock') }}
