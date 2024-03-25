@@ -14,8 +14,8 @@ jobs:
 
   acceptance-stage-workflow:
     name: Acceptance Stage
-    needs:
-      - commit-stage-workflow
+    #needs:
+      #- commit-stage-workflow
     uses: zerai/sycton/.github/workflows/iam-service-acceptance-stage.yaml@main
     with:
       triggering-sha: "${{ github.sha }}"
