@@ -17,7 +17,7 @@
         "ecotone/jms-converter": "^1.94",
         "ecotone/pdo-event-sourcing": "^1.90",
         "ecotone/symfony-bundle": "^1.90",
-        "league/oauth2-server-bundle": "^0.4.1",
+        "league/oauth2-server-bundle": "^0.8.0",
         "symfony/asset": "6.2.*",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
