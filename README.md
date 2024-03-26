@@ -39,7 +39,7 @@ Endpoint: [https://red.localtest.me](https://red.localtest.me)
 
 OpenApi spec: [http://swagger.red.localtest.me](http://swagger.red.localtest.me)
 
-Stack: [ php-cli:8.1 - workerman - symfony-6.1 ]
+Stack: [ php-cli:8.1 - workerman - symfony-6.4 ]
 
 
 ## rabbit-mq
