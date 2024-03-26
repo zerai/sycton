@@ -240,51 +240,51 @@ updates:
       - "red dependency"
     ignore:
       - dependency-name: "symfony/browser-kit"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/cache"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/config"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/console"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/css-selector"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/dependency-injection"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/dotenv"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/error-handler"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/event-dispatcher"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/filesystem"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/finder"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/framework-bundle"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/http-foundation"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/http-kernel"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/proxy-manager-bridge"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/routing"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/runtime"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/security-bundle"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/string"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/var-dumper"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/var-exporter"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/web-profiler"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
       - dependency-name: "symfony/yaml"
-        versions: [ "7.x" ]
+        versions: [ "7.0.x" ]
 
 
   ########################################################################################################################
