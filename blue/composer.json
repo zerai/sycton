@@ -10,7 +10,7 @@
         "doctrine/dbal": "^3.2",
         "doctrine/doctrine-bundle": "^2.6",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.11",
+        "doctrine/orm": "^3.1",
         "ecotone/amqp": "^1.8",
         "ecotone/dbal": "^1.8",
         "ecotone/jms-converter": "^1.8",
