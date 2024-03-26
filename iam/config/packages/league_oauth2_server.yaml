@@ -9,8 +9,12 @@ league_oauth2_server:
         available: ['email']
         default: ['email']
     persistence:
-        doctrine: null
+        doctrine:
+            entity_manager: default
     role_prefix: ROLE_OAUTH2_
+    client:
+        # Set a custom client class. Must be a League\Bundle\OAuth2ServerBundle\Model\Client
+        classname:        League\Bundle\OAuth2ServerBundle\Model\Client
 
 when@test:
     league_oauth2_server:
