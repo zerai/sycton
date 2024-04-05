@@ -1418,20 +1418,20 @@
         },
         {
             "name": "ecotone/amqp",
-            "version": "1.215.1",
+            "version": "1.217.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/amqp.git",
-                "reference": "5ade889ce1f05fa1080a7cde11862f5bb25fe1c7"
+                "reference": "ec487672790c0c3d4fc0394d332544dff20e068b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/amqp/zipball/5ade889ce1f05fa1080a7cde11862f5bb25fe1c7",
-                "reference": "5ade889ce1f05fa1080a7cde11862f5bb25fe1c7",
+                "url": "https://api.github.com/repos/ecotoneframework/amqp/zipball/ec487672790c0c3d4fc0394d332544dff20e068b",
+                "reference": "ec487672790c0c3d4fc0394d332544dff20e068b",
                 "shasum": ""
             },
             "require": {
-                "ecotone/enqueue": "~1.215.1",
+                "ecotone/enqueue": "~1.217.0",
                 "enqueue/amqp-ext": "^0.10.18",
                 "enqueue/dsn": "^0.10.4",
                 "enqueue/enqueue": "^0.10.0",
@@ -1447,7 +1447,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.215.1-dev"
+                    "dev-main": "1.217.0-dev"
                 },
                 "ecotone": {
                     "repository": "amqp"
@@ -1488,7 +1488,7 @@
                 "rabbitmq"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/amqp/tree/1.215.1"
+                "source": "https://github.com/ecotoneframework/amqp/tree/1.217.0"
             },
             "funding": [
                 {
@@ -1496,25 +1496,25 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:52:25+00:00"
+            "time": "2024-04-05T06:37:28+00:00"
         },
         {
             "name": "ecotone/dbal",
-            "version": "1.215.1",
+            "version": "1.217.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/dbal.git",
-                "reference": "66277082b4bf5cd0fe6f964fbb4efe80ee4322fd"
+                "reference": "cd5af3083aecaa31c7fe9ca231ce47ba1add3869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/66277082b4bf5cd0fe6f964fbb4efe80ee4322fd",
-                "reference": "66277082b4bf5cd0fe6f964fbb4efe80ee4322fd",
+                "url": "https://api.github.com/repos/ecotoneframework/dbal/zipball/cd5af3083aecaa31c7fe9ca231ce47ba1add3869",
+                "reference": "cd5af3083aecaa31c7fe9ca231ce47ba1add3869",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^2.12.0|^3.0",
-                "ecotone/enqueue": "~1.215.1",
+                "ecotone/enqueue": "~1.217.0",
                 "enqueue/dbal": "^0.10.17"
             },
             "require-dev": {
@@ -1522,7 +1522,7 @@
                 "doctrine/cache": "^1.0.0",
                 "doctrine/orm": "^2.0|^3.0",
                 "doctrine/persistence": "^2.5",
-                "ecotone/jms-converter": "~1.215.1",
+                "ecotone/jms-converter": "~1.217.0",
                 "phpstan/phpstan": "^1.8",
                 "phpunit/phpunit": "^9.5",
                 "psr/container": "^2.0",
@@ -1532,7 +1532,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.215.1-dev"
+                    "dev-main": "1.217.0-dev"
                 },
                 "ecotone": {
                     "repository": "dbal"
@@ -1565,7 +1565,7 @@
                 "ecotone"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/dbal/tree/1.215.1"
+                "source": "https://github.com/ecotoneframework/dbal/tree/1.217.0"
             },
             "funding": [
                 {
@@ -1573,20 +1573,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:52:34+00:00"
+            "time": "2024-04-05T06:38:09+00:00"
         },
         {
             "name": "ecotone/ecotone",
-            "version": "1.215.1",
+            "version": "1.217.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/ecotone.git",
-                "reference": "d97886312be3b9b5bc5b1b0b0d0a3bea43d71b34"
+                "reference": "f757738175d8684aac77a91badb929c3540944f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/d97886312be3b9b5bc5b1b0b0d0a3bea43d71b34",
-                "reference": "d97886312be3b9b5bc5b1b0b0d0a3bea43d71b34",
+                "url": "https://api.github.com/repos/ecotoneframework/ecotone/zipball/f757738175d8684aac77a91badb929c3540944f4",
+                "reference": "f757738175d8684aac77a91badb929c3540944f4",
                 "shasum": ""
             },
             "require": {
@@ -1604,7 +1604,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.215.1-dev"
+                    "dev-main": "1.217.0-dev"
                 },
                 "ecotone": {
                     "repository": "ecotone"
@@ -1643,7 +1643,7 @@
                 "service-bus"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/ecotone/tree/1.215.1"
+                "source": "https://github.com/ecotoneframework/ecotone/tree/1.217.0"
             },
             "funding": [
                 {
@@ -1651,24 +1651,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:52:40+00:00"
+            "time": "2024-04-05T06:38:13+00:00"
         },
         {
             "name": "ecotone/enqueue",
-            "version": "1.215.1",
+            "version": "1.217.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/enqueue.git",
-                "reference": "3d80c7fc7e4c72cc12332c9d3b7c3c010c6eb340"
+                "reference": "5793a536dd8bd935207637ac1b946aac0a0e0b7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/3d80c7fc7e4c72cc12332c9d3b7c3c010c6eb340",
-                "reference": "3d80c7fc7e4c72cc12332c9d3b7c3c010c6eb340",
+                "url": "https://api.github.com/repos/ecotoneframework/enqueue/zipball/5793a536dd8bd935207637ac1b946aac0a0e0b7e",
+                "reference": "5793a536dd8bd935207637ac1b946aac0a0e0b7e",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.215.1",
+                "ecotone/ecotone": "~1.217.0",
                 "enqueue/dsn": "^0.10.4",
                 "queue-interop/queue-interop": "^0.8"
             },
@@ -1682,7 +1682,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.215.1-dev"
+                    "dev-main": "1.217.0-dev"
                 },
                 "ecotone": {
                     "repository": "enqueue"
@@ -1715,7 +1715,7 @@
                 "enqueue"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/enqueue/tree/1.215.1"
+                "source": "https://github.com/ecotoneframework/enqueue/tree/1.217.0"
             },
             "funding": [
                 {
@@ -1723,24 +1723,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:52:35+00:00"
+            "time": "2024-04-05T06:38:09+00:00"
         },
         {
             "name": "ecotone/jms-converter",
-            "version": "1.215.1",
+            "version": "1.217.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/jms-converter.git",
-                "reference": "61a29d9e85565ec84cf8996de6ec9ebb5ff275b1"
+                "reference": "9e58ac58565aa35f8fed4123c1f574bad2fbbe75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/61a29d9e85565ec84cf8996de6ec9ebb5ff275b1",
-                "reference": "61a29d9e85565ec84cf8996de6ec9ebb5ff275b1",
+                "url": "https://api.github.com/repos/ecotoneframework/jms-converter/zipball/9e58ac58565aa35f8fed4123c1f574bad2fbbe75",
+                "reference": "9e58ac58565aa35f8fed4123c1f574bad2fbbe75",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.215.1",
+                "ecotone/ecotone": "~1.217.0",
                 "jms/serializer": "^3.17",
                 "symfony/cache": "^5.4|^6.1|^7.0"
             },
@@ -1753,7 +1753,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.215.1-dev"
+                    "dev-main": "1.217.0-dev"
                 },
                 "ecotone": {
                     "repository": "jms-converter"
@@ -1791,7 +1791,7 @@
                 "xml"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.215.1"
+                "source": "https://github.com/ecotoneframework/jms-converter/tree/1.217.0"
             },
             "funding": [
                 {
@@ -1799,24 +1799,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:52:23+00:00"
+            "time": "2024-04-05T06:38:05+00:00"
         },
         {
             "name": "ecotone/pdo-event-sourcing",
-            "version": "1.215.1",
+            "version": "1.217.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/pdo-event-sourcing.git",
-                "reference": "bce199e09d55af1de405d0e9233dae3773f87aa9"
+                "reference": "e0fba2c2b5131cdf5634e55f4f7f792264ae8f7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/pdo-event-sourcing/zipball/bce199e09d55af1de405d0e9233dae3773f87aa9",
-                "reference": "bce199e09d55af1de405d0e9233dae3773f87aa9",
+                "url": "https://api.github.com/repos/ecotoneframework/pdo-event-sourcing/zipball/e0fba2c2b5131cdf5634e55f4f7f792264ae8f7a",
+                "reference": "e0fba2c2b5131cdf5634e55f4f7f792264ae8f7a",
                 "shasum": ""
             },
             "require": {
-                "ecotone/dbal": "~1.215.1",
+                "ecotone/dbal": "~1.217.0",
                 "prooph/pdo-event-store": "^1.15.1"
             },
             "require-dev": {
@@ -1828,7 +1828,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.215.1-dev"
+                    "dev-main": "1.217.0-dev"
                 },
                 "ecotone": {
                     "repository": "pdo-event-sourcing"
@@ -1861,7 +1861,7 @@
                 "ecotone"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/pdo-event-sourcing/tree/1.215.1"
+                "source": "https://github.com/ecotoneframework/pdo-event-sourcing/tree/1.217.0"
             },
             "funding": [
                 {
@@ -1869,24 +1869,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:52:22+00:00"
+            "time": "2024-04-05T06:37:46+00:00"
         },
         {
             "name": "ecotone/symfony-bundle",
-            "version": "1.215.1",
+            "version": "1.217.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/symfony-bundle.git",
-                "reference": "84ff6f2d89f9ae762da6d0e20d4b5c60d1745dbf"
+                "reference": "fa50339b2542609175cf4de4d7159fb780ff2883"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ecotoneframework/symfony-bundle/zipball/84ff6f2d89f9ae762da6d0e20d4b5c60d1745dbf",
-                "reference": "84ff6f2d89f9ae762da6d0e20d4b5c60d1745dbf",
+                "url": "https://api.github.com/repos/ecotoneframework/symfony-bundle/zipball/fa50339b2542609175cf4de4d7159fb780ff2883",
+                "reference": "fa50339b2542609175cf4de4d7159fb780ff2883",
                 "shasum": ""
             },
             "require": {
-                "ecotone/ecotone": "~1.215.1",
+                "ecotone/ecotone": "~1.217.0",
                 "laminas/laminas-zendframework-bridge": "^1.0.0",
                 "symfony/console": "^5.4|^6.0|^7.0",
                 "symfony/dependency-injection": ">=v5.4.19 <6.0.0 || >=v6.0.19 <6.1.0 || >=v6.1.11 <6.2.0 || >=v6.2.5 <7.0.0 || >=v7.0.0 <8.0.0",
@@ -1896,7 +1896,7 @@
                 "behat/behat": "^3.10",
                 "doctrine/doctrine-bundle": "^2.7.2",
                 "doctrine/orm": "^2.0|^3.0",
-                "ecotone/dbal": "~1.215.1",
+                "ecotone/dbal": "~1.217.0",
                 "friends-of-behat/symfony-extension": "<=2.4.2|^2.5",
                 "monolog/monolog": "^2.9|^3.3.1",
                 "phpstan/phpstan": "^1.8",
@@ -1910,7 +1910,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.215.1-dev"
+                    "dev-main": "1.217.0-dev"
                 },
                 "ecotone": {
                     "repository": "symfony"
@@ -1950,7 +1950,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/symfony-bundle/tree/1.215.1"
+                "source": "https://github.com/ecotoneframework/symfony-bundle/tree/1.217.0"
             },
             "funding": [
                 {
@@ -1958,7 +1958,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:52:41+00:00"
+            "time": "2024-04-05T06:38:17+00:00"
         },
         {
             "name": "enqueue/amqp-ext",
@@ -3026,16 +3026,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.27.0",
+            "version": "1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "86e4d5a4b036f8f0be1464522f4c6b584c452757"
+                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/86e4d5a4b036f8f0be1464522f4c6b584c452757",
-                "reference": "86e4d5a4b036f8f0be1464522f4c6b584c452757",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
+                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
                 "shasum": ""
             },
             "require": {
@@ -3067,9 +3067,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.27.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.28.0"
             },
-            "time": "2024-03-21T13:14:53+00:00"
+            "time": "2024-04-03T18:51:33+00:00"
         },
         {
             "name": "prooph/common",
