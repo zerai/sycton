@@ -30,7 +30,7 @@ Endpoint: [https://blue.localtest.me](https://blue.localtest.me)
 
 OpenApi spec: [http://swagger.blue.localtest.me](http://swagger.blue.localtest.me)
 
-Stack: [ php-cli:8.1 - swoole - symfony-6.1 ]
+Stack: [ php-cli:8.1 - swoole - symfony-6.4 ]
 
 
 ## Red service
