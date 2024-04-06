@@ -2,12 +2,11 @@
 
 use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
-use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
+use Rector\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -28,9 +27,14 @@ return static function (RectorConfig $rectorConfig): void {
         /**
          * SYMFONY
          */
-        //SymfonySetList::SYMFONY_54,
-        SymfonyLevelSetList::UP_TO_SYMFONY_60,
+        SymfonySetList::SYMFONY_62,
         SymfonySetList::SYMFONY_CODE_QUALITY,
+        /**
+         * enable SymfonyLevelSetList::UP_TO_* only on transition
+         * @see https://getrector.com/blog/5-common-mistakes-in-rector-config-and-how-to-avoid-them
+         */
+        //SymfonyLevelSetList::UP_TO_SYMFONY_62,
+
 
         /**
          * DOCTRINE
@@ -43,6 +47,11 @@ return static function (RectorConfig $rectorConfig): void {
          * PHPUNIT
          */
         PHPUnitSetList::PHPUNIT_91,
+        /**
+         * enable PHPUnitLevelSetList::UP_TO_* only on transition
+         * @see https://getrector.com/blog/5-common-mistakes-in-rector-config-and-how-to-avoid-them
+         */
+        //PHPUnitLevelSetList::UP_TO_PHPUNIT_90
 
     ]);
     // register a single rule
