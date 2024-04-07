@@ -59,8 +59,8 @@ class UserListProjectionTest extends KernelTestCase
     private function getTestSupport(): FlowTestSupport
     {
         return EcotoneLite::bootstrapFlowTestingWithEventStore(
-        // 1. Setting projection and aggregate that we want to resolve
-        [UserListProjection::class, User::class],
+            // 1. Setting projection and aggregate that we want to resolve
+            [UserListProjection::class, User::class],
             [
                 DbalConnectionFactory::class => new DbalConnectionFactory(EcotoneDbConnectionConf::databaseDns()),
                 new UserListProjection((self::bootKernel())->getContainer()->get('doctrine.dbal.default_connection')),
