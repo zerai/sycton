@@ -2,10 +2,10 @@
 
 namespace IdentityAccess\Application\Model\Identity;
 
-use Ecotone\Modelling\Attribute\AggregateIdentifier;
 use Ecotone\Modelling\Attribute\CommandHandler;
 use Ecotone\Modelling\Attribute\EventSourcingAggregate;
 use Ecotone\Modelling\Attribute\EventSourcingHandler;
+use Ecotone\Modelling\Attribute\Identifier;
 use Ecotone\Modelling\WithAggregateVersioning;
 use IdentityAccess\Application\Model\Identity\Command\ChangeUserPassword;
 use IdentityAccess\Application\Model\Identity\Command\PromoteToRole;
@@ -29,7 +29,7 @@ class User
 
     use WithAggregateVersioning;
 
-    #[AggregateIdentifier]
+    #[Identifier]
     private string $userId;
 
     private string $email;
