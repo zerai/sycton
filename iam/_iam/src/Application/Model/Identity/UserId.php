@@ -4,8 +4,9 @@ namespace IdentityAccess\Application\Model\Identity;
 
 class UserId implements \Stringable
 {
-    private function __construct(private readonly string $identity)
-    {
+    private function __construct(
+        private readonly string $identity
+    ) {
     }
 
     public static function fromString(string $identity): static

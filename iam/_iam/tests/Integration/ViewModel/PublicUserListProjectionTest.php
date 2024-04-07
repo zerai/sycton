@@ -8,7 +8,6 @@ use Enqueue\Dbal\DbalConnectionFactory;
 use IdentityAccess\AclAdapter\ViewModel\PublicUserListProjection;
 use IdentityAccess\Application\Model\Identity\Event\UserWasRegistered;
 use IdentityAccess\Application\Model\Identity\User;
-
 use IdentityAccess\Tests\EcotoneDbConnectionConf;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
