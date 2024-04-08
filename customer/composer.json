@@ -16,7 +16,7 @@
         "ecotone/symfony-bundle": "^1.5",
         "runtime/swoole": "^0.3.1",
         "symfony/console": "6.2.*",
-        "symfony/dotenv": "6.2.*",
+        "symfony/dotenv": "6.4.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.2.*",
         "symfony/monolog-bundle": "^3.8",
