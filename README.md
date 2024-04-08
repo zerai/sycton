@@ -12,7 +12,7 @@ Endpoint: [https://iam.localtest.me](https://iam.localtest.me)
 
 OpenApi spec: [http://swagger.iam.localtest.me](http://swagger.iam.localtest.me)
 
-Stack: [ php-cli:8.1 - swoole - symfony-6.2 ]
+Stack: [ php-cli:8.1 - swoole - symfony-6.4 ]
 
 
 ## customer service

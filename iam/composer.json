@@ -17,18 +17,18 @@
         "ecotone/jms-converter": "^1.94",
         "ecotone/pdo-event-sourcing": "^1.90",
         "ecotone/symfony-bundle": "^1.90",
-        "league/oauth2-server-bundle": "^0.4.1",
-        "symfony/asset": "6.2.*",
-        "symfony/console": "6.2.*",
-        "symfony/dotenv": "6.2.*",
+        "league/oauth2-server-bundle": "^0.8",
+        "symfony/asset": "6.4.*",
+        "symfony/console": "6.4.*",
+        "symfony/dotenv": "6.4.*",
         "symfony/flex": "^1.17 || ^2",
-        "symfony/framework-bundle": "6.2.*",
-        "symfony/http-kernel": "6.2.*",
+        "symfony/framework-bundle": "6.4.*",
+        "symfony/http-kernel": "6.4.*",
         "symfony/monolog-bundle": "^3.7",
-        "symfony/proxy-manager-bridge": "6.2.*",
-        "symfony/runtime": "6.2.*",
-        "symfony/security-bundle": "6.2.*",
-        "symfony/yaml": "6.2.*",
+        "symfony/proxy-manager-bridge": "6.4.*",
+        "symfony/runtime": "6.4.*",
+        "symfony/security-bundle": "6.4.*",
+        "symfony/yaml": "6.4.*",
         "zerai/openswoole-runtime": "^0.1"
     },
     "replace": {
@@ -43,13 +43,13 @@
         "bamarni/composer-bin-plugin": "^1.4",
         "giorgiosironi/eris": "^0.14.0",
         "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "6.2.*",
-        "symfony/css-selector": "6.2.*",
-        "symfony/debug-bundle": "6.2.*",
+        "symfony/browser-kit": "6.4.*",
+        "symfony/css-selector": "6.4.*",
+        "symfony/debug-bundle": "6.4.*",
         "symfony/maker-bundle": "^1.36",
         "symfony/phpunit-bridge": "^6.2",
-        "symfony/stopwatch": "6.2.*",
-        "symfony/web-profiler-bundle": "6.2.*"
+        "symfony/stopwatch": "6.4.*",
+        "symfony/web-profiler-bundle": "6.4.*"
     },
     "config": {
         "allow-plugins": {
@@ -72,7 +72,7 @@
         },
         "symfony": {
             "allow-contrib": false,
-            "require": "6.2.*"
+            "require": "6.4.*"
         }
     },
     "autoload": {
@@ -103,9 +103,9 @@
         "cs": "./vendor/bin/ecs",
         "cs:fix": "./vendor/bin/ecs --fix",
         "phpstan": "./vendor/bin/phpstan",
-        "psalm": "./vendor/bin/psalm",
         "rc": "./vendor/bin/rector --dry-run",
         "rc:fix": "./vendor/bin/rector",
+        "sa": "./vendor/bin/psalm",
         "tf": "./bin/phpunit --testsuite=functional --testdox",
         "ti": "./bin/phpunit --testsuite=integration --testdox",
         "tu": "./bin/phpunit --testsuite=unit --testdox"
