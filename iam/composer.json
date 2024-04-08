@@ -103,9 +103,9 @@
         "cs": "./vendor/bin/ecs",
         "cs:fix": "./vendor/bin/ecs --fix",
         "phpstan": "./vendor/bin/phpstan",
-        "psalm": "./vendor/bin/psalm",
         "rc": "./vendor/bin/rector --dry-run",
         "rc:fix": "./vendor/bin/rector",
+        "sa": "./vendor/bin/psalm",
         "tf": "./bin/phpunit --testsuite=functional --testdox",
         "ti": "./bin/phpunit --testsuite=integration --testdox",
         "tu": "./bin/phpunit --testsuite=unit --testdox"
