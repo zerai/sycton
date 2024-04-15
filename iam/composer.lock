@@ -1489,7 +1489,7 @@
         },
         {
             "name": "ecotone/amqp",
-            "version": "1.218.0",
+            "version": "1.219.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/amqp.git",
@@ -1559,7 +1559,7 @@
                 "rabbitmq"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/amqp/tree/1.218.0"
+                "source": "https://github.com/ecotoneframework/amqp/tree/1.219.0"
             },
             "funding": [
                 {
