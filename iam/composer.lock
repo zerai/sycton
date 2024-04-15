@@ -1944,7 +1944,7 @@
         },
         {
             "name": "ecotone/symfony-bundle",
-            "version": "1.218.0",
+            "version": "1.219.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ecotoneframework/symfony-bundle.git",
@@ -2021,7 +2021,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/ecotoneframework/symfony-bundle/tree/1.218.0"
+                "source": "https://github.com/ecotoneframework/symfony-bundle/tree/1.219.0"
             },
             "funding": [
                 {
