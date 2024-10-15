@@ -5,6 +5,7 @@ on:
     paths:
       - "customer/**"
       - '.github/workflows/customer-*.yaml'
+      - '!.github/workflows/dependabot.yaml'
 jobs:
   commit-stage-workflow:
     name: Commit Stage
