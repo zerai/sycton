@@ -51,6 +51,36 @@ services:
 
   ######################################################################################################################
   #
+  #   main database instance
+  #   All microservices  share the same 'physical' database instance,
+  #   but each microservice has a private schema/database.
+  #
+  ######################################################################################################################
+
+  main-database:
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    volumes:
+      - ./_etc/docker/postgres:/docker-entrypoint-initdb.d
+    networks:
+      - syctone
+    ports:
+      - target: 5432
+        published: 5432
+        protocol: tcp
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-app}" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: iam,red,blue
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+
+
+  ######################################################################################################################
+  #
   #   iam services
   #
   ######################################################################################################################
