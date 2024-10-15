@@ -1,0 +1,16 @@
+{
+  "Servers": {
+    "1": {
+      "Group": "Servers",
+      "Name": "MainDatabase",
+      "Host": "main-database",
+      "Port": 5432,
+      "MaintenanceDB": "iam",
+      "Username": "app",
+      "Password": "!ChangeMe!",
+      "SSLMode": "prefer",
+      "Favorite": true
+    }
+  }
+}
+

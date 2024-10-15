@@ -331,7 +331,7 @@ services:
       RABBITMQ_DEFAULT_VHOST: "/"
 
   pgadmin:
-    image: dpage/pgadmin4:6.18
+    image: dpage/pgadmin4:latest
     networks:
       - syctone
     ports:
@@ -339,6 +339,10 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: "admin@example.com"
       PGADMIN_DEFAULT_PASSWORD: "admin"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    volumes:
+      - ./_etc/docker/pgAdmin/servers.json:/pgadmin4/servers.json
 
   pulse:
     image: ecotoneframework/ecotone-pulse:0.1.0
