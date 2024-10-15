@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   ######################################################################################################################
   #
@@ -68,7 +66,7 @@ services:
         published: 5432
         protocol: tcp
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-app}" ]
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-postgres}" ]
       interval: 10s
       retries: 5
       start_period: 30s
@@ -92,14 +90,15 @@ services:
     networks:
       - syctone
     depends_on:
-      - db-iam
-      #- mbroker
+      main-database:
+        condition: service_healthy
+        restart: false
     volumes:
       - "./iam:/app"
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_URL: pgsql://ecotone:ecotone@db-iam:5432/ecotone
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/iam
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       APP_RUNTIME: Zerai\OpenSwoole\Runtime
       SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
@@ -116,17 +115,6 @@ services:
       - "traefik.http.routers.php-iam.tls=true"
       - "traefik.http.routers.php-iam.tls.domains[0].main=iam.localtest.me"
       - "traefik.http.routers.php-iam.tls.domains[0].sans=iam-dev.localtest.me,iam-test.localtest.me"
-
-  db-iam:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    networks:
-      - syctone
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
-      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
 
   openapi-iam:
     image: redocly/openapi-cli
@@ -155,14 +143,15 @@ services:
     networks:
       - syctone
     depends_on:
-      - db-blue
-      #- mbroker
+      main-database:
+        condition: service_healthy
+        restart: false
     volumes:
       - "./blue:/app"
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_DSN: pgsql://ecotone:ecotone@db-blue:5432/ecotone
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/blue
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       # -- Swoole runtime envs
       APP_RUNTIME: Zerai\OpenSwoole\Runtime
@@ -184,18 +173,6 @@ services:
       - "traefik.http.routers.php-blue.tls=true"
       - "traefik.http.routers.php-blue.tls.domains[0].main=blue.localtest.me"
       - "traefik.http.routers.php-blue.tls.domains[0].sans=blue-dev.localtest.me,blue-test.localtest.me"
-
-
-  db-blue:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    networks:
-      - syctone
-    ports:
-      - "5432"
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
-      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
 
   openapi-blue:
     image: redocly/openapi-cli
@@ -224,13 +201,15 @@ services:
     networks:
       - syctone
     depends_on:
-      - db-red
+      main-database:
+        condition: service_healthy
+        restart: false
     volumes:
       - "./red:/app"
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_DSN: pgsql://ecotone:ecotone@db-red:5432/ecotone?serverVersion=13&charset=utf8"
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/red
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       # -- Workerman runtime envs
       #APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
@@ -252,18 +231,6 @@ services:
       - "traefik.http.routers.php-red.tls=true"
       - "traefik.http.routers.php-red.tls.domains[0].main=red.localtest.me"
       - "traefik.http.routers.php-red.tls.domains[0].sans=red-dev.localtest.me,red-test.localtest.me"
-
-
-  db-red:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    networks:
-      - syctone
-    ports:
-      - "5432"
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
-      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
 
   openapi-red:
     image: redocly/openapi-cli
