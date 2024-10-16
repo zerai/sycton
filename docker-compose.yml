@@ -1,10 +1,294 @@
 services:
+######################################################################################################################
+#
+#   iam services
+#
+######################################################################################################################
+  php-iam:
+    profiles: [ iam, all ]
+    build:
+      context: ./docker/php-swoole
+      dockerfile: Dockerfile
+    container_name: "iam-service"
+    networks:
+      - syctone
+    depends_on:
+      main-database:
+        condition: service_healthy
+        restart: false
+    volumes:
+      - "./iam:/app"
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/iam
+      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+      APP_RUNTIME: Zerai\OpenSwoole\Runtime
+      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
+      SWOOLE_PORT: ${SWOOLE_PORT-80}
+      SWOOLE_HOT_RELOAD: 1
+    command: "php /app/public/index.php"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.php-iam.entrypoints=websecure"
+      - "traefik.http.routers.php-iam.rule=Host(`iam.localtest.me`)"
+      - "traefik.http.services.php-iam.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.php-iam.tls=true"
+      - "traefik.http.routers.php-iam.tls.domains[0].main=iam.localtest.me"
+      - "traefik.http.routers.php-iam.tls.domains[0].sans=iam-dev.localtest.me,iam-test.localtest.me"
+
+  openapi-iam:
+    profiles: [ iam, all ]
+    image: redocly/openapi-cli
+    networks:
+      - syctone
+    volumes:
+      - "./iam/docs/api/v1:/spec"
+    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.openapi-iam.entrypoints=web"
+      - "traefik.http.routers.openapi-iam.rule=Host(`swagger.iam.localtest.me`)"
+      - "traefik.http.services.openapi-iam.loadbalancer.server.port=80"
+
   ######################################################################################################################
   #
-  #   api gateway
+  #   blu services
   #
   ######################################################################################################################
+
+  php-blue:
+    profiles: [ blue, all ]
+    build:
+      context: ./docker/php-swoole
+      dockerfile: Dockerfile
+    networks:
+      - syctone
+    depends_on:
+      main-database:
+        condition: service_healthy
+        restart: false
+    volumes:
+      - "./blue:/app"
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/blue
+      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+      # -- Swoole runtime envs
+      APP_RUNTIME: Zerai\OpenSwoole\Runtime
+      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
+      SWOOLE_PORT: ${SWOOLE_PORT-80}
+      SWOOLE_HOT_RELOAD: 1
+      # -- Workerman runtime envs
+#      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
+#      PORT: 80
+#      LOGFILE: /app/var/workerman.log
+    command: "php /app/public/index.php start"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.php-blue.entrypoints=websecure"
+      - "traefik.http.routers.php-blue.rule=Host(`blue.localtest.me`)"
+      - "traefik.http.services.php-blue.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.php-blue.tls=true"
+      - "traefik.http.routers.php-blue.tls.domains[0].main=blue.localtest.me"
+      - "traefik.http.routers.php-blue.tls.domains[0].sans=blue-dev.localtest.me,blue-test.localtest.me"
+
+  openapi-blue:
+    profiles: [ blue, all ]
+    image: redocly/openapi-cli
+    networks:
+      - syctone
+    volumes:
+      - "./blue/docs/api/v1:/spec"
+    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.openapi-blue.entrypoints=web"
+      - "traefik.http.routers.openapi-blue.rule=Host(`swagger.blue.localtest.me`)"
+      - "traefik.http.services.openapi-blue.loadbalancer.server.port=80"
+
+  ########################################################################################################################
+  #
+  #   red services
+  #
+  ########################################################################################################################
+
+  php-red:
+    profiles: [ red, all ]
+    build:
+      context: ./docker/php-cli
+      dockerfile: Dockerfile
+    networks:
+      - syctone
+    depends_on:
+      main-database:
+        condition: service_healthy
+        restart: false
+    volumes:
+      - "./red:/app"
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/red
+      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+      # -- Workerman runtime envs
+      #APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
+      #PORT: 80
+      #LOGFILE: /app/var/workerman.log
+      # -- Swoole runtime envs
+      APP_RUNTIME: Zerai\OpenSwoole\Runtime
+      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
+      SWOOLE_PORT: ${SWOOLE_PORT-80}
+      SWOOLE_HOT_RELOAD: 1
+    command: "php /app/public/index.php start"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.php-red.entrypoints=websecure"
+      - "traefik.http.routers.php-red.rule=Host(`red.localtest.me`)"
+      - "traefik.http.services.php-red.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.php-red.tls=true"
+      - "traefik.http.routers.php-red.tls.domains[0].main=red.localtest.me"
+      - "traefik.http.routers.php-red.tls.domains[0].sans=red-dev.localtest.me,red-test.localtest.me"
+
+  openapi-red:
+    profiles: [ red, all ]
+    image: redocly/openapi-cli
+    networks:
+      - syctone
+    volumes:
+      - "./red/docs/api/v1:/spec"
+    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.openapi-red.entrypoints=web"
+      - "traefik.http.routers.openapi-red.rule=Host(`swagger.red.localtest.me`)"
+      - "traefik.http.services.openapi-red.loadbalancer.server.port=80"
+
+
+  ########################################################################################################################
+  #
+  #   customer services
+  #
+  ########################################################################################################################
+
+  php-customer:
+    profiles: [ customer, all ]
+    build:
+      context: ./docker/php-cli
+      dockerfile: Dockerfile
+    networks:
+      - syctone
+    depends_on:
+      - db-customer
+    volumes:
+      - "./customer:/app"
+    environment:
+      APP_ENV: "dev"
+      APP_DEBUG: "true"
+      DATABASE_DSN: pgsql://ecotone:ecotone@db-customer:5432/ecotone?serverVersion=13&charset=utf8"
+      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
+      APP_RUNTIME: Zerai\OpenSwoole\Runtime
+      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
+      SWOOLE_PORT: ${SWOOLE_PORT-80}
+      SWOOLE_HOT_RELOAD: 1
+    command: "php /app/public/index.php start"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.php-customer.entrypoints=websecure"
+      - "traefik.http.routers.php-customer.rule=Host(`customer.localtest.me`)"
+      - "traefik.http.services.php-customer.loadbalancer.server.port=80"
+
+      - "traefik.http.routers.php-customer.tls=true"
+      - "traefik.http.routers.php-customer.tls.domains[0].main=customer.localtest.me"
+      - "traefik.http.routers.php-customer.tls.domains[0].sans=customer-dev.localtest.me,customer-test.localtest.me"
+
+
+  db-customer:
+    profiles: [ customer, all ]
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    networks:
+      - syctone
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
+      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
+
+  openapi-customer:
+    profiles: [ customer, all ]
+    image: redocly/openapi-cli
+    networks:
+      - syctone
+    volumes:
+      - "./customer/docs/api/v1:/spec"
+    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=syctone"
+      - "traefik.http.routers.openapi-customer.entrypoints=web"
+      - "traefik.http.routers.openapi-customer.rule=Host(`swagger.customer.localtest.me`)"
+      - "traefik.http.services.openapi-customer.loadbalancer.server.port=80"
+
+#########################################################################################################################
+#########################################################################################################################
+##
+##   infra services
+##
+#########################################################################################################################
+#########################################################################################################################
+
+
+######################################################################################################################
+#
+#   Main database instance - Postgres
+#
+#   All microservices  share the same 'physical' database instance,
+#   but each microservice has a private schema/database.
+#
+######################################################################################################################
+
+  main-database:
+    profiles: [ postgres, iam, red, blue, all ]
+    image: postgres:${POSTGRES_VERSION:-13}-alpine
+    volumes:
+      - ./_etc/docker/postgres:/docker-entrypoint-initdb.d
+    networks:
+      - syctone
+    ports:
+      - target: 5432
+        published: 5432
+        protocol: tcp
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-postgres}" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+    environment:
+      POSTGRES_MULTIPLE_DATABASES: iam,red,blue
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+
+
+######################################################################################################################
+#
+#   api gateway - Traefik
+#
+######################################################################################################################
   traefik:
+    profiles: [ traefik, iam, red, blue, all ]
     image: traefik:v2.9
     container_name: "traefik"
     networks:
@@ -47,277 +331,13 @@ services:
       - "./docker/traefik:/etc/traefik"
 
 
-  ######################################################################################################################
-  #
-  #   main database instance
-  #   All microservices  share the same 'physical' database instance,
-  #   but each microservice has a private schema/database.
-  #
-  ######################################################################################################################
-
-  main-database:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    volumes:
-      - ./_etc/docker/postgres:/docker-entrypoint-initdb.d
-    networks:
-      - syctone
-    ports:
-      - target: 5432
-        published: 5432
-        protocol: tcp
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-postgres}" ]
-      interval: 10s
-      retries: 5
-      start_period: 30s
-      timeout: 10s
-    environment:
-      POSTGRES_MULTIPLE_DATABASES: iam,red,blue
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
-
-
-  ######################################################################################################################
-  #
-  #   iam services
-  #
-  ######################################################################################################################
-  php-iam:
-    build:
-      context: ./docker/php-swoole
-      dockerfile: Dockerfile
-    container_name: "iam-service"
-    networks:
-      - syctone
-    depends_on:
-      main-database:
-        condition: service_healthy
-        restart: false
-    volumes:
-      - "./iam:/app"
-    environment:
-      APP_ENV: "dev"
-      APP_DEBUG: "true"
-      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/iam
-      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      APP_RUNTIME: Zerai\OpenSwoole\Runtime
-      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
-      SWOOLE_PORT: ${SWOOLE_PORT-80}
-      SWOOLE_HOT_RELOAD: 1
-    command: "php /app/public/index.php"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.php-iam.entrypoints=websecure"
-      - "traefik.http.routers.php-iam.rule=Host(`iam.localtest.me`)"
-      - "traefik.http.services.php-iam.loadbalancer.server.port=80"
-
-      - "traefik.http.routers.php-iam.tls=true"
-      - "traefik.http.routers.php-iam.tls.domains[0].main=iam.localtest.me"
-      - "traefik.http.routers.php-iam.tls.domains[0].sans=iam-dev.localtest.me,iam-test.localtest.me"
-
-  openapi-iam:
-    image: redocly/openapi-cli
-    networks:
-      - syctone
-    volumes:
-      - "./iam/docs/api/v1:/spec"
-    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.openapi-iam.entrypoints=web"
-      - "traefik.http.routers.openapi-iam.rule=Host(`swagger.iam.localtest.me`)"
-      - "traefik.http.services.openapi-iam.loadbalancer.server.port=80"
-
-  ######################################################################################################################
-  #
-  #   blu services
-  #
-  ######################################################################################################################
-
-  php-blue:
-    build:
-      context: ./docker/php-swoole
-      dockerfile: Dockerfile
-    networks:
-      - syctone
-    depends_on:
-      main-database:
-        condition: service_healthy
-        restart: false
-    volumes:
-      - "./blue:/app"
-    environment:
-      APP_ENV: "dev"
-      APP_DEBUG: "true"
-      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/blue
-      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      # -- Swoole runtime envs
-      APP_RUNTIME: Zerai\OpenSwoole\Runtime
-      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
-      SWOOLE_PORT: ${SWOOLE_PORT-80}
-      SWOOLE_HOT_RELOAD: 1
-      # -- Workerman runtime envs
-#      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
-#      PORT: 80
-#      LOGFILE: /app/var/workerman.log
-    command: "php /app/public/index.php start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.php-blue.entrypoints=websecure"
-      - "traefik.http.routers.php-blue.rule=Host(`blue.localtest.me`)"
-      - "traefik.http.services.php-blue.loadbalancer.server.port=80"
-
-      - "traefik.http.routers.php-blue.tls=true"
-      - "traefik.http.routers.php-blue.tls.domains[0].main=blue.localtest.me"
-      - "traefik.http.routers.php-blue.tls.domains[0].sans=blue-dev.localtest.me,blue-test.localtest.me"
-
-  openapi-blue:
-    image: redocly/openapi-cli
-    networks:
-      - syctone
-    volumes:
-      - "./blue/docs/api/v1:/spec"
-    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.openapi-blue.entrypoints=web"
-      - "traefik.http.routers.openapi-blue.rule=Host(`swagger.blue.localtest.me`)"
-      - "traefik.http.services.openapi-blue.loadbalancer.server.port=80"
-
-  ########################################################################################################################
-  #
-  #   red services
-  #
-  ########################################################################################################################
-
-  php-red:
-    build:
-      context: ./docker/php-cli
-      dockerfile: Dockerfile
-    networks:
-      - syctone
-    depends_on:
-      main-database:
-        condition: service_healthy
-        restart: false
-    volumes:
-      - "./red:/app"
-    environment:
-      APP_ENV: "dev"
-      APP_DEBUG: "true"
-      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/red
-      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      # -- Workerman runtime envs
-      #APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
-      #PORT: 80
-      #LOGFILE: /app/var/workerman.log
-      # -- Swoole runtime envs
-      APP_RUNTIME: Zerai\OpenSwoole\Runtime
-      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
-      SWOOLE_PORT: ${SWOOLE_PORT-80}
-      SWOOLE_HOT_RELOAD: 1
-    command: "php /app/public/index.php start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.php-red.entrypoints=websecure"
-      - "traefik.http.routers.php-red.rule=Host(`red.localtest.me`)"
-      - "traefik.http.services.php-red.loadbalancer.server.port=80"
-
-      - "traefik.http.routers.php-red.tls=true"
-      - "traefik.http.routers.php-red.tls.domains[0].main=red.localtest.me"
-      - "traefik.http.routers.php-red.tls.domains[0].sans=red-dev.localtest.me,red-test.localtest.me"
-
-  openapi-red:
-    image: redocly/openapi-cli
-    networks:
-      - syctone
-    volumes:
-      - "./red/docs/api/v1:/spec"
-    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.openapi-red.entrypoints=web"
-      - "traefik.http.routers.openapi-red.rule=Host(`swagger.red.localtest.me`)"
-      - "traefik.http.services.openapi-red.loadbalancer.server.port=80"
-
-
-  ########################################################################################################################
-  #
-  #   customer services
-  #
-  ########################################################################################################################
-
-  php-customer:
-    build:
-      context: ./docker/php-cli
-      dockerfile: Dockerfile
-    networks:
-      - syctone
-    depends_on:
-      - db-customer
-    volumes:
-      - "./customer:/app"
-    environment:
-      APP_ENV: "dev"
-      APP_DEBUG: "true"
-      DATABASE_DSN: pgsql://ecotone:ecotone@db-customer:5432/ecotone?serverVersion=13&charset=utf8"
-      ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      APP_RUNTIME: Zerai\OpenSwoole\Runtime
-      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
-      SWOOLE_PORT: ${SWOOLE_PORT-80}
-      SWOOLE_HOT_RELOAD: 1
-    command: "php /app/public/index.php start"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.php-customer.entrypoints=websecure"
-      - "traefik.http.routers.php-customer.rule=Host(`customer.localtest.me`)"
-      - "traefik.http.services.php-customer.loadbalancer.server.port=80"
-
-      - "traefik.http.routers.php-customer.tls=true"
-      - "traefik.http.routers.php-customer.tls.domains[0].main=customer.localtest.me"
-      - "traefik.http.routers.php-customer.tls.domains[0].sans=customer-dev.localtest.me,customer-test.localtest.me"
-
-
-  db-customer:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    networks:
-      - syctone
-    ports:
-      - "5432"
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-ecotone}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ecotone}
-      POSTGRES_USER: ${POSTGRES_USER:-ecotone}
-
-  openapi-customer:
-    image: redocly/openapi-cli
-    networks:
-      - syctone
-    volumes:
-      - "./customer/docs/api/v1:/spec"
-    command: ["preview-docs", "-h", "0.0.0.0", "-p", "80", "openapi.yaml"]
-    labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=syctone"
-      - "traefik.http.routers.openapi-customer.entrypoints=web"
-      - "traefik.http.routers.openapi-customer.rule=Host(`swagger.customer.localtest.me`)"
-      - "traefik.http.services.openapi-customer.loadbalancer.server.port=80"
-
-
-#########################################################################################################################
-##
-##   infra services
-##
-#########################################################################################################################
-
+######################################################################################################################
+#
+#   Messaging & queue - RabbitMq
+#
+######################################################################################################################
   mbroker:
+    profiles: [ rabbitmq, all ]
     image: rabbitmq:3-management
     networks:
       - syctone
@@ -330,7 +350,14 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-rabbit-password}
       RABBITMQ_DEFAULT_VHOST: "/"
 
+
+######################################################################################################################
+#
+#   Database UI - PgAdmin
+#
+######################################################################################################################
   pgadmin:
+    profiles: [ postgres-ui, all ]
     image: dpage/pgadmin4:latest
     networks:
       - syctone
@@ -344,7 +371,14 @@ services:
     volumes:
       - ./_etc/docker/pgAdmin/servers.json:/pgadmin4/servers.json
 
+
+######################################################################################################################
+#
+#   Messaging UI - Ecotone Pulse
+#
+######################################################################################################################
   pulse:
+    profiles: [ message-ui, all ]
     image: ecotoneframework/ecotone-pulse:0.1.0
     working_dir: "/data/app"
     networks:
