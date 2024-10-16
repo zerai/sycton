@@ -1,6 +1,0 @@
-ecotone:
-  loadSrcNamespaces: false
-  serviceName: 'customer'
-  namespaces:
-    - 'Customer'
-  defaultErrorChannel: "dbal_dead_letter"

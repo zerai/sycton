@@ -25,14 +25,6 @@ How to run as a single service:
 docker compose --profile iam up -d --wait
 ````
 
-## customer service
-
-Endpoint: [https://customer.localtest.me](https://iam.localtest.me)
-
-OpenApi spec: [http://swagger.customer.localtest.me](http://swagger.iam.localtest.me)
-
-Stack: [ php-cli:8.1 - workerman - symfony-6.1 ]
-
 
 ## Blue service
 
