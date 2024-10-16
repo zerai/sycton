@@ -1,7 +1,6 @@
 # sycton
 
 [![Iam service CD/CI](https://github.com/zerai/sycton/actions/workflows/iam-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/iam-service.yaml)
-[![Customer service CD/CI](https://github.com/zerai/sycton/actions/workflows/customer-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/customer-service.yaml)
 [![Blue service CD/CI](https://github.com/zerai/sycton/actions/workflows/blue-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/blue-service.yaml)
 [![Red service CD/CI](https://github.com/zerai/sycton/actions/workflows/red-service.yaml/badge.svg)](https://github.com/zerai/sycton/actions/workflows/red-service.yaml)
 
