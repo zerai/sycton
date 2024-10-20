@@ -12,7 +12,7 @@ updates:
     target-branch: "main"
     directory: "iam/"
     versioning-strategy: "increase-if-necessary"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 10
     schedule:
       interval: "weekly"
       #day: "sunday"
@@ -89,7 +89,8 @@ updates:
         update-types: [ "version-update:semver-major" ]
       - dependency-name: "twig/*-extra"
         update-types: ["version-update:semver-major"]
-
+      - dependency-name: "phpunit/phpunit"
+        update-types: ["version-update:semver-major"]
 
 ########################################################################################################################
 #
