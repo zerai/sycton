@@ -4687,16 +4687,16 @@
         },
         {
             "name": "symfony/dotenv",
-            "version": "v6.4.4",
+            "version": "v6.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dotenv.git",
-                "reference": "f6f0a3dd102915b4c5bfdf4f4e3139a8cbf477a0"
+                "reference": "815284236cab7d8e1280f53bf562c07a4dfe5954"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dotenv/zipball/f6f0a3dd102915b4c5bfdf4f4e3139a8cbf477a0",
-                "reference": "f6f0a3dd102915b4c5bfdf4f4e3139a8cbf477a0",
+                "url": "https://api.github.com/repos/symfony/dotenv/zipball/815284236cab7d8e1280f53bf562c07a4dfe5954",
+                "reference": "815284236cab7d8e1280f53bf562c07a4dfe5954",
                 "shasum": ""
             },
             "require": {
@@ -4741,7 +4741,7 @@
                 "environment"
             ],
             "support": {
-                "source": "https://github.com/symfony/dotenv/tree/v6.4.4"
+                "source": "https://github.com/symfony/dotenv/tree/v6.4.12"
             },
             "funding": [
                 {
@@ -4757,7 +4757,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-08T17:53:17+00:00"
+            "time": "2024-09-16T16:01:33+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -5122,21 +5122,24 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v2.4.5",
+            "version": "v2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "b0a405f40614c9f584b489d54f91091817b0e26e"
+                "reference": "92f4fba342161ff36072bd3b8e0b3c6c23160402"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/b0a405f40614c9f584b489d54f91091817b0e26e",
-                "reference": "b0a405f40614c9f584b489d54f91091817b0e26e",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/92f4fba342161ff36072bd3b8e0b3c6c23160402",
+                "reference": "92f4fba342161ff36072bd3b8e0b3c6c23160402",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2.1",
                 "php": ">=8.0"
+            },
+            "conflict": {
+                "composer/semver": "<1.7.2"
             },
             "require-dev": {
                 "composer/composer": "^2.1",
@@ -5167,7 +5170,7 @@
             "description": "Composer plugin for Symfony",
             "support": {
                 "issues": "https://github.com/symfony/flex/issues",
-                "source": "https://github.com/symfony/flex/tree/v2.4.5"
+                "source": "https://github.com/symfony/flex/tree/v2.4.7"
             },
             "funding": [
                 {
@@ -5183,7 +5186,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-02T08:16:47+00:00"
+            "time": "2024-10-07T08:51:54+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -6157,16 +6160,16 @@
         },
         {
             "name": "symfony/proxy-manager-bridge",
-            "version": "v6.4.6",
+            "version": "v6.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/proxy-manager-bridge.git",
-                "reference": "1d67cac97e3a4987ffadec3faf9e6b8c00cf12cc"
+                "reference": "b8119e0b248ef0711c25cd09acc729102122621c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/proxy-manager-bridge/zipball/1d67cac97e3a4987ffadec3faf9e6b8c00cf12cc",
-                "reference": "1d67cac97e3a4987ffadec3faf9e6b8c00cf12cc",
+                "url": "https://api.github.com/repos/symfony/proxy-manager-bridge/zipball/b8119e0b248ef0711c25cd09acc729102122621c",
+                "reference": "b8119e0b248ef0711c25cd09acc729102122621c",
                 "shasum": ""
             },
             "require": {
@@ -6204,7 +6207,7 @@
             "description": "Provides integration for ProxyManager with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/proxy-manager-bridge/tree/v6.4.6"
+                "source": "https://github.com/symfony/proxy-manager-bridge/tree/v6.4.8"
             },
             "funding": [
                 {
@@ -6220,7 +6223,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-19T11:56:30+00:00"
+            "time": "2024-05-31T14:49:08+00:00"
         },
         {
             "name": "symfony/psr-http-message-bridge",
@@ -6396,16 +6399,16 @@
         },
         {
             "name": "symfony/runtime",
-            "version": "v6.4.8",
+            "version": "v6.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/runtime.git",
-                "reference": "b4bfa2fd4cad1fee62f80b3dfe4eb674cc3302a0"
+                "reference": "bfe32a1adf41da4dd7f6b939a039779d7af5497f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/runtime/zipball/b4bfa2fd4cad1fee62f80b3dfe4eb674cc3302a0",
-                "reference": "b4bfa2fd4cad1fee62f80b3dfe4eb674cc3302a0",
+                "url": "https://api.github.com/repos/symfony/runtime/zipball/bfe32a1adf41da4dd7f6b939a039779d7af5497f",
+                "reference": "bfe32a1adf41da4dd7f6b939a039779d7af5497f",
                 "shasum": ""
             },
             "require": {
@@ -6455,7 +6458,7 @@
                 "runtime"
             ],
             "support": {
-                "source": "https://github.com/symfony/runtime/tree/v6.4.8"
+                "source": "https://github.com/symfony/runtime/tree/v6.4.12"
             },
             "funding": [
                 {
@@ -6471,7 +6474,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:49:08+00:00"
+            "time": "2024-09-19T13:29:10+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -7139,16 +7142,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v6.4.3",
+            "version": "v6.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "d75715985f0f94f978e3a8fa42533e10db921b90"
+                "reference": "762ee56b2649659380e0ef4d592d807bc17b7971"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/d75715985f0f94f978e3a8fa42533e10db921b90",
-                "reference": "d75715985f0f94f978e3a8fa42533e10db921b90",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/762ee56b2649659380e0ef4d592d807bc17b7971",
+                "reference": "762ee56b2649659380e0ef4d592d807bc17b7971",
                 "shasum": ""
             },
             "require": {
@@ -7191,7 +7194,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v6.4.3"
+                "source": "https://github.com/symfony/yaml/tree/v6.4.12"
             },
             "funding": [
                 {
@@ -7207,7 +7210,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-23T14:51:35+00:00"
+            "time": "2024-09-17T12:47:12+00:00"
         },
         {
             "name": "twig/extra-bundle",
