@@ -82,15 +82,17 @@ updates:
           - "patch"
     ignore:
       - dependency-name: "symfony/*"
-        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+        update-types: [ "version-update:semver-major", "version-update:semver-minor" ]
       - dependency-name: "doctrine/*"
-        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+        update-types: [ "version-update:semver-major", "version-update:semver-minor" ]
       - dependency-name: "ecotone/*"
         update-types: [ "version-update:semver-major" ]
       - dependency-name: "twig/*-extra"
-        update-types: ["version-update:semver-major"]
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: "league/oauth2-server-bundle"
+        update-types: [ "version-update:semver-major", "version-update:semver-minor" ]
       - dependency-name: "phpunit/phpunit"
-        update-types: ["version-update:semver-major"]
+        update-types: [ "version-update:semver-major" ]
 
 ########################################################################################################################
 #
