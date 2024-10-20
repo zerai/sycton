@@ -15,6 +15,9 @@ updates:
     open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
+      #day: "sunday"
+      #time: "01:00"
+      #timezone: "Europe/Rome"
     assignees:
       - "zerai"
     commit-message:
@@ -22,9 +25,70 @@ updates:
       prefix: "iam - composer"
     labels:
       - "iam dependency"
+    groups:
+      symfony_dev:
+        applies-to: "version-updates"
+        dependency-type: "development"
+        patterns:
+          - "symfony/stopwatch"
+          - "symfony/browser-kit"
+          - "symfony/debug-bundle"
+          - "symfony/css-selector"
+          - "symfony/phpunit-bridge"
+          - "symfony/web-profiler-bundle"
+        update-types:
+          - "patch"
+      symfony_prod:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "symfony/*"
+        update-types:
+          #- "minor"
+          - "patch"
+      doctrine:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "doctrine/*"
+        update-types:
+          #- "minor"
+          - "patch"
+      ecotone:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "ecotone/*"
+        update-types:
+          - "minor"
+          - "patch"
+      pagerfanta:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "babdev/pagerfanta-bundle"
+          - "pagerfanta/*"
+        update-types:
+          - "minor"
+          - "patch"
+      twig-extra:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "twig/extra-bundle"
+          - "twig/*-extra"
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
       - dependency-name: "symfony/*"
-        versions: ["7.x"]
+        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+      - dependency-name: "doctrine/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+      - dependency-name: "ecotone/*"
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: "twig/*-extra"
+        update-types: ["version-update:semver-major"]
 
 
 ########################################################################################################################
@@ -39,6 +103,9 @@ updates:
     open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
+      #day: "sunday"
+      #time: "01:00"
+      #timezone: "Europe/Rome"
     assignees:
       - "zerai"
     commit-message:
@@ -64,6 +131,9 @@ updates:
     open-pull-requests-limit: 5
     schedule:
       interval: "weekly"
+      #day: "sunday"
+      #time: "01:00"
+      #timezone: "Europe/Rome"
     assignees:
       - "zerai"
     commit-message:
