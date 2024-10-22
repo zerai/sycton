@@ -195,7 +195,7 @@ services:
 ######################################################################################################################
 
   main-database:
-    profiles: [ postgres, iam, red, blue, all ]
+    profiles: [ postgres, keycloak, iam, red, blue, all ]
     image: postgres:${POSTGRES_VERSION:-13}-alpine
     volumes:
       - ./_etc/docker/postgres:/docker-entrypoint-initdb.d
@@ -212,7 +212,7 @@ services:
       start_period: 30s
       timeout: 10s
     environment:
-      POSTGRES_MULTIPLE_DATABASES: iam,red,blue
+      POSTGRES_MULTIPLE_DATABASES: keycloak,iam,red,blue
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
       POSTGRES_USER: ${POSTGRES_USER:-app}
 
@@ -278,14 +278,22 @@ services:
       KC_HOSTNAME: localhost
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://main-database/
+      KC_DB_USERNAME: ${KEYCLOAK_POSTGRES_USER:-app}
+      KC_DB_PASSWORD: ${KEYCLOAK_POSTGRES_PASSWORD:-!ChangeMe!}
       KC_HEALTH_ENABLED: false
       KC_METRICS_ENABLED: false
+    depends_on:
+      main-database:
+        condition: service_healthy
+        restart: false
     networks:
       - syctone
     ports:
       # HTTP
       - target: 8080
-        published: ${HTTP_PORT:-8080}
+        published: ${HTTP_PORT:-8888}
         protocol: tcp
     volumes:
       - keycloak-data:/opt/jboss/keycloak/standalone/data
