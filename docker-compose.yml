@@ -201,10 +201,6 @@ services:
       - ./_etc/docker/postgres:/docker-entrypoint-initdb.d
     networks:
       - syctone
-    ports:
-      - target: 5432
-        published: 5432
-        protocol: tcp
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-app} -d ${POSTGRES_DB:-postgres}" ]
       interval: 10s
@@ -215,6 +211,8 @@ services:
       POSTGRES_MULTIPLE_DATABASES: keycloak,iam,red,blue
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
       POSTGRES_USER: ${POSTGRES_USER:-app}
+    labels:
+      - "traefik.enable=false"
 
 
 ######################################################################################################################
@@ -252,10 +250,14 @@ services:
       #- "--metrics.prometheus.addrouterslabels=true"
       #- "--metrics.prometheus.addServicesLabels=true"
     ports:
-      - "80:80"  # The HTTP port
-      - "8080:8080" # The Web UI (enabled by --api.insecure=true)
-      - "443:443"
-      #- "8082:8082" # The prometheus port
+      # HTTP
+      - target: 80
+        published: ${HTTP_PORT:-80}
+        protocol: tcp
+      # HTTP
+      - target: 443
+        published: ${HTTPS_PORT:-443}
+        protocol: tcp
     labels:
       traefik.http.routers.traefik-http.entrypoints: web
       traefik.http.routers.traefik-http.service: api@internal
@@ -274,6 +276,7 @@ services:
   keycloak:
     profiles: [ keycloak, all ]
     image: keycloak/keycloak:26.0.1
+    container_name: keycloak
     environment:
       KC_HOSTNAME: localhost
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
@@ -290,15 +293,12 @@ services:
         restart: false
     networks:
       - syctone
-    ports:
-      # HTTP
-      - target: 8080
-        published: ${HTTP_PORT:-8888}
-        protocol: tcp
     volumes:
       - keycloak-data:/opt/jboss/keycloak/standalone/data
       - keycloak-config:/opt/jboss/keycloak/standalone/configuration
     command: ["start-dev"]
+    labels:
+      - "traefik.enable=false"
 
 
 ######################################################################################################################
@@ -311,14 +311,13 @@ services:
     image: rabbitmq:3-management
     networks:
       - syctone
-    ports:
-      - "5672:5672"
-      - "15672:15672"
     environment:
       RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-rabbit-user}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-rabbit-password}
       RABBITMQ_DEFAULT_VHOST: "/"
+    labels:
+      - "traefik.enable=false"
 
 
 ######################################################################################################################
@@ -340,6 +339,8 @@ services:
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
     volumes:
       - ./_etc/docker/pgAdmin/servers.json:/pgadmin4/servers.json
+    labels:
+      - "traefik.enable=false"
 
 
 ######################################################################################################################
@@ -359,6 +360,8 @@ services:
       APP_ENV: dev
     ports:
       - 3006:80
+    labels:
+      - "traefik.enable=false"
 
 networks:
   syctone: ~
