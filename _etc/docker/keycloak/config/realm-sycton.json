@@ -1,0 +1,93 @@
+{
+  "realm": "sycton",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "spa",
+      "enabled": true,
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [ "http://localhost:8080/*" ]
+    },
+    {
+      "clientId": "website-spa",
+      "name": "Company website SPA",
+      "description": "Public client for the company website",
+      "enabled": true,
+      "redirectUris": ["*"],
+      "webOrigins": ["*"],
+      "publicClient": true
+    },
+    {
+      "clientId": "internal-dashboard-spa",
+      "name": "Internal dashboard SPA",
+      "description": "Public client for the company dashboard",
+      "enabled": true,
+      "redirectUris": ["*"],
+      "webOrigins": ["*"],
+      "publicClient": true
+    }
+  ],
+  "roles" : {
+    "realm" : [
+      {
+        "name": "user",
+        "description": "User privileges",
+        "composite": false,
+        "clientRole": false
+      },
+      {
+        "name": "admin",
+        "description": "Administrator privileges",
+        "composite": true,
+        "composites": {
+          "realm": [
+            "user"
+          ]
+        },
+        "clientRole": false
+      }
+    ]
+  },
+  "defaultRole": {
+    "name": "user",
+    "description": "User role (default role on an authenticated user)",
+    "composite": false,
+    "clientRole": false
+  },
+  "users" : [
+    {
+      "username" : "alice",
+      "enabled": true,
+      "emailVerified": true,
+      "email" : "alice@sycton.org",
+      "firstName": "Alice",
+      "lastName": "Liddel",
+      "credentials" : [
+        { "type" : "password",
+          "value" : "alice" }
+      ],
+      "realmRoles": [ "user", "offline_access"  ],
+      "clientRoles": {
+        "account": [ "manage-account" ]
+      }
+    },
+    {
+      "username" : "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "email" : "admin@sycton.org",
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "credentials" : [
+        { "type" : "password",
+          "value" : "admin" }
+      ],
+      "realmRoles": [ "admin" ],
+      "clientRoles": {
+        "realm-management": [ "realm-admin" ],
+        "account": [ "manage-account" ]
+      }
+    }
+  ]
+}
