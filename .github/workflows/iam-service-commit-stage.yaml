@@ -16,7 +16,7 @@ defaults:
 env:
   # GHA SETTINGS
   USE_COMPOSER_CACHE: '1'
-  USE_PHP_EXTENSION_CACHE: '1'
+  USE_PHP_EXTENSION_CACHE: '0'
   # PHP SETTINGS
   PHP_EXTENSIONS: 'ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite, openswoole'
   PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v2
