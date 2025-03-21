@@ -123,7 +123,7 @@ services:
   php-red:
     profiles: [ red, all ]
     build:
-      context: ./docker/php-cli
+      context: ./sys/docker/red-service/php-cli
       dockerfile: Dockerfile
     networks:
       - syctone
@@ -139,14 +139,9 @@ services:
       DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/red
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       # -- Workerman runtime envs
-      #APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
-      #PORT: 80
-      #LOGFILE: /app/var/workerman.log
-      # -- Swoole runtime envs
-      APP_RUNTIME: Zerai\OpenSwoole\Runtime
-      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
-      SWOOLE_PORT: ${SWOOLE_PORT-80}
-      SWOOLE_HOT_RELOAD: 1
+      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
+      PORT: 80
+      LOGFILE: /app/var/workerman.log
     command: "php /app/public/index.php start"
     labels:
       - "traefik.enable=true"
