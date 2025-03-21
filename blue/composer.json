@@ -16,6 +16,8 @@
         "ecotone/jms-converter": "^1.8",
         "ecotone/pdo-event-sourcing": "^1.8",
         "ecotone/symfony-bundle": "^1.8",
+        "luzrain/workerman-bundle": "^0.3.0",
+        "nyholm/psr7": "^1.8",
         "symfony/console": "6.4.*",
         "symfony/dotenv": "6.4.*",
         "symfony/flex": "^1.17 || ^2",
@@ -23,9 +25,7 @@
         "symfony/monolog-bundle": "^3.7",
         "symfony/proxy-manager-bridge": "6.4.*",
         "symfony/runtime": "6.4.*",
-        "symfony/yaml": "6.4.*",
-        "zerai/openswoole-runtime": "^0.1.0",
-        "zerai/workerman-symfony-runtime": "@dev"
+        "symfony/yaml": "6.4.*"
     },
     "replace": {
         "symfony/polyfill-ctype": "*",

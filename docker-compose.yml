@@ -75,15 +75,7 @@ services:
       APP_DEBUG: "true"
       DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/blue
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      # -- Swoole runtime envs
-      APP_RUNTIME: Zerai\OpenSwoole\Runtime
-      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
-      SWOOLE_PORT: ${SWOOLE_PORT-80}
-      SWOOLE_HOT_RELOAD: 1
-      # -- Workerman runtime envs
-#      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
-#      PORT: 80
-#      LOGFILE: /app/var/workerman.log
+      APP_RUNTIME: "Luzrain\\WorkermanBundle\\Runtime"
     command: "php /app/public/index.php start"
     labels:
       - "traefik.enable=true"
