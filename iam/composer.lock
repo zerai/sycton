@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c21f24c428b491ec7aa3c2b6e93db8f3",
+    "content-hash": "994fc49fa7cedd70154c122e06d9f646",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2983,6 +2983,62 @@
             "time": "2018-11-26T11:52:41+00:00"
         },
         {
+            "name": "league/mime-type-detection",
+            "version": "1.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/mime-type-detection.git",
+                "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/2d6702ff215bf922936ccc1ad31007edc76451b9",
+                "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.2",
+                "phpstan/phpstan": "^0.12.68",
+                "phpunit/phpunit": "^8.5.8 || ^9.3 || ^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\MimeTypeDetection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frankdejonge.nl"
+                }
+            ],
+            "description": "Mime-type detection for Flysystem",
+            "support": {
+                "issues": "https://github.com/thephpleague/mime-type-detection/issues",
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.16.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/frankdejonge",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/league/flysystem",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-09-21T08:32:55+00:00"
+        },
+        {
             "name": "league/oauth2-server",
             "version": "8.5.4",
             "source": {
@@ -3318,6 +3374,78 @@
             "time": "2024-03-23T07:42:40+00:00"
         },
         {
+            "name": "luzrain/workerman-bundle",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luzrain/workerman-bundle.git",
+                "reference": "2ab200e919e387f3c291d44fb40440a8fcd80c84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luzrain/workerman-bundle/zipball/2ab200e919e387f3c291d44fb40440a8fcd80c84",
+                "reference": "2ab200e919e387f3c291d44fb40440a8fcd80c84",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "league/mime-type-detection": "^1.13",
+                "php": "^8.1",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^2.0",
+                "psr/log": "^3.0",
+                "symfony/config": "^6.4|^7.0",
+                "symfony/console": "^6.4|^7.0",
+                "symfony/dependency-injection": "^6.4|^7.0",
+                "symfony/http-kernel": "^6.4|^7.0",
+                "symfony/psr-http-message-bridge": "^6.4|^7.0",
+                "symfony/runtime": "^6.4|^7.0",
+                "workerman/workerman": "^4.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.35",
+                "guzzlehttp/guzzle": "^7.8",
+                "nyholm/psr7": "^1.8",
+                "phpunit/phpunit": "^10.4",
+                "symfony/framework-bundle": "^7.0"
+            },
+            "suggest": {
+                "dragonmantank/cron-expression": "For parse cron expressions",
+                "ext-event": "For better performance",
+                "ext-inotify": "For effective file monitoring"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Luzrain\\WorkermanBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Zenkov",
+                    "email": "anton.z@live.com"
+                }
+            ],
+            "description": "Workerman runtime for symfony applications",
+            "homepage": "https://github.com/luzrain/workerman-bundle",
+            "keywords": [
+                "php-runtime",
+                "runtime",
+                "symfony",
+                "workerman"
+            ],
+            "support": {
+                "issues": "https://github.com/luzrain/workerman-bundle/issues",
+                "source": "https://github.com/luzrain/workerman-bundle/tree/v0.3.0"
+            },
+            "time": "2024-02-15T15:53:50+00:00"
+        },
+        {
             "name": "marc-mabe/php-enum",
             "version": "v4.7.0",
             "source": {
@@ -3493,16 +3621,16 @@
         },
         {
             "name": "nyholm/psr7",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nyholm/psr7.git",
-                "reference": "aa5fc277a4f5508013d571341ade0c3886d4d00e"
+                "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/aa5fc277a4f5508013d571341ade0c3886d4d00e",
-                "reference": "aa5fc277a4f5508013d571341ade0c3886d4d00e",
+                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
+                "reference": "a71f2b11690f4b24d099d6b16690a90ae14fc6f3",
                 "shasum": ""
             },
             "require": {
@@ -3555,7 +3683,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Nyholm/psr7/issues",
-                "source": "https://github.com/Nyholm/psr7/tree/1.8.1"
+                "source": "https://github.com/Nyholm/psr7/tree/1.8.2"
             },
             "funding": [
                 {
@@ -3567,7 +3695,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-13T09:31:12+00:00"
+            "time": "2024-09-09T07:06:30+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -8087,39 +8215,29 @@
             "time": "2024-09-25T14:18:03+00:00"
         },
         {
-            "name": "webmozart/assert",
-            "version": "1.11.0",
+            "name": "workerman/workerman",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozarts/assert.git",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
+                "url": "https://github.com/walkor/workerman.git",
+                "reference": "cafb5a43d93d7d30a16b32a57948581cca993562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
+                "url": "https://api.github.com/repos/walkor/workerman/zipball/cafb5a43d93d7d30a16b32a57948581cca993562",
+                "reference": "cafb5a43d93d7d30a16b32a57948581cca993562",
                 "shasum": ""
             },
             "require": {
-                "ext-ctype": "*",
-                "php": "^7.2 || ^8.0"
+                "php": ">=8.0"
             },
-            "conflict": {
-                "phpstan/phpstan": "<0.12.20",
-                "vimeo/psalm": "<4.6.1 || 4.6.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5.13"
+            "suggest": {
+                "ext-event": "For better performance. "
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.10-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Webmozart\\Assert\\": "src/"
+                    "Workerman\\": "./"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8128,84 +8246,36 @@
             ],
             "authors": [
                 {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@gmail.com"
+                    "name": "walkor",
+                    "email": "walkor@workerman.net",
+                    "homepage": "http://www.workerman.net",
+                    "role": "Developer"
                 }
             ],
-            "description": "Assertions to validate method input/output with nice error messages.",
+            "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
+            "homepage": "http://www.workerman.net",
             "keywords": [
-                "assert",
-                "check",
-                "validate"
+                "asynchronous",
+                "event-loop"
             ],
             "support": {
-                "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
+                "email": "walkor@workerman.net",
+                "forum": "http://wenda.workerman.net/",
+                "issues": "https://github.com/walkor/workerman/issues",
+                "source": "https://github.com/walkor/workerman",
+                "wiki": "http://doc.workerman.net/"
             },
-            "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "zerai/openswoole-runtime",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zerai/openswoole-runtime.git",
-                "reference": "7010b5d046338f4a04743015d0389837acac892c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zerai/openswoole-runtime/zipball/7010b5d046338f4a04743015d0389837acac892c",
-                "reference": "7010b5d046338f4a04743015d0389837acac892c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-openswoole": "^22.0",
-                "php": ">=8.0.5",
-                "symfony/runtime": "^5.4 || ^6.0",
-                "webmozart/assert": "^1.9"
-            },
-            "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8",
-                "illuminate/http": "^9.14",
-                "openswoole/ide-helper": "^22.0",
-                "phpunit/phpunit": "^9.5",
-                "symfony/http-foundation": "^5.4 || ^6.0",
-                "symfony/http-kernel": "^5.4 || ^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "bamarni-bin": {
-                    "bin-links": true,
-                    "forward-command": false,
-                    "target-directory": "tools"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zerai\\OpenSwoole\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
+            "funding": [
                 {
-                    "name": "Zerai Teclai",
-                    "email": "teclaizerai@gmail.com"
+                    "url": "https://opencollective.com/workerman",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/walkor",
+                    "type": "patreon"
                 }
             ],
-            "description": "A openswoole runtime component.",
-            "homepage": "https://github.com/zerai/openswoole-runtime",
-            "keywords": [
-                "openswoole",
-                "symfony runtime"
-            ],
-            "support": {
-                "issues": "https://github.com/zerai/openswoole-runtime/issues",
-                "source": "https://github.com/zerai/openswoole-runtime/tree/0.1.0"
-            },
-            "time": "2022-12-30T02:46:22+00:00"
+            "time": "2024-11-24T11:45:37+00:00"
         }
     ],
     "packages-dev": [
@@ -11014,15 +11084,14 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1",
         "ext-ctype": "*",
-        "ext-iconv": "*",
-        "ext-openswoole": "*"
+        "ext-iconv": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }

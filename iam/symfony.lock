@@ -111,6 +111,18 @@
             "config/routes/league_oauth2_server.yaml"
         ]
     },
+    "luzrain/workerman-bundle": {
+        "version": "0.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.1",
+            "ref": "913b079c70c523b869e8eb936b0234f4e6f6ee11"
+        },
+        "files": [
+            "config/packages/workerman.yaml"
+        ]
+    },
     "monolog/monolog": {
         "version": "2.3.5"
     },
@@ -513,8 +525,5 @@
     },
     "twig/twig": {
         "version": "v3.3.4"
-    },
-    "webmozart/assert": {
-        "version": "1.10.0"
     }
 }

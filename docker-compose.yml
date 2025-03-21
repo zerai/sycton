@@ -7,7 +7,7 @@ services:
   php-iam:
     profiles: [ iam, all ]
     build:
-      context: ./docker/php-swoole
+      context: ./sys/docker/iam-service/php-swoole
       dockerfile: Dockerfile
     container_name: "iam-service"
     networks:
@@ -23,11 +23,8 @@ services:
       APP_DEBUG: "true"
       DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/iam
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      APP_RUNTIME: Zerai\OpenSwoole\Runtime
-      SWOOLE_HOST: ${SWOOLE_HOST-0.0.0.0}
-      SWOOLE_PORT: ${SWOOLE_PORT-80}
-      SWOOLE_HOT_RELOAD: 1
-    command: "php /app/public/index.php"
+      APP_RUNTIME: "Luzrain\\WorkermanBundle\\Runtime"
+    command: "php /app/public/index.php start"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=syctone"

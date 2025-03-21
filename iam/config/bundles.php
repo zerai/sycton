@@ -12,4 +12,5 @@ return [
     League\Bundle\OAuth2ServerBundle\LeagueOAuth2ServerBundle::class => ['all' => true],
     Ecotone\SymfonyBundle\EcotoneSymfonyBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true],
+    Luzrain\WorkermanBundle\WorkermanBundle::class => ['all' => true],
 ];
