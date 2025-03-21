@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3728d70ccb34c9f43509b9e8cfea9d3",
+    "content-hash": "21386e64fd493b669e248af2a1c35e97",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -7363,64 +7363,6 @@
             "time": "2024-12-29T10:51:50+00:00"
         },
         {
-            "name": "webmozart/assert",
-            "version": "1.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webmozarts/assert.git",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "php": "^7.2 || ^8.0"
-            },
-            "conflict": {
-                "phpstan/phpstan": "<0.12.20",
-                "vimeo/psalm": "<4.6.1 || 4.6.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5.13"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.10-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Webmozart\\Assert\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bernhard Schussek",
-                    "email": "bschussek@gmail.com"
-                }
-            ],
-            "description": "Assertions to validate method input/output with nice error messages.",
-            "keywords": [
-                "assert",
-                "check",
-                "validate"
-            ],
-            "support": {
-                "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
-            },
-            "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
             "name": "workerman/workerman",
             "version": "v4.1.5",
             "source": {
@@ -7482,69 +7424,6 @@
                 }
             ],
             "time": "2022-12-14T11:58:06+00:00"
-        },
-        {
-            "name": "zerai/openswoole-runtime",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zerai/openswoole-runtime.git",
-                "reference": "7010b5d046338f4a04743015d0389837acac892c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zerai/openswoole-runtime/zipball/7010b5d046338f4a04743015d0389837acac892c",
-                "reference": "7010b5d046338f4a04743015d0389837acac892c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-openswoole": "^22.0",
-                "php": ">=8.0.5",
-                "symfony/runtime": "^5.4 || ^6.0",
-                "webmozart/assert": "^1.9"
-            },
-            "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.8",
-                "illuminate/http": "^9.14",
-                "openswoole/ide-helper": "^22.0",
-                "phpunit/phpunit": "^9.5",
-                "symfony/http-foundation": "^5.4 || ^6.0",
-                "symfony/http-kernel": "^5.4 || ^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "bamarni-bin": {
-                    "bin-links": true,
-                    "forward-command": false,
-                    "target-directory": "tools"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zerai\\OpenSwoole\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Zerai Teclai",
-                    "email": "teclaizerai@gmail.com"
-                }
-            ],
-            "description": "A openswoole runtime component.",
-            "homepage": "https://github.com/zerai/openswoole-runtime",
-            "keywords": [
-                "openswoole",
-                "symfony runtime"
-            ],
-            "support": {
-                "issues": "https://github.com/zerai/openswoole-runtime/issues",
-                "source": "https://github.com/zerai/openswoole-runtime/tree/0.1.0"
-            },
-            "time": "2022-12-30T02:46:22+00:00"
         },
         {
             "name": "zerai/workerman-symfony-runtime",
@@ -10002,6 +9881,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }
