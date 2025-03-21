@@ -21,7 +21,7 @@ services:
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/iam
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/iam?serverVersion=13&charset=utf8
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       APP_RUNTIME: "Luzrain\\WorkermanBundle\\Runtime"
     command: "php /app/public/index.php start"
@@ -73,7 +73,7 @@ services:
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/blue
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/blue?serverVersion=13&charset=utf8
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       APP_RUNTIME: "Luzrain\\WorkermanBundle\\Runtime"
     command: "php /app/public/index.php start"
@@ -125,7 +125,7 @@ services:
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "true"
-      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/red
+      DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/red?serverVersion=13&charset=utf8
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
       # -- Workerman runtime envs
       APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
