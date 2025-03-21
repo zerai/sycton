@@ -60,7 +60,7 @@ services:
   php-blue:
     profiles: [ blue, all ]
     build:
-      context: ./docker/php-swoole
+      context: ./sys/docker/blue-service/php-swoole
       dockerfile: Dockerfile
     networks:
       - syctone
