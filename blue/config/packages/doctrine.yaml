@@ -8,6 +8,11 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
+
+        # @see https://github.com/doctrine/migrations/issues/1406
+        # @see https://symfony.com/bundles/DoctrineBundle/current/configuration.html
+        # works with ecotone event_stream and projection tables
+        schema_filter: ~^(pp_|doctrine_migration_versions)$~
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
