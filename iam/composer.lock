@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "994fc49fa7cedd70154c122e06d9f646",
+    "content-hash": "3909753952c102d50a8f7ef2182a1ccf",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -8332,28 +8332,28 @@
         },
         {
             "name": "giorgiosironi/eris",
-            "version": "0.14.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giorgiosironi/eris.git",
-                "reference": "3e43f40ee4e82fef5b6ce6da02cc8534817b1ff9"
+                "reference": "ffc757f08710b2b8fb1b30cff7b1cf48f5aba11d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giorgiosironi/eris/zipball/3e43f40ee4e82fef5b6ce6da02cc8534817b1ff9",
-                "reference": "3e43f40ee4e82fef5b6ce6da02cc8534817b1ff9",
+                "url": "https://api.github.com/repos/giorgiosironi/eris/zipball/ffc757f08710b2b8fb1b30cff7b1cf48f5aba11d",
+                "reference": "ffc757f08710b2b8fb1b30cff7b1cf48f5aba11d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": "^8.1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.0",
-                "ilario-pierbattista/reverse-regex": "^0.3.1",
+                "ilario-pierbattista/reverse-regex": "^0.4.0",
                 "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^8 || ^9",
+                "phpunit/phpunit": "^10.0.4",
                 "psalm/phar": "^5.4",
-                "rector/rector": "^0.15",
+                "rector/rector": "^0.18",
                 "sebastian/comparator": ">=2.1.3"
             },
             "suggest": {
@@ -8391,9 +8391,9 @@
             "description": "PHP library for property-based testing. Integrates with PHPUnit.",
             "support": {
                 "issues": "https://github.com/giorgiosironi/eris/issues",
-                "source": "https://github.com/giorgiosironi/eris/tree/0.14.0"
+                "source": "https://github.com/giorgiosironi/eris/tree/1.0.0"
             },
-            "time": "2023-04-21T15:10:11+00:00"
+            "time": "2024-12-07T08:21:20+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -11078,7 +11078,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
@@ -11086,6 +11086,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
