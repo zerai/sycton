@@ -16,9 +16,9 @@ defaults:
 env:
   # GHA SETTINGS
   USE_COMPOSER_CACHE: '1'
-  USE_PHP_EXTENSION_CACHE: '0'
+  USE_PHP_EXTENSION_CACHE: '1'
   # PHP SETTINGS
-  PHP_EXTENSIONS: ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite, openswoole
+  PHP_EXTENSIONS: ctype, iconv, json, curl, gd, intl, opcache, openssl, mbstring, mysql, pdo_sqlite
   PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v2
   # ARTIFACTS SETTINGS
   ARTIFATC_NAME_FOR_INTEGRATION_TEST_COVERAGE: '[blue-service]-integration-test-coverage-reports-on-SHA'
@@ -33,7 +33,7 @@ env:
 
 jobs:
   app-preconditions-checks:
-    name: App preconditions checks (php-${{ matrix.php }})
+    name: App preconditions checks (php-${{ matrix.php-version }})
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     continue-on-error: ${{ matrix.is-php-experimental }}
@@ -53,12 +53,12 @@ jobs:
           --health-retries 3
     strategy:
       matrix:
-        php:
+        php-version:
           - '8.1'
         is-php-experimental: [false]
         generate-coverage-report: [true]
 #        include:
-#          - php: '8.2'
+#          - php-version: '8.2'
 #            is-php-experimental: true
 #            generate-coverage-report: false
       fail-fast: true
@@ -71,49 +71,16 @@ jobs:
 #      - name: info triggering workflow - commit message
 #        run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 
-      - name: Setup php extension cache environment
-        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-
-      - name: Cache PHP extensions
-        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.32.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          ini-values: memory_limit=-1
-          coverage: none
-          tools: composer
-
-      - name: Set Composer Cache Directory
-        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v4
-        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-${{ matrix.php }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --ansi --no-scripts
+          php-version: ${{ matrix.php-version }}
+          composer-working-directory: 'blue'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ env.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ env.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
 
       - name: Validate configurations files
         run: |
@@ -136,15 +103,16 @@ jobs:
         run: ./bin/console doctrine:schema:update -e test --force --ansi
         env:
           DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
-      # TODO: enable again (issue with non entities table)
-#      - name: Run database schema validate
-#        run: ./bin/console doctrine:schema:validate -e test --ansi
-#        env:
-#          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+
+      - name: Run database schema validate
+        run: ./bin/console doctrine:schema:validate -v -e test --ansi
+        env:
+          DATABASE_URL: postgresql://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=13&charset=utf8
+        continue-on-error: true
 
 
   integration-test:
-    name: Integration tests (php-${{ matrix.php }})
+    name: Integration tests (php-${{ matrix.php-version }})
     runs-on: ubuntu-22.04
     needs:
       - app-preconditions-checks
@@ -166,15 +134,15 @@ jobs:
           --health-retries 3
     strategy:
       matrix:
-        php:
+        php-version:
           - '8.1'
         is-php-experimental: [false]
         generate-coverage-report: [false]
 #        include:
-#          - php: '8.1'
+#          - php-version: '8.1'
 #            is-php-experimental: true
 #            generate-coverage-report: false
-#      fail-fast: true
+      fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
         uses: actions/checkout@v4
@@ -184,49 +152,16 @@ jobs:
 #      - name: info triggering workflow - commit message
 #        run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 
-      - name: Setup php extension cache environment
-        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-
-      - name: Cache PHP extensions
-        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.32.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          ini-values: memory_limit=-1
-          coverage: pcov
-          tools: symfony
-
-      - name: Set Composer Cache Directory
-        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v4
-        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-${{ matrix.php }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --ansi --no-scripts
+          php-version: ${{ matrix.php-version }}
+          composer-working-directory: 'blue'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ env.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ env.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
 
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
@@ -276,7 +211,7 @@ jobs:
 
 
   functional-test:
-    name: Functional tests (php-${{ matrix.php }})
+    name: Functional tests (php-${{ matrix.php-version }})
     runs-on: ubuntu-22.04
     needs:
       - app-preconditions-checks
@@ -298,12 +233,12 @@ jobs:
           --health-retries 3
     strategy:
       matrix:
-        php:
+        php-version:
           - '8.1'
         is-php-experimental: [ false ]
         generate-coverage-report: [ false ]
 #        include:
-#          - php: '8.2'
+#          - php-version: '8.2'
 #            is-php-experimental: true
 #            generate-coverage-report: false
       fail-fast: true
@@ -316,49 +251,17 @@ jobs:
 #      - name: info triggering workflow - commit message
 #        run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 
-      - name: Setup php extension cache environment
-        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        id: cache-php-extensions
-        uses: shivammathur/cache-extensions@v1
+      - name: Setup PHP and composer dependencies
+        uses: './.github/actions/php-composer-setup'
         with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-
-      - name: Cache PHP extensions
-        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.cache-php-extensions.outputs.dir }}
-          key: ${{ steps.cache-php-extensions.outputs.key }}
-          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.32.0
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          ini-values: memory_limit=-1
-          coverage: pcov
-          tools: symfony
-
-      - name: Set Composer Cache Directory
-        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v4
-        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-${{ matrix.php }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --ansi --no-scripts
+          php-version: ${{ matrix.php-version }}
+          composer-working-directory: 'blue'
+          php-extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+          use-php-extensions-cache: ${{ env.USE_PHP_EXTENSION_CACHE }}
+          use-composer-cache: ${{ env.USE_COMPOSER_CACHE }}
+          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
+          tools: 'symfony'
 
       - name: Run database migrations
         if: ${{ github.ref_name == 'main' }}
@@ -411,7 +314,7 @@ jobs:
 
 
 #  behat-test:
-#    name: Behat acceptance tests (php-${{ matrix.php }})
+#    name: Behat acceptance tests (php-${{ matrix.php-version }})
 #    runs-on: ubuntu-22.04
 #    needs:
 #      - app-preconditions-checks
@@ -433,14 +336,14 @@ jobs:
 #          --health-retries 3
 #    strategy:
 #      matrix:
-#        php:
+#        php-version:
 #          - '8.0'
 #        node:
 #          - '16.x'
 #        is-php-experimental: [ false ]
 #        generate-coverage-report: [ true ]
 #        include:
-#          - php: '8.1'
+#          - php-version: '8.1'
 #            node: '16.x'
 #            is-php-experimental: true
 #            generate-coverage-report: false
@@ -454,49 +357,17 @@ jobs:
 ##      - name: info triggering workflow - commit message
 ##        run: echo commit message from triggering workflow '${{ github.event.workflow_run.head_commit.message }}'
 #
-#      - name: Setup php extension cache environment
-#        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-#        id: cache-php-extensions
-#        uses: shivammathur/cache-extensions@v1
+#      - name: Setup PHP and composer dependencies
+#        uses: './.github/actions/php-composer-setup'
 #        with:
-#          php-version: ${{ matrix.php }}
-#          extensions: ${{ env.PHP_EXTENSIONS }}
-#          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-#
-#      - name: Cache PHP extensions
-#        if: ${{ env.USE_PHP_EXTENSION_CACHE  == '1' }}
-#        uses: actions/cache@v4
-#        with:
-#          path: ${{ steps.cache-php-extensions.outputs.dir }}
-#          key: ${{ steps.cache-php-extensions.outputs.key }}
-#          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
-#
-#      - name: Setup PHP
-#        uses: shivammathur/setup-php@2.32.0
-#        with:
-#          php-version: ${{ matrix.php }}
-#          extensions: ${{ env.PHP_EXTENSIONS }}
-#          ini-values: memory_limit=-1
-#          coverage: none
-#          tools: symfony
-#
-#      - name: Set Composer Cache Directory
-#        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-#        id: composer-cache
-#        run: |
-#          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-#
-#      - name: Cache Composer dependencies
-#        uses: actions/cache@v4
-#        if: ${{ env.USE_COMPOSER_CACHE  == '1' }}
-#        with:
-#          path: ${{ steps.composer-cache.outputs.dir }}
-#          key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-#          restore-keys: |
-#            ${{ runner.os }}-php-${{ matrix.php }}-composer-
-#
-#      - name: Install Composer dependencies
-#        run: composer install --prefer-dist --no-progress --ansi --no-scripts
+#          php-version: ${{ matrix.php-version }}
+#          composer-working-directory: 'blue'
+#          php-extensions: ${{ env.PHP_EXTENSIONS }}
+#          extensions-cache-key:  ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+#          use-php-extensions-cache: ${{ env.USE_PHP_EXTENSION_CACHE }}
+#          use-composer-cache: ${{ env.USE_COMPOSER_CACHE }}
+#          composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
+#          tools: 'symfony'
 #
 #      - name: Run database migrations
 #        if: ${{ github.ref_name == 'main' }}
