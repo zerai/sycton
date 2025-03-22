@@ -6,6 +6,8 @@ inputs:
     php-version:
         description: ''
         required: true
+    composer-working-directory:
+        description: 'The \''service\'' directory (iam|blue|red)'
     #################################################################
     # Everything below this line is optional.
     #
@@ -47,6 +49,9 @@ inputs:
         description: 'Arguments string for composer install command'
         required: false
         default: ''
+
+
+
 runs:
     using: composite
     steps:
@@ -64,14 +69,14 @@ runs:
           uses: actions/cache@v4
           with:
               path: ${{ steps.extcache.outputs.dir }}
-              key: ${{ steps.extcache.outputs.key }}
-              restore-keys: ${{ steps.extcache.outputs.key }}
+              key: ${{ inputs.composer-working-directory }}-service-php-ext-${{ steps.extcache.outputs.key }}
+              restore-keys: ${{ inputs.composer-working-directory }}-service-php-ext-${{ steps.extcache.outputs.key }}
         
         - name: Use PHP
           uses: shivammathur/setup-php@2.32.0
           with:
               php-version: ${{ inputs.php-version }}
-              tools: composer, composer-normalize:2.16.0 ${{ inputs.tools }}
+              tools: composer, ${{ inputs.tools }}
               extensions: ${{ inputs.php-extensions }}
               coverage: ${{ inputs.coverage }}
               #ini-values: pcov.directory=module
@@ -82,6 +87,7 @@ runs:
           id: composer-cache
           shell: bash   
           run: |
+            cd ${{ inputs.composer-working-directory }}
             echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
         - name: Cache Composer dependencies
@@ -90,13 +96,13 @@ runs:
           with:
               path: |
                   ${{ steps.composer-cache.outputs.dir }}
-                  vendor
-              key: composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-${{ hashFiles('**/composer.lock') }}
+                  ${{ inputs.composer-working-directory }}/vendor
+              key: ${{ inputs.composer-working-directory }}-service-composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-${{ hashFiles('**/composer.lock') }}
               restore-keys: |
-                  composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-
+                ${{ inputs.composer-working-directory }}-service-composer-deps-${{ runner.os }}-php-${{ inputs.php-version }}-composer-
 
-        
         - name: Install dependencies
-          #run: composer install --no-interaction --prefer-dist --no-progress --ansi
-          run: composer install ${{ inputs.composer-install-args }}
+          run: |
+            cd ${{ inputs.composer-working-directory }}
+            composer install ${{ inputs.composer-install-args }}
           shell: bash
