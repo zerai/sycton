@@ -182,7 +182,7 @@ services:
     profiles: [ postgres, keycloak, iam, red, blue, all ]
     image: postgres:${POSTGRES_VERSION:-13}-alpine
     volumes:
-      - ./_etc/docker/postgres:/docker-entrypoint-initdb.d
+      - ./sys/docker/postgres:/docker-entrypoint-initdb.d
     networks:
       - syctone
     healthcheck:
@@ -249,7 +249,7 @@ services:
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - "./docker/traefik:/etc/traefik"
+      - ./sys/docker/traefik:/etc/traefik
 
 
 ######################################################################################################################
@@ -278,7 +278,7 @@ services:
     networks:
       - syctone
     volumes:
-      - ./_etc/docker/keycloak/config:/opt/keycloak/data/import
+      - ./sys/docker/keycloak/config:/opt/keycloak/data/import
       - keycloak-data:/opt/jboss/keycloak/standalone/data
       - keycloak-config:/opt/jboss/keycloak/standalone/configuration
     command: ["start-dev"]
@@ -323,7 +323,7 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: "False"
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
     volumes:
-      - ./_etc/docker/pgAdmin/servers.json:/pgadmin4/servers.json
+      - ./sys/docker/pgAdmin/servers.json:/pgadmin4/servers.json
     labels:
       - "traefik.enable=false"
 
