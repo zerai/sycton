@@ -51,16 +51,26 @@ How to run as a single service:
 docker compose --profile red up -d --wait
 ````
 
-## traefik
+# Infrastructure
 
+## keycloak
+Web-admin: [http://localhost:8888/](http://localhost:8888/)
+
+user: admin
+
+password: admin
+
+## traefik
 Web-dashboard: [http://localtest.me:8080/dashboard](http://localtest.me:8080/dashboard#/)
 
 ## rabbit-mq
-
 Web-console: [http://127.0.0.1:15672](http://127.0.0.1:15672)
+
 user: rabbit-user
+
 password: rabbit-password
 
-# pgadmin
+## pgadmin
 Web-ui: [http://localhost:8181](http://localhost:8181/browser/)
+
 password: !ChangeMe!
