@@ -17,7 +17,7 @@ Endpoint: [https://iam.localtest.me](https://iam.localtest.me)
 
 OpenApi spec: [http://swagger.iam.localtest.me](http://swagger.iam.localtest.me)
 
-Stack: [ php-cli:8.1 - swoole - symfony-6.4 ]
+Stack: [ php-cli:8.1 - workerman - symfony-6.4 ]
 
 How to run as a single service:
 ````shell
@@ -31,7 +31,7 @@ Endpoint: [https://blue.localtest.me](https://blue.localtest.me)
 
 OpenApi spec: [http://swagger.blue.localtest.me](http://swagger.blue.localtest.me)
 
-Stack: [ php-cli:8.1 - swoole - symfony-6.4 ]
+Stack: [ php-cli:8.1 - workerman - symfony-6.4 ]
 
 How to run as a single service:
 ````shell
@@ -51,6 +51,16 @@ How to run as a single service:
 docker compose --profile red up -d --wait
 ````
 
+## traefik
+
+Web-dashboard: [http://localtest.me:8080/dashboard](http://localtest.me:8080/dashboard#/)
+
 ## rabbit-mq
 
 Web-console: [http://127.0.0.1:15672](http://127.0.0.1:15672)
+user: rabbit-user
+password: rabbit-password
+
+# pgadmin
+Web-ui: [http://localhost:8181](http://localhost:8181/browser/)
+password: !ChangeMe!
