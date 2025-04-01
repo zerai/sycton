@@ -40,10 +40,10 @@ jobs:
           - '8.2'
         is-php-experimental: [false]
         generate-coverage-report: [false]
-#        include:
-#          - php-version: '8.2'
-#            is-php-experimental: true
-#            generate-coverage-report: false
+        include:
+          - php-version: '8.3'
+            is-php-experimental: true
+            generate-coverage-report: false
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
