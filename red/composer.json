@@ -14,6 +14,8 @@
         "ecotone/jms-converter": "^1.8",
         "ecotone/pdo-event-sourcing": "^1.8",
         "ecotone/symfony-bundle": "^1.5",
+        "eqs/health-check-provider": "^0.1.2",
+        "nyholm/psr7": "^1.8",
         "runtime/swoole": "^0.4.0",
         "symfony/console": "6.4.*",
         "symfony/dotenv": "6.4.*",
