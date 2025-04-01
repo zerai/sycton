@@ -524,8 +524,5 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
-    },
-    "zerai/workerman-symfony-runtime": {
-        "version": "dev-main"
     }
 }
