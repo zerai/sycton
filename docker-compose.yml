@@ -112,8 +112,9 @@ services:
   php-red:
     profiles: [ red, all ]
     build:
-      context: ./sys/docker/red-service/php-cli
+      context: ./sys/docker/red-service/php-cli-workerman
       dockerfile: Dockerfile
+      target: php_dev
     networks:
       - syctone
     depends_on:
@@ -123,15 +124,10 @@ services:
     volumes:
       - "./red:/app"
     environment:
-      APP_ENV: "dev"
-      APP_DEBUG: "true"
       DATABASE_URL: pgsql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@main-database:5432/red?serverVersion=13&charset=utf8
       ENQUEUE_DSN: amqp+ext://rabbit-user:rabbit-password@mbroker:5672/%2f
-      # -- Workerman runtime envs
-      APP_RUNTIME: Manyou\WorkermanSymfonyRuntime\Runtime
-      PORT: 80
-      LOGFILE: /app/var/workerman.log
-    command: "php /app/public/index.php start"
+      APP_RUNTIME: "Luzrain\\WorkermanBundle\\Runtime"
+    command: "php public/index.php start"
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=syctone"

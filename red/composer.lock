@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e91249a130ae5ccd8c55a99ba966f604",
+    "content-hash": "6e05b1b33cccbfdbae8d1f01b1619e74",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -127,75 +127,6 @@
                 }
             ],
             "time": "2023-01-15T23:15:59+00:00"
-        },
-        {
-            "name": "chubbyphp/chubbyphp-workerman-request-handler",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/chubbyphp/chubbyphp-workerman-request-handler.git",
-                "reference": "1a19d31ef74079853b96886e715ad71d78eaf15f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/chubbyphp/chubbyphp-workerman-request-handler/zipball/1a19d31ef74079853b96886e715ad71d78eaf15f",
-                "reference": "1a19d31ef74079853b96886e715ad71d78eaf15f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.0",
-                "psr/http-factory": "^1.0.1",
-                "psr/http-message": "^1.0.1",
-                "psr/http-server-handler": "^1.0.1",
-                "psr/log": "^1.1.4|^2.0|^3.0",
-                "workerman/workerman": "^4.0.30"
-            },
-            "require-dev": {
-                "blackfire/php-sdk": "^1.29",
-                "chubbyphp/chubbyphp-dev-helper": "dev-master",
-                "chubbyphp/chubbyphp-mock": "^1.6.1",
-                "infection/infection": "^0.26.5",
-                "php-coveralls/php-coveralls": "^2.5.2",
-                "phploc/phploc": "^7.0.2",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.4.8",
-                "phpunit/phpunit": "^9.5.17"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Chubbyphp\\WorkermanRequestHandler\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dominik Zogg",
-                    "email": "dominik.zogg@gmail.com"
-                }
-            ],
-            "description": "A request handler adapter for workerman, using PSR-7, PSR-15 and PSR-17.",
-            "keywords": [
-                "chubbyphp",
-                "psr-15",
-                "psr-17",
-                "psr-7",
-                "requesthandler",
-                "workerman"
-            ],
-            "support": {
-                "issues": "https://github.com/chubbyphp/chubbyphp-workerman-request-handler/issues",
-                "source": "https://github.com/chubbyphp/chubbyphp-workerman-request-handler/tree/2.0.0"
-            },
-            "time": "2022-07-04T05:58:13+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -2888,6 +2819,134 @@
             "time": "2023-11-24T13:56:19+00:00"
         },
         {
+            "name": "league/mime-type-detection",
+            "version": "1.16.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/mime-type-detection.git",
+                "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/2d6702ff215bf922936ccc1ad31007edc76451b9",
+                "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.2",
+                "phpstan/phpstan": "^0.12.68",
+                "phpunit/phpunit": "^8.5.8 || ^9.3 || ^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\MimeTypeDetection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frankdejonge.nl"
+                }
+            ],
+            "description": "Mime-type detection for Flysystem",
+            "support": {
+                "issues": "https://github.com/thephpleague/mime-type-detection/issues",
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.16.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/frankdejonge",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/league/flysystem",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-09-21T08:32:55+00:00"
+        },
+        {
+            "name": "luzrain/workerman-bundle",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luzrain/workerman-bundle.git",
+                "reference": "2ab200e919e387f3c291d44fb40440a8fcd80c84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luzrain/workerman-bundle/zipball/2ab200e919e387f3c291d44fb40440a8fcd80c84",
+                "reference": "2ab200e919e387f3c291d44fb40440a8fcd80c84",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "league/mime-type-detection": "^1.13",
+                "php": "^8.1",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^2.0",
+                "psr/log": "^3.0",
+                "symfony/config": "^6.4|^7.0",
+                "symfony/console": "^6.4|^7.0",
+                "symfony/dependency-injection": "^6.4|^7.0",
+                "symfony/http-kernel": "^6.4|^7.0",
+                "symfony/psr-http-message-bridge": "^6.4|^7.0",
+                "symfony/runtime": "^6.4|^7.0",
+                "workerman/workerman": "^4.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.35",
+                "guzzlehttp/guzzle": "^7.8",
+                "nyholm/psr7": "^1.8",
+                "phpunit/phpunit": "^10.4",
+                "symfony/framework-bundle": "^7.0"
+            },
+            "suggest": {
+                "dragonmantank/cron-expression": "For parse cron expressions",
+                "ext-event": "For better performance",
+                "ext-inotify": "For effective file monitoring"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Luzrain\\WorkermanBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Zenkov",
+                    "email": "anton.z@live.com"
+                }
+            ],
+            "description": "Workerman runtime for symfony applications",
+            "homepage": "https://github.com/luzrain/workerman-bundle",
+            "keywords": [
+                "php-runtime",
+                "runtime",
+                "symfony",
+                "workerman"
+            ],
+            "support": {
+                "issues": "https://github.com/luzrain/workerman-bundle/issues",
+                "source": "https://github.com/luzrain/workerman-bundle/tree/v0.3.0"
+            },
+            "time": "2024-02-15T15:53:50+00:00"
+        },
+        {
             "name": "marc-mabe/php-enum",
             "version": "v4.7.0",
             "source": {
@@ -3650,21 +3709,21 @@
         },
         {
             "name": "psr/http-factory",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be"
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
-                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0.0",
-                "psr/http-message": "^1.0"
+                "php": ">=7.1",
+                "psr/http-message": "^1.0 || ^2.0"
             },
             "type": "library",
             "extra": {
@@ -3684,10 +3743,10 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
-            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
             "keywords": [
                 "factory",
                 "http",
@@ -3699,22 +3758,22 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/master"
+                "source": "https://github.com/php-fig/http-factory"
             },
-            "time": "2019-04-30T12:38:16+00:00"
+            "time": "2024-04-15T12:06:14+00:00"
         },
         {
             "name": "psr/http-message",
-            "version": "1.1",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
-                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "shasum": ""
             },
             "require": {
@@ -3723,7 +3782,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -3738,7 +3797,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for HTTP messages",
@@ -3752,27 +3811,27 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-message/tree/1.1"
+                "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
-            "time": "2023-04-04T09:50:52+00:00"
+            "time": "2023-04-04T09:54:51+00:00"
         },
         {
             "name": "psr/http-server-handler",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-handler.git",
-                "reference": "aff2f80e33b7f026ec96bb42f63242dc50ffcae7"
+                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/aff2f80e33b7f026ec96bb42f63242dc50ffcae7",
-                "reference": "aff2f80e33b7f026ec96bb42f63242dc50ffcae7",
+                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/84c4fb66179be4caaf8e97bd239203245302e7d4",
+                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
-                "psr/http-message": "^1.0"
+                "psr/http-message": "^1.0 || ^2.0"
             },
             "type": "library",
             "extra": {
@@ -3792,7 +3851,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for HTTP server-side request handler",
@@ -3808,10 +3867,9 @@
                 "server"
             ],
             "support": {
-                "issues": "https://github.com/php-fig/http-server-handler/issues",
-                "source": "https://github.com/php-fig/http-server-handler/tree/master"
+                "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
             },
-            "time": "2018-10-30T16:46:14+00:00"
+            "time": "2023-04-10T20:06:20+00:00"
         },
         {
             "name": "psr/log",
@@ -6410,43 +6468,38 @@
         },
         {
             "name": "symfony/psr-http-message-bridge",
-            "version": "v2.3.1",
+            "version": "v6.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/psr-http-message-bridge.git",
-                "reference": "581ca6067eb62640de5ff08ee1ba6850a0ee472e"
+                "reference": "c9cf83326a1074f83a738fc5320945abf7fb7fec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/581ca6067eb62640de5ff08ee1ba6850a0ee472e",
-                "reference": "581ca6067eb62640de5ff08ee1ba6850a0ee472e",
+                "url": "https://api.github.com/repos/symfony/psr-http-message-bridge/zipball/c9cf83326a1074f83a738fc5320945abf7fb7fec",
+                "reference": "c9cf83326a1074f83a738fc5320945abf7fb7fec",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.5",
-                "psr/http-message": "^1.0 || ^2.0",
-                "symfony/deprecation-contracts": "^2.5 || ^3.0",
-                "symfony/http-foundation": "^5.4 || ^6.0"
+                "php": ">=8.1",
+                "psr/http-message": "^1.0|^2.0",
+                "symfony/http-foundation": "^5.4|^6.0|^7.0"
+            },
+            "conflict": {
+                "php-http/discovery": "<1.15",
+                "symfony/http-kernel": "<6.2"
             },
             "require-dev": {
                 "nyholm/psr7": "^1.1",
-                "psr/log": "^1.1 || ^2 || ^3",
-                "symfony/browser-kit": "^5.4 || ^6.0",
-                "symfony/config": "^5.4 || ^6.0",
-                "symfony/event-dispatcher": "^5.4 || ^6.0",
-                "symfony/framework-bundle": "^5.4 || ^6.0",
-                "symfony/http-kernel": "^5.4 || ^6.0",
-                "symfony/phpunit-bridge": "^6.2"
-            },
-            "suggest": {
-                "nyholm/psr7": "For a super lightweight PSR-7/17 implementation"
+                "php-http/discovery": "^1.15",
+                "psr/log": "^1.1.4|^2|^3",
+                "symfony/browser-kit": "^5.4|^6.0|^7.0",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/framework-bundle": "^6.2|^7.0",
+                "symfony/http-kernel": "^6.2|^7.0"
             },
             "type": "symfony-bridge",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.3-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bridge\\PsrHttpMessage\\": ""
@@ -6466,11 +6519,11 @@
                 },
                 {
                     "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "PSR HTTP message bridge",
-            "homepage": "http://symfony.com",
+            "homepage": "https://symfony.com",
             "keywords": [
                 "http",
                 "http-message",
@@ -6478,8 +6531,7 @@
                 "psr-7"
             ],
             "support": {
-                "issues": "https://github.com/symfony/psr-http-message-bridge/issues",
-                "source": "https://github.com/symfony/psr-http-message-bridge/tree/v2.3.1"
+                "source": "https://github.com/symfony/psr-http-message-bridge/tree/v6.4.13"
             },
             "funding": [
                 {
@@ -6495,7 +6547,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-26T11:53:26+00:00"
+            "time": "2024-09-25T14:18:03+00:00"
         },
         {
             "name": "symfony/routing",
@@ -7551,20 +7603,20 @@
         },
         {
             "name": "workerman/workerman",
-            "version": "v4.1.5",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/walkor/workerman.git",
-                "reference": "16bcfc2c7574feea46cdadaaa8ae73f14d464b21"
+                "reference": "cafb5a43d93d7d30a16b32a57948581cca993562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/walkor/workerman/zipball/16bcfc2c7574feea46cdadaaa8ae73f14d464b21",
-                "reference": "16bcfc2c7574feea46cdadaaa8ae73f14d464b21",
+                "url": "https://api.github.com/repos/walkor/workerman/zipball/cafb5a43d93d7d30a16b32a57948581cca993562",
+                "reference": "cafb5a43d93d7d30a16b32a57948581cca993562",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=8.0"
             },
             "suggest": {
                 "ext-event": "For better performance. "
@@ -7610,69 +7662,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-12-14T11:58:06+00:00"
-        },
-        {
-            "name": "zerai/workerman-symfony-runtime",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zerai/workerman-symfony-runtime.git",
-                "reference": "f2d6e3510ad348a646127d3042439963d871b3c7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zerai/workerman-symfony-runtime/zipball/f2d6e3510ad348a646127d3042439963d871b3c7",
-                "reference": "f2d6e3510ad348a646127d3042439963d871b3c7",
-                "shasum": ""
-            },
-            "require": {
-                "chubbyphp/chubbyphp-workerman-request-handler": "^2.0",
-                "nyholm/psr7": "^1.5",
-                "php": ">=8.1",
-                "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.0",
-                "psr/http-server-handler": "^1.0",
-                "symfony/dependency-injection": "^6.1",
-                "symfony/http-foundation": "^6.1",
-                "symfony/http-kernel": "^6.1",
-                "symfony/psr-http-message-bridge": "^2.1",
-                "symfony/runtime": "^6.1",
-                "workerman/workerman": "^4.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Manyou\\WorkermanSymfonyRuntime\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Brent, Bohan Yang",
-                    "email": "brent@manyou.io"
-                }
-            ],
-            "description": "Run Symfony applications with Workerman",
-            "homepage": "https://github.com/manyou-io/workerman-symfony-runtime",
-            "keywords": [
-                "php-runtime",
-                "runtime",
-                "symfony",
-                "workerman"
-            ],
-            "support": {
-                "source": "https://github.com/zerai/workerman-symfony-runtime/tree/main"
-            },
-            "time": "2022-12-23T22:36:33+00:00"
+            "time": "2024-11-24T11:45:37+00:00"
         }
     ],
     "packages-dev": [
@@ -10058,9 +10048,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "zerai/workerman-symfony-runtime": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
