@@ -37,13 +37,13 @@ jobs:
       max-parallel: 2
       matrix:
         php-version:
-          - '8.1'
+          - '8.2'
         is-php-experimental: [false]
         generate-coverage-report: [false]
-        include:
-          - php-version: '8.2'
-            is-php-experimental: true
-            generate-coverage-report: false
+#        include:
+#          - php-version: '8.2'
+#            is-php-experimental: true
+#            generate-coverage-report: false
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
@@ -100,7 +100,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.1'
+          - '8.2'
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
@@ -152,7 +152,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.1'
+          - '8.2'
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
@@ -187,7 +187,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.1'
+          - '8.2'
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
@@ -224,7 +224,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.1'
+          - '8.2'
       fail-fast: true
 
     steps:

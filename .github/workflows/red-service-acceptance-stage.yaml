@@ -54,7 +54,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.1'
+          - '8.2'
         is-php-experimental: [false]
         generate-coverage-report: [true]
       #        include:
@@ -134,7 +134,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.1'
+          - '8.2'
         is-php-experimental: [false]
         generate-coverage-report: [false]
 #        include:
