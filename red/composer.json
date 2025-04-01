@@ -15,6 +15,7 @@
         "ecotone/pdo-event-sourcing": "^1.8",
         "ecotone/symfony-bundle": "^1.5",
         "eqs/health-check-provider": "^0.1.2",
+        "luzrain/workerman-bundle": "^0.3.0",
         "nyholm/psr7": "^1.8",
         "psr/http-message": "^2.0",
         "runtime/swoole": "^0.4.0",
