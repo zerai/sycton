@@ -112,7 +112,7 @@ jobs:
 
   integration-test:
     name: Integration tests ${{ matrix.php-version }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs:
       - app-preconditions-checks
     timeout-minutes: 15
