@@ -47,7 +47,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
@@ -104,7 +104,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
@@ -136,7 +136,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Validate red service openApi schema
         uses: mbowman100/swagger-validator-action@2.0
@@ -156,7 +156,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
@@ -191,7 +191,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
@@ -229,7 +229,7 @@ jobs:
 
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ inputs.triggering-sha }}
 
