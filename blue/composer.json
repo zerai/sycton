@@ -16,7 +16,7 @@
         "ecotone/jms-converter": "^1.8",
         "ecotone/pdo-event-sourcing": "^1.8",
         "ecotone/symfony-bundle": "^1.8",
-        "luzrain/workerman-bundle": "^0.3.0",
+        "luzrain/workerman-bundle": "^0.4.0",
         "nyholm/psr7": "^1.8",
         "symfony/console": "6.4.*",
         "symfony/dotenv": "6.4.*",
