@@ -17,7 +17,7 @@
         "ecotone/pdo-event-sourcing": "^1.90",
         "ecotone/symfony-bundle": "^1.90",
         "league/oauth2-server-bundle": "^0.8",
-        "luzrain/workerman-bundle": "^0.3.0",
+        "luzrain/workerman-bundle": "^0.4.0",
         "nyholm/psr7": "^1.8",
         "symfony/asset": "6.4.*",
         "symfony/console": "6.4.*",
