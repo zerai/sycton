@@ -197,7 +197,7 @@ jobs:
 
       - name: Save integration coverage reports
         if: ${{ matrix.generate-coverage-report }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ steps.integration-coverage-artifact-name.outputs.name }}
           path: ${{ env.INTEGRATION_TEST_CLOVER_FILENAME }}
@@ -209,7 +209,7 @@ jobs:
 
       - name: Save test doc reports
         if: ${{ matrix.generate-coverage-report }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ steps.integration-test-doc-artifact-name.outputs.name }}
           path: ${{ env.INTEGRATION_TEST_DOC_FILENAME }}
@@ -300,7 +300,7 @@ jobs:
 
       - name: Save functional coverage reports
         if: ${{ matrix.generate-coverage-report }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ steps.functional-coverage-artifact-name.outputs.name }}
           path: ${{ env.FUNCTIONAL_TEST_CLOVER_FILENAME }}
@@ -312,7 +312,7 @@ jobs:
 
       - name: Save test doc reports
         if: ${{ matrix.generate-coverage-report }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ steps.functional-test-doc-artifact-name.outputs.name }}
           path: ${{ env.FUNCTIONAL_TEST_DOC_FILENAME }}
